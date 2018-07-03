@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+      div {
+          position: absolute;
+          width: 200px;
+          height: 60px;
+          text-align: center;
+          margin: 10px auto;
+
+      }
+      div::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 200px;
+          height: 2px;
+          background: deeppink;
+          transition: transform .5s;
+          transform: scaleX(0);
+          transform-origin: 100% 0;  /* 以（100%,0）坐标为基本点移动即缩小到0倍---->scaleX（0） */
+
+      }
+      div:hover::before {
+          transform: scaleX(1);
+          transform-origin: 0 0; /*  以（0,0）坐标为基本点移动即放大到1倍---->scaleX（1） */
+
+      }
+            .test{
+                width: auto;
+            }
+    </style>
+  </head>
+  <body>
+    <div>Hover Me</div>
+    <br>
+    <br>
+    <br>
+    <input type="text" placeholder="请输入数字" onkeyup="value=value.replace(/[^\d]/g,'') ">
+    <div class="test">dfsfdsfdsfds</div>
+    输入您的姓名： <input type="text" id="fname" onkeyup="alert(this.id);this.innerText=this.value.toUpperCase()" />
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul  li {
+      cursor: pointer;
+      display: inline;
+    }
+    li:hover{
+      color:blue
+    }
+    div{
+      display: none;
+      width: 200px;height:200px;background: green
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="buttonLi">按钮1</li>
+    <li class="buttonLi">按钮2</li>
+    <li class="buttonLi">按钮3</li>
+  </ul>
+  <div>
+    这是模态
+    <button class="sure">确定</button>
+  </div>
+  <script>
+ const lis =  document.querySelectorAll('.buttonLi')
+ const div = document.querySelector('div')
+ const button = document.querySelector('.sure')
+ let type = 0
+ for (let i = 0 ; i <lis.length; i++) {
+   let index = i
+   nu= 2
+   lis[i].onclick= ee
+   function ee (i) {
+     console.log(i)
+        div.style.display = 'block'
+        type = index + 1
+   } (nu)
+ }
+ function doPost(type) {
+   if (type === 1) {
+     // do  类型1
+   }
+   if (type === 2) {
+     // do  类型2
+   }
+   if (type === 3) {
+     // do  类型3
+   }
+   close()
+ }
+ function close () {
+   div.style.display= 'none'
+}
+ button.addEventListener('click',doPost)
+  </script>
+</body>
+</html>
