@@ -4,6 +4,8 @@ let bar = foo
 bar = '9'
 console.log(foo, bar)
 */
+//var  声明的变量会绑定到全局中，
+//let,const 声明的变量不会被绑定到全局中，并且不会变量提升
 
  /* TODO: 引用数据类型:When you access a complex type you work on a reference to its value. 
  const fooOne = [1, 2]
