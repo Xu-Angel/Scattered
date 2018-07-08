@@ -1,0 +1,600 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>5.正则表达式</title>
+<style type="text/css">
+	@import url("../style/global.css");
+</style>
+</head>
+<body>
+	<h1>正则表达式</h1>
+	<h2>正则表达式可以:</h2>
+	<ul>
+		<li>测试字符串的某个模式。例如，可以对一个输入字符串进行测试，看在该字符串是否存在一个电话号码模式或一个信用卡号码模式。这称为数据有效性验证</li>
+		<li>替换文本。可以在文档中使用一个正则表达式来标识特定文字，然后可以全部将其删除，或者替换为别的文字</li>
+		<li>根据模式匹配从字符串中提取一个子字符串。可以用来在文本或输入字段中查找特定文字</li>
+	</ul>
+	<h2>正则表达式语法</h2>
+	<p>一个正则表达式就是由普通字符（例如字符 a 到 z）以及特殊字符（称为元字符）组成的文字模式。该模式描述在查找文字主体时待匹配的一个或多个字符串。正则表达式作为一个模板，将某个字符模式与所搜索的字符串进行匹配。</p>
+	<p>下表是元字符及其在正则表达式上下文中的行为的一个完整参考列表：</p>
+	<table>
+		<tr>
+		  <th>字符</th>
+		  <th>描述</th>
+		</tr>
+		<tr>
+		  <td>\</td>
+		  <td>转义字符,在之前,我们在字符串也用过这字符,即一些字符具有特殊含义,对其进行转义使它成为普通字符,而用在普通字符上又表示其有特殊含义</td>
+		</tr>
+		<tr>
+		  <td>^</td>
+		  <td>匹配输入字符串的开始位置,如果设置了匹配多行(m),那么也匹配行的开头</td>
+		</tr>
+		<tr>
+		  <td>$</td>
+		  <td>匹配输入字符串的结束位置。如果设置了匹配多行(m),那么也匹配行的结束</td>
+		</tr>
+		<tr>
+		  <td>*</td>
+		  <td>匹配前面的子表达式零次或多次。例如，zo* 能匹配 &quot;z&quot; 以及 &quot;zoo&quot;。 * 等价于{0,}。</td>
+		</tr>
+		<tr>
+		  <td>+</td>
+		  <td>匹配前面的子表达式一次或多次。例如，'zo+' 能匹配 &quot;zo&quot; 以及 &quot;zoo&quot;，但不能匹配 &quot;z&quot;。+ 等价于   {1,}。</td>
+		</tr>
+		<tr>
+		  <td>?</td>
+		  <td>匹配前面的子表达式零次或一次。例如，&quot;do(es)?&quot; 可以匹配 &quot;do&quot; 或 &quot;does&quot; 中的&quot;do&quot; 。? 等价于   {0,1}。</td>
+		</tr>
+		<tr>
+		  <td>{<em>n</em>}</td>
+		  <td><em>n</em> 是一个非负整数。匹配确定的 <em>n</em> 次。例如，'o{2}' 不能匹配 &quot;Bob&quot; 中的   'o'，但是能匹配 &quot;food&quot; 中的两个 o。</td>
+		</tr>
+		<tr>
+		  <td>{<em>n</em>,}</td>
+		  <td><em>n</em> 是一个非负整数。至少匹配<em>n</em> 次。例如，'o{2,}' 不能匹配 &quot;Bob&quot; 中的   'o'，但能匹配 &quot;foooood&quot; 中的所有 o。'o{1,}' 等价于 'o+'。'o{0,}' 则等价于 'o*'。</td>
+		</tr>
+		<tr>
+		  <td>{<em>n</em>,<em>m</em>}</td>
+		  <td><em>m</em> 和 <em>n</em> 均为非负整数，其中<em>n</em> &lt;= <em>m</em>。最少匹配 <em>n</em> 次且最多匹配 <em>m</em> 次。刘， &quot;o{1,3}&quot; 将匹配 &quot;fooooood&quot; 中的前三个 o。'o{0,1}' 等价于   'o?'。请注意在逗号和两个数之间不能有空格。</td>
+		</tr>
+		<tr>
+		  <td>?</td>
+		  <td>当该字符紧跟在任何一个其他限制符 (*, +, ?, {<em>n</em>}, {<em>n</em>,},   {<em>n</em>,<em>m</em>})   后面时，匹配模式是非贪婪的。非贪婪模式尽可能少的匹配所搜索的字符串，而默认的贪婪模式则尽可能多的匹配所搜索的字符串。例如，对于字符串 &quot;oooo&quot;，'o+?'   将匹配单个 &quot;o&quot;，而 'o+' 将匹配所有 'o'。</td>
+		</tr>
+		<tr>
+		  <td>.</td>
+		  <td>匹配除 &quot;\n&quot; 之外的任何单个字符。要匹配包括 '\n' 在内的任何字符，请使用象 '[.\n]'   的模式。</td>
+		</tr>
+		<tr>
+		  <td>(<em>pattern</em>)</td>
+		  <td>匹配<em>pattern</em> 并获取这一匹配。所获取的匹配可以从产生的 Matches 集合得到，使用 <strong>$0</strong>…<strong>$9</strong> 属性。要匹配圆括号字符，请使用 '\(' 或   '\)'。</td>
+		</tr>
+		<tr>
+		  <td>(?:<em>pattern</em>)</td>
+		  <td>匹配 <em>pattern</em> 但不获取匹配结果，也就是说这是一个非获取匹配，不进行存储供以后使用。这在使用 &quot;或&quot; 字符   (|) 来组合一个模式的各个部分是很有用。例如， 'industr(?:y|ies) 就是一个比 'industry|industries'   更简略的表达式。</td>
+		</tr>
+		<tr>
+		  <td>(?=<em>pattern</em>)</td>
+		  <td>正向预查，在任何匹配 <em>pattern</em> 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如， 'Windows (?=95|98|NT|2000)' 能匹配   &quot;Windows 2000&quot; 中的 &quot;Windows&quot; ，但不能匹配 &quot;Windows 3.1&quot; 中的   &quot;Windows&quot;。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始。</td>
+		</tr>
+		<tr>
+		  <td>(?!<em>pattern</em>)</td>
+		  <td>负向预查，在任何不匹配<em>pattern</em> 的字符串开始处匹配查找字符串。这是一个非获取匹配，也就是说，该匹配不需要获取供以后使用。例如'Windows (?!95|98|NT|2000)' 能匹配   &quot;Windows 3.1&quot; 中的 &quot;Windows&quot;，但不能匹配 &quot;Windows 2000&quot; 中的   &quot;Windows&quot;。预查不消耗字符，也就是说，在一个匹配发生后，在最后一次匹配之后立即开始下一次匹配的搜索，而不是从包含预查的字符之后开始 </td>
+		</tr>
+		<tr>
+		  <td><em>x</em>|<em>y</em></td>
+		  <td>匹配 <em>x</em> 或 <em>y</em>。例如，'z|food' 能匹配 &quot;z&quot; 或 &quot;food&quot;。'(z|f)ood'   则匹配 &quot;zood&quot; 或 &quot;food&quot;。 </td>
+		</tr>
+		<tr>
+		  <td>[<em>xyz</em>]</td>
+		  <td>字符集合。匹配所包含的任意一个字符。例如， '[abc]' 可以匹配 &quot;plain&quot; 中的 'a'。 </td>
+		</tr>
+		<tr>
+		  <td>[^<em>xyz</em>]</td>
+		  <td>负值字符集合。匹配未包含的任意字符。例如， '[^abc]' 可以匹配 &quot;plain&quot; 中的'p'。 </td>
+		</tr>
+		<tr>
+		  <td>[<em>a-z</em>]</td>
+		  <td>字符范围。匹配指定范围内的任意字符。例如，'[a-z]' 可以匹配 'a' 到 'z' 范围内的任意小写字母字符。 </td>
+		</tr>
+		<tr>
+		  <td>[^<em>a-z</em>]</td>
+		  <td>负值字符范围。匹配任何不在指定范围内的任意字符。例如，'[^a-z]' 可以匹配任何不在 'a' 到 'z' 范围内的任意字符。 </td>
+		</tr>
+		<tr>
+		  <td>\b</td>
+		  <td>匹配一个单词边界，也就是指单词和空格间的位置。例如， 'er\b' 可以匹配&quot;never&quot; 中的 'er'，但不能匹配   &quot;verb&quot; 中的 'er'。 </td>
+		</tr>
+		<tr>
+		  <td>\B</td>
+		  <td>匹配非单词边界。'er\B' 能匹配 &quot;verb&quot; 中的 'er'，但不能匹配 &quot;never&quot; 中的   'er'。</td>
+		</tr>
+		<tr>
+		  <td>\c<em>x</em></td>
+		  <td>匹配由<em>x</em>指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。 <em>x</em> 的值必须为   A-Z 或 a-z 之一。否则，将 c 视为一个原义的 'c' 字符。 </td>
+		</tr>
+		<tr>
+		  <td>\d</td>
+		  <td>匹配一个数字字符。等价于 [0-9]。 </td>
+		</tr>
+		<tr>
+		  <td>\D</td>
+		  <td>匹配一个非数字字符。等价于 [^0-9]。 </td>
+		</tr>
+		<tr>
+		  <td>\f</td>
+		  <td>匹配一个换页符。等价于 \x0c 和 \cL。</td>
+		</tr>
+		<tr>
+		  <td>\n</td>
+		  <td>匹配一个换行符。等价于 \x0a 和 \cJ。</td>
+		</tr>
+		<tr>
+		  <td>\r</td>
+		  <td>匹配一个回车符。等价于 \x0d 和 \cM。</td>
+		</tr>
+		<tr>
+		  <td>\s</td>
+		  <td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [?\f\n\r\t\v]。</td>
+		</tr>
+		<tr>
+		  <td>\S</td>
+		  <td>匹配任何非空白字符。等价于 [^?\f\n\r\t\v]。</td>
+		</tr>
+		<tr>
+		  <td>\t</td>
+		  <td>匹配一个制表符。等价于 \x09 和 \cI。</td>
+		</tr>
+		<tr>
+		  <td>\v</td>
+		  <td>匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
+		</tr>
+		<tr>
+		  <td>\w</td>
+		  <td>匹配包括下划线的任何单词字符。等价于'[A-Za-z0-9_]'。 </td>
+		</tr>
+		<tr>
+		  <td>\W</td>
+		  <td>匹配任何非单词字符。等价于 '[^A-Za-z0-9_]'。 </td>
+		</tr>
+		<tr>
+		  <td>\x<em>n</em></td>
+		  <td>匹配 <em>n</em>，其中 <em>n</em> 为十六进制转义值。十六进制转义值必须为确定的两个数字长。例如， '\x41'   匹配 &quot;A&quot;。'\x041' 则等价于 '\x04' &amp; &quot;1&quot;。正则表达式中可以使用 ASCII 编码。.</td>
+		</tr>
+		<tr>
+		  <td>\<em>num</em></td>
+		  <td>匹配 <em>num</em>，其中 <em>num</em> 是一个正整数。对所获取的匹配的引用。例如，'(.)\1'   匹配两个连续的相同字符。 </td>
+		</tr>
+		<tr>
+		  <td>\<em>n</em></td>
+		  <td>标识一个八进制转义值或一个后向引用。如果 \<em>n</em> 之前至少 <em>n</em> 个获取的子表达式，则 <em>n</em> 为后向引用。否则，如果 <em>n</em> 为八进制数字 (0-7)，则 <em>n</em> 为一个八进制转义值。</td>
+		</tr>
+		<tr>
+		  <td>\<em>nm</em></td>
+		  <td>标识一个八进制转义值或一个后向引用。如果 \<em>nm</em> 之前至少有is preceded by at least <em>nm</em> 个获取得子表达式，则 <em>nm</em> 为后向引用。如果 \<em>nm</em> 之前至少有 <em>n</em> 个获取，则 <em>n</em> 为一个后跟文字 <em>m </em>的后向引用。如果前面的条件都不满足，若? <em>n</em> 和 <em>m</em> 均为八进制数字 (0-7)，则   \<em>nm</em> 将匹配八进制转义值 <em>nm</em>。</td>
+		</tr>
+		<tr>
+		  <td>\<em>nml</em></td>
+		  <td>如果 <em>n</em> 为八进制数字 (0-3)，且 <em>m</em> 和 <em>l</em> 均为八进制数字   (0-7)，则匹配八进制转义值 <em>nml。</em></td>
+		</tr>
+		<tr>
+		  <td>\u<em>n</em></td>
+		  <td>匹配 <em>n</em>，其中 <em>n</em> 是一个用四个十六进制数字表示的 Unicode 字符。例如， \u00A9   匹配版权符号 (?)。</td>
+		</tr>
+	</table>
+	<h2>创建正则表达式</h2>
+	<pre>
+	var re = new RegExp();//RegExp是一个对象,和Aarray一样
+	//但这样没有任何效果,需要将正则表达式的内容作为字符串传递进去
+	re =new RegExp("a");//最简单的正则表达式,将匹配字母a
+	re=new RegExp("a","i");//第二个参数,表示匹配时不分大小写
+	</pre>
+	<p>RegExp构造函数第一个参数为正则表达式的文本内容,而第一个参数则为可选项标志.标志可以组合使用</p>
+	<ul>
+		<li>g （全文查找） </li>
+		<li>i （忽略大小写） </li>
+		<li>m （多行查找） </li>
+	</ul>
+	<pre>
+	var re = new RegExp("a","gi");//匹配所有的a或A</pre>
+	<p>正则表达式还有另一种正则表达式字面量的声明方式</p>
+	<pre>
+	var re = /a/gi;</pre>
+	<h2>和正则表达式相关的方法和属性</h2>
+	<p>正则表达式对象的方法</p>
+	<ul>
+		<li>test,返回一个 Boolean 值，它指出在被查找的字符串中是否存在模式。如果存在则返回 true，否则就返回 false。</li>
+		<li>exec,用正则表达式模式在字符串中运行查找，并返回包含该查找结果的一个数组。</li>
+		<li>compile,把正则表达式编译为内部格式，从而执行得更快。</li>
+	</ul>
+	<p>正则表达式对象的属性</p>
+	<ul>
+		<li>source,返回正则表达式模式的文本的复本。只读。</li>
+		<li>lastIndex,返回字符位置，它是被查找字符串中下一次成功匹配的开始位置。</li>
+		<li>$1...$9,返回九个在模式匹配期间找到的、最近保存的部分。只读。</li>
+		<li>input ($_),返回执行规范表述查找的字符串。只读。</li>
+		<li>lastMatch ($&),返回任何正则表达式搜索过程中的最后匹配的字符。只读。</li>
+		<li>lastParen ($+),如果有的话，返回任何正则表达式查找过程中最后括的子匹配。只读。</li>
+		<li>leftContext ($`),返回被查找的字符串中从字符串开始位置到最后匹配之前的位置之间的字符。只读。</li>
+		<li>rightContext ($'),返回被搜索的字符串中从最后一个匹配位置开始到字符串结尾之间的字符。只读。</li>
+	</ul>
+	<p>String对象一些和正则表达式相关的方法</p>
+	<ul>
+		<li>match,找到一个或多个正则表达式的匹配。</li>
+		<li>replace,替换与正则表达式匹配的子串。</li>
+		<li>search,检索与正则表达式相匹配的值。</li>
+		<li>split,把字符串分割为字符串数组。</li>
+	</ul>
+	<p>测试正则表达式是如何工作的!</p>
+	<pre>
+	//test方法,测试字符串,符合模式时返回true,否则返回false
+	var re = /he/;//最简单的正则表达式,将匹配he这个单词
+	var str = "he";
+	alert(re.test(str));//true
+	str = "we";
+	alert(re.test(str));//false
+	str = "HE";
+	alert(re.test(str));//false,大写,如果要大小写都匹配可以指定i标志(i是ignoreCase或case-insensitive的表示)
+	re = /he/i;
+	alert(re.test(str));//true
+	str = "Certainly!He loves her!";
+	alert(re.test(str));//true,只要包含he(HE)就符合,如果要只是he或HE,不能有其它字符,则可使用^和$
+	re = /^he/i;//脱字符(^)代表字符开始位置
+	alert(re.test(str));//false,因为he不在str最开始
+	str = "He is a good boy!";
+	alert(re.test(str));//true,He是字符开始位置,还需要使用$
+	re = /^he$/i;//$表示字符结束位置
+	alert(re.test(str));//false
+	str = "He";
+	alert(re.test(str));//true
+	//当然,这样不能发现正则表达式有多强大,因为我们完全可以在上面的例子中使用==或indexOf
+	re = /\s/;// \s匹配任何空白字符，包括空格、制表符、换页符等等
+	str= "user Name";//用户名包含空格
+	alert(re.test(str));//true
+	str = "user		Name";//用户名包含制表符
+	alert(re.test(str));//true
+	re=/^[a-z]/i;//[]匹配指定范围内的任意字符,这里将匹配英文字母,不区分大小写
+	str="variableName";//变量名必须以字母开头
+	alert(re.test(str));//true
+	str="123abc";
+	alert(re.test(str));//false
+	</pre>
+	<p>当然,仅仅知道了字符串是否匹配模式还不够,我们还需要知道哪些字符匹配了模式</p>
+	<pre>
+	var osVersion = "Ubuntu 8";//其中的8表示系统主版本号
+	var re = /^[a-z]+\s+\d+$/i; //+号表示字符至少要出现1次,\s表示空白字符,\d表示一个数字
+	alert(re.test(osVersion));//true,但我们想知道主版本号
+	//另一个方法exec,返回一个数组,数组的第一个元素为完整的匹配内容
+	re=/^[a-z]+\s+\d+$/i;
+	arr = re.exec(osVersion);
+	alert(arr[0]);//将osVersion完整输出,因为整个字符串刚好匹配re
+	//我只需要取出数字
+	re=/\d+/;
+	var arr = re.exec(osVersion);
+	alert(arr[0]);//8</pre>
+	<p>更复杂的用法,使用子匹配</p>
+	<pre>
+	//exec返回的数组第1到n元素中包含的是匹配中出现的任意一个子匹配
+	re=/^[a-z]+\s+(\d+)$/i;//用()来创建子匹配
+	arr =re.exec(osVersion);
+	alert(arr[0]);//整个osVersion,也就是正则表达式的完整匹配
+	alert(arr[1]);//8,第一个子匹配,事实也可以这样取出主版本号
+	alert(arr.length);//2
+	osVersion = "Ubuntu 8.10";//取出主版本号和次版本号
+	re = /^[a-z]+\s+(\d+)\.(\d+)$/i;//.是正则表达式元字符之一,若要用它的字面意义须转义
+	arr = re.exec(osVersion);
+	alert(arr[0]);//完整的osVersion
+	alert(arr[1]);//8
+	alert(arr[2]);//10
+	</pre>
+	<strong>注意,当字符串不匹配re时,exec方法将返回null</strong>
+	<p>String对象的一些和正则表达式有关的方法</p>
+	<pre>
+	//replace方法,用于替换字符串
+	var str ="some money";
+	alert(str.replace("some","much"));//much money
+	//replace的第一个参数可以为正则表达式
+	var re = /\s/;//空白字符
+	alert(str.replace(re,"%"));//some%money
+	//在不知道字符串中有多少空白字符时,正则表达式极为方便
+	str ="some some 			\tsome\t\f";
+	re = /\s+/;
+	alert(str.replace(re,"#"));//但这样只会将第一次出现的一堆空白字符替换掉
+	//因为一个正则表达式只能进行一次匹配,\s+匹配了第一个空格后就退出了
+	re = /\s+/g;//g,全局标志,将使正则表达式匹配整个字符串
+	alert(str.replace(re,"@"));//some@some@some@
+	//另一个与之相似的是split
+	var str = "a-bd-c";
+	var arr = str.split("-");//返回["a","bd","c"]
+	//如果str是用户输入的,他可能输入a-bd-c也可能输入a bd c或a_bd_c,但不会是abdc(这样就说他输错了)
+	str = "a_db-c";//用户以他喜欢的方式加分隔符s
+	re=/[^a-z]/i;//前面我们说^表示字符开始,但在[]里它表示一个负字符集
+	//匹配任何不在指定范围内的任意字符,这里将匹配除字母处的所有字符
+	arr = str.split(re);//仍返回["a","bd","c"];
+	//在字符串中查找时我们常用indexOf,与之对应用于正则查找的方法是search
+	str = "My age is 18.Golden age!";//年龄不是一定的,我们用indexOf不能查找它的位置
+	re = /\d+/;
+	alert(str.search(re));//返回查找到的字符串开始下标10
+	//注意,因为查找本身就是出现第一次就立即返回,所以无需在search时使用g标志
+	//下面的代码虽然不出错,但g标志是多余的
+	re=/\d+/g;
+	alert(str.search(re));//仍然是10
+	</pre>
+	<strong>注意,当search方法没有找到匹配时,将返回-1</strong>
+	<p>类似于exec方法,String对象的match方法也用于将字符串与正则表达式进行匹配并返回结果数组</p>
+	<pre>
+	var str = "My name is CJ.Hello everyone!";
+	var re = /[A-Z]/;//匹配所有大写字母
+	var arr = str.match(re);//返回数组
+	alert(arr);//数组中只会包含一个M,因为我们没有使用全局匹配
+	re = /[A-Z]/g;
+	arr = str.match(re);
+	alert(arr);//M,C,J,H
+	//从字符串中抽取单词
+	re = /\b[a-z]\b/i;//\b表示单词边界
+	str = "one two three four";
+	alert(str.match(re));//one,two,three,four</pre>
+	<p>RegExp对象实例的一些属性</p>
+	<pre>
+	var re = /[a-z]/i;
+	alert(re.source);//将[a-z]字符串输出
+	//请注意,直接alert(re)会将正则表达式连同前向斜线与标志输出,这是re.toString方法定义的</pre>
+	<p>每个RegExp对象的实例具有lastIndex属性,它是被查找字符串中下一次成功匹配的开始位置,默认值是-1。 lastIndex 属性被 RegExp 对象的 exec 和 test 方法修改.并且它是可写的.</p>
+	<pre>
+	var re = /[A-Z]/;
+	//exec方法执行后,修改了re的lastIndex属性,
+	var str = "Hello,World!!!";
+	var arr = re.exec(str);
+	alert(re.lastIndex);//0,因为没有设置全局标志
+	re = /[A-Z]/g;
+	arr = re.exec(str);
+	alert(re.lastIndex);//1
+	arr = re.exec(str);
+	alert(re.lastIndex);//7</pre>
+	<p>当匹配失败（后面没有匹配），或lastIndex值大于字符串长度时，再执行exec等方法会将lastIndex设为0(开始位置)</p>
+	<pre>
+	var re = /[A-Z]/;
+	var str = "Hello,World!!!";
+	re.lastIndex = 120;
+	var arr = re.exec(str);
+	alert(re.lastIndex);//0</pre>
+	<p>RegExp对象的静态属性</p>
+	<pre>
+	//input 最后用于匹配的字符串（传递给test,exec方法的字符串）
+	var re = /[A-Z]/;
+	var str = "Hello,World!!!";
+	var arr = re.exec(str);
+	alert(RegExp.input);//Hello,World!!!
+	re.exec("tempstr");
+	alert(RegExp.input);//仍然是Hello,World!!!,因为tempstr不匹配
+	//lastMatch 最后匹配的字符
+	re = /[a-z]/g;
+	str = "hi";
+	re.test(str);
+	alert(RegExp.lastMatch);//h
+	re.test(str);
+	alert(RegExp["$&"]);//i  ,$&是lastMatch的短名字，但由于它不是合法变量名，所以要。。
+	//lastParen 最后匹配的分组
+	re = /[a-z](\d+)/gi;
+	str = "Class1 Class2 Class3";
+	re.test(str);
+	alert(RegExp.lastParen);//1
+	re.test(str);
+	alert(RegExp["$+"]);//2
+	//leftContext  返回被查找的字符串中从字符串开始位置到最后匹配之前的位置之间的字符
+	//rigthContext 返回被搜索的字符串中从最后一个匹配位置开始到字符串结尾之间的字符
+	re = /[A-Z]/g;
+	str = "123ABC456";
+	re.test(str);
+	alert(RegExp.leftContext);//123
+	alert(RegExp.rightContext);//BC456
+	re.test(str);
+	alert(RegExp["$`"]);//123A
+	alert(RegExp["$'"]);//C456</pre>
+	<p>multiline属性返回正则表达式是否使用多行模式,这个属性不针对某个正则表达式实例，而是针对所有正则表达式，并且这个属性可写.(IE与Opera不支持这个属性)</p>
+	<pre>
+	alert(RegExp.multiline);
+	//因为IE，Opera不支持这个属性，所以最好还是单独指定
+	var re = /\w+/m;
+	alert(re.multiline);
+	alert(RegExp["$*"]);//RegExp对象的静态属性不会因为给RegExp某个对象实例指定了m标志而改变
+	RegExp.multiline = true;//这将打开所有正则表达式实例的多行匹配模式
+	alert(RegExp.multiline);</pre>
+	<h2>正则表达式高级篇</h2>
+	<p>使用元字符注意事项:元字符是正则表达式的一部分，当我们要匹配正则表达式本身时，必须对这些元字符转义.下面是正则表达式用到的所有元字符</p>
+	<strong>( [ { \ ^ $ | ) ? * + .</strong>
+	<pre>
+	var str = "?";
+	var re = /?/;
+	alert(re.test(str));//出错，因为？是元字符，必须转义
+	re = /\?/;
+	alert(re.test(str));//true</pre>
+	<p>使用RegExp构造函数与使用正则表达式字面量创建正则表达式注意点</p>
+	<pre>
+	var str = "\?";
+	alert(str);//只会输出?
+	var re = /\?/;//将匹配?
+	alert(re.test(str));//true
+	re = new RegExp("\?");//出错,因为这相当于re = /\?/
+	re = new RegExp("\\?");//正确，将匹配？
+	alert(re.test(str));//true</pre>
+	<p>既然双重转义这么不友好，所以还是用正则表达式字面量的声明方式</p>
+	<p>如何在正则表达式中使用特殊字符？</p>
+	<pre>
+	//ASCII方式用十六进制数来表示特殊字符
+	var re = /^\x43\x4A$/;//将匹配CJ
+	alert(re.test("CJ"));//true
+	//也可使用八进制方式
+	re = /^\103\112$/;//将匹配CJ
+	alert(re.test("CJ"));//true
+	//还可以使用Unicode编码
+	re =/^\u0043\u004A$/;//使用 Unicode，必须使用u开头，接着是字符编码的四位16进制表现形式
+	alert(re.test("CJ"));</pre>
+	<p>另处，还有一些其它的预定义特殊字符，如下表所示:</p>
+	<table>
+		<tr><th>字符</th><th>描述</th></tr>
+		<tr><td>\n</td><td>换行符</td></tr>
+		<tr><td>\r</td><td>回车符</td></tr>
+		<tr><td>\t</td><td>制表符</td></tr>
+		<tr><td>\f</td><td>换页符（Tab）</td></tr>
+		<tr><td>\cX</td><td>与X对应的控制字符</td></tr>
+		<tr><td>\b</td><td>退格符(BackSpace)</td></tr>
+		<tr><td>\v</td><td>垂直制表符</td></tr>
+		<tr><td>\0</td><td>空字符("")</td></tr>
+	</table>
+	<p>字符类 ---〉简单类，反向类，范围类，组合类，预定义类</p>
+	<pre>
+	//简单类
+	var re = /[abc123]/;//将匹配abc123这6个字符中一个
+	//负向类
+	re = /[^abc]/;//将匹配除abc之外的一个字符
+	//范围类
+	re = /[a-b]/;//将匹配小写a-b 26个字母
+	re = /[^0-9]/;//将匹配除0-9 10个字符之处的一个字符
+	//组合类
+	re = /[a-b0-9A-Z_]/;//将匹配字母，数字和下划线</pre>
+	<p>下面是正则表达式中的预定义类</p>
+	<table>
+		<tr><th>代码</th><th>等同于</th><th>匹配</th></tr>
+		<tr><td>.</td><td>IE下[^\n]，其它[^\n\r]</td><td>匹配除换行符之外的任何一个字符</td></tr>
+		<tr><td>\d</td><td>[0-9]</td><td>匹配数字</td></tr>
+		<tr><td>\D</td><td>[^0-9]</td><td>匹配非数字字符</td></tr>
+		<tr><td>\s</td><td>[ \n\r\t\f\x0B]</td><td>匹配一个空白字符</td></tr>
+		<tr><td>\S</td><td>[^ \n\r\t\f\x0B]</td><td>匹配一个非空白字符</td></tr>
+		<tr><td>\w</td><td>[a-zA-Z0-9_]</td><td>匹配字母数字和下划线</td></tr>
+		<tr><td>\W</td><td>[^a-zA-Z0-9_]</td><td>匹配除字母数字下划线之外的字符</td></tr>
+	</table>
+	<p>量词</p>
+	<table>
+		<tr><th>代码</th><th>描述</th></tr>
+		<tr>
+		  <td>*</td>
+		  <td>匹配前面的子表达式零次或多次。例如，zo* 能匹配 &quot;z&quot; 以及 &quot;zoo&quot;。 * 等价于{0,}。</td>
+		</tr>
+		<tr>
+		  <td>+</td>
+		  <td>匹配前面的子表达式一次或多次。例如，'zo+' 能匹配 &quot;zo&quot; 以及 &quot;zoo&quot;，但不能匹配 &quot;z&quot;。+ 等价于   {1,}。</td>
+		</tr>
+		<tr>
+		  <td>?</td>
+		  <td>匹配前面的子表达式零次或一次。例如，&quot;do(es)?&quot; 可以匹配 &quot;do&quot; 或 &quot;does&quot; 中的&quot;do&quot; 。? 等价于   {0,1}。</td>
+		</tr>
+		<tr>
+		  <td>{<em>n</em>}</td>
+		  <td><em>n</em> 是一个非负整数。匹配确定的 <em>n</em> 次。例如，'o{2}' 不能匹配 &quot;Bob&quot; 中的   'o'，但是能匹配 &quot;food&quot; 中的两个 o。</td>
+		</tr>
+		<tr>
+		  <td>{<em>n</em>,}</td>
+		  <td><em>n</em> 是一个非负整数。至少匹配<em>n</em> 次。例如，'o{2,}' 不能匹配 &quot;Bob&quot; 中的   'o'，但能匹配 &quot;foooood&quot; 中的所有 o。'o{1,}' 等价于 'o+'。'o{0,}' 则等价于 'o*'。</td>
+		</tr>
+		<tr>
+		  <td>{<em>n</em>,<em>m</em>}</td>
+		  <td><em>m</em> 和 <em>n</em> 均为非负整数，其中<em>n</em> &lt;= <em>m</em>。最少匹配 <em>n</em> 次且最多匹配 <em>m</em> 次。刘， &quot;o{1,3}&quot; 将匹配 &quot;fooooood&quot; 中的前三个 o。'o{0,1}' 等价于   'o?'。请注意在逗号和两个数之间不能有空格。</td>
+		</tr>
+	</table>
+	<p>贪婪量词与惰性量词</p>
+	<ul>
+		<li>用贪婪量词进行匹配时，它首先会将整会字符串当成一个匹配，如果匹配的话就退出，如果不匹配，就截去最后一个字符进行匹配，如果不匹配，继续将最后一个字符截去进行匹配，直到有匹配为止。直到现在我们遇到的量词都是贪婪量词</li>
+		<li>用贪婪量词进行匹配时，它首先将第一个字符当成一个匹配，如果成功则退出，如果失败，则测试前两个字符，依些增加，直到遇到合适的匹配为止</li>
+	</ul>
+	<table>
+		<tr><th>贪婪</th><th>惰性</th></tr>
+		<tr><td>+</td><td>+?</td></tr>
+		<tr><td>?</td><td>??</td></tr>
+		<tr><td>*</td><td>*?</td></tr>
+		<tr><td>{n}</td><td>{n}?</td></tr>
+		<tr><td>{n,}</td><td>{n,}?</td></tr>
+		<tr><td>{n,m}</td><td>{n,m}</td></tr>
+	</table>
+	<pre>
+	var str = "abc";
+	var re = /\w+/;//将匹配abc
+	re = /\w+?/;//将匹配a</pre>
+	<p>多行模式</p>
+	<pre>
+	var re = /[a-z]$/;
+	var str = "ab\ncdef";
+	alert(str.replace(re,"#"));//ab\ncde#
+	re =/[a-z]$/m;
+	alert(str.replace(re,"#"));//a#\ncde#</pre>
+	<p>分组与非捕获性分组</p>
+	<pre>
+	re = /abc{2}/;//将匹配abcc
+	re = /(abc){2}/;//将匹配abcabc
+	//上面的分组都是捕获性分组
+	str = "abcabc ###";
+	arr = re.exec(str);
+	alert(arr[1]);//abc
+	//非捕获性分组 (?:)
+	re = /(?:abc){2}/;
+	arr = re.exec(str);
+	alert(arr[1]);//undefined</pre>
+	<p>候选（也就是所说的“或”）</p>
+	<pre>
+	re = /^a|bc$/;//将匹配开始位置的a或结束位置的bc
+	str ="add";
+	alert(re.test(str));//true
+	re = /^(a|bc)$/;//将匹配a或bc
+	str ="bc";
+	alert(re.test(str));//true</pre>
+	<p>当包含分组的正则表达式进行过test,match,search这些方法之后，每个分组都被放在一个特殊的地方以备将来使用，这些存储是分组中的特殊值，我们称之为<em>反向引用</em></p>
+	<pre>
+	var re = /(A?(B?(C?)))/;
+	/*上面的正则表达式将依次产生三个分组
+	(A?(B?(C?))) 最外面的
+	(B?(C?))
+	(C?)*/
+	str = "ABC";
+	re.test(str);//反向引用被存储在RegExp对象的静态属性$1—$9中
+	alert(RegExp.$1+"\n"+RegExp.$2+"\n"+RegExp.$3);
+	//反向引用也可以在正则表达式中使用\1 ,\2...这类的形式使用
+	re = /\d+(\D)\d+\1\d+/;
+	str = "2008-1-1";
+	alert(re.test(str));//true
+	str = "2008-4_3";
+	alert(re.test(str));//false</pre>
+	<p>使用反向引用可以要求字符串中某几个位置上的字符必须相同.另外，在replace这类方法可，存在特殊字符序列来表示反向引用的方式</p>
+	<pre>
+	re = /(\d)\s(\d)/;
+	str = "1234 5678";
+	alert(str.replace(re,"$2 $1"));//在这个里面$1表示第一个分组1234,$2则表示5678</pre>
+	<p>其它——〉正向前瞻,用来捕获出现在特定字符之前的字符,只有当字符后面跟着某个特定字符才去捕获它。与正向前瞻对应的有负向前瞻，它用匹配只有当字符后面不跟着某个特定字符时才去匹配它。在执行前瞻和负向前瞻之类的运算时，正则表达式引擎会留意字符串后面的部分，然而却不移动index</p>
+	<pre>
+	//正向前瞻
+	re = /([a-z]+(?=\d))/i;
+	//我们要匹配后面跟一个数字的单词，然后将单词返回，而不要返回数字
+	str = "abc every1 abc";
+	alert(re.test(str));//true
+	alert(RegExp.$1);//every
+	alert(re.lastIndex);//使用前瞻的好处是,前瞻的内容(?=\d)并不会当成一次匹配，下次匹配仍从它开始
+	//负向前瞻(?!)
+	re = /([a-z](?!\d))/;i
+	//将匹配后面不包含数字的字母,并且不会返回(?!\d)中的内容
+	str = "abc1 one";
+	alert(re.test(str));
+	alert(RegExp.$1);//one</pre>
+	<p>构建一个验证电子邮箱地址有效性的正则表达式。电子邮箱地址有效性要求(我们姑且这样定义)：用户名只能包含字母数字以及下划线，最少一位，最多25位，用户名后面紧跟@，后面是域名，域名名称要求只能包含字母数字和减号（-），并且不能以减号开头或结尾，然后后面是域名后缀（可以有多个），域名后缀必须是点号连上2-4位英文字母</p>
+	<pre>
+	var re = /^\w{1,15}(?:@(?!-))(?:(?:[a-z0-9-]*)(?:[a-z0-9](?!-))(?:\.(?!-)))+[a-z]{2,4}$/;</pre>
+
+
+
+
+
+	
+
+
+
+
+	<!--
+&lt;  &gt;
+<p></p>
+	<h2></h2>
+<strong></strong>
+<pre></pre>
+<ul>
+	<li></li>
+</ul>-->
+</body>
+</html>
