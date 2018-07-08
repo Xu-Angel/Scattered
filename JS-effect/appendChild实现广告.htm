@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>�������</title>
+<script type="text/javascript">
+	setInterval(function () {
+		var ul = document.getElementById("rollerAd");
+		ul.appendChild(ul.firstChild);
+	},1000);
+</script>
+<style type="text/css">
+	body {
+		background:white;
+	}
+	ul {
+		list-style-type:none;
+		width:740px;
+		height:20px;
+		overflow:hidden;
+		padding:10px;
+		margin:10px auto;
+		border:3px ridge aqua;
+	}
+	a {
+		display:block;
+		width:700px;
+		height:24px;
+		line-height:24px;
+		font-size:16px;
+		color:white;
+		margin:4px auto;
+		text-decoration:none;
+		text-indent:20px;
+		background:#06f;
+	}
+	a:hover {
+		background:#f60;
+		text-decoration:underline;
+	}
+</style>
+</head>
+<body>
+		appendChild() 方法向节点添加最后一个子节点。
+
+		提示：如果您需要创建包含文本的新段落，请记得添加到段落的文本的文本节点，然后向文档添加该段落。
+		
+		您也可以使用 appendChild() 方法从一个元素向另一个元素中移动元素。
+	<ul id="rollerAd">
+		<li><a href="http://www.ubuntu.com" target="AjaxLife">Ubuntu 9.04�����ˡ�����</a></li>
+		<li><a href="http://www.g.cn" target="AjaxLife">���������Ϊ��������˽�֡�����</a></li>
+		<li><a href="http://www.yc60.com" target="AjaxLife">QQ������壬����������ױ�ɡ�����</a></li>
+		<li><a href="http://www.javaeye.com" target="AjaxLife">ÿ��������С�����ǲ�һ���ģ���������ô��ӹ�׵Ĵ����Ǵ���������</a></li>
+		<li><a href="http://www.kylin.org.cn" target="AjaxLife">����OS�ٶȷ�ī�ǳ��������ڴ�������</a></li>
+		<li><a href="http://www.whatwg.org" target="AjaxLife">�ƽ⡰¿�֡���������ĳ��ĳ��ĳ�ձ�������������</a></li>
+	</ul>
+</body>
+</html>
