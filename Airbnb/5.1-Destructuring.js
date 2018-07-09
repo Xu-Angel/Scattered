@@ -1,7 +1,8 @@
 /* FIXME: Destructuring 解构赋值
 Use object destructuring when accessing and using multiple properties of an object
  */
-/* TODO:对象的解构赋值 */
+/* 
+TODO:对象的解构赋值 */
 /* // bad
 function getFullName(user) {
   const firstName = user.firstName;
@@ -17,14 +18,16 @@ function getFullName(user) {
 function getFullName({ firstName, lastName }) {
   return `${firstName} ${lastName}`;
 } */
-/* TODO:数组解构赋值 */
+/* 
+TODO:数组解构赋值 */
 /* const arr = [1, 2, 3, 4];
 // bad
 const first = arr[0];
 const second = arr[1];
 // good
 const [first, second] = arr; */
-/* TODO: 函数返回值 使用对象而不是数组，属性更改性好 
+/* 
+TODO: 函数返回值 使用对象而不是数组，属性更改性好 
 Why? You can add new properties over time or change the order of things without breaking call sites.
 */
 /* // bad

@@ -1,7 +1,8 @@
 /* FIXME:Classes & Constructors */
-/* TODO:用Class的方式声明  而不是用prototype上弄 */
 /* 
-//旧方法
+TODO:用Class的方式声明  而不是用prototype上弄 */
+/* 
+//*旧方法
 function Queue(contents = []) {
   this.queue = [...contents]
 }
@@ -10,7 +11,7 @@ Queue.prototype.pop = function () {
   this.queue.splice(0,1)
   return value
 }
-//好方法
+//*好方法
 Class Queue {
   constructor(contents = []) {
     this.queue = [...contents]
@@ -22,7 +23,8 @@ Class Queue {
   }
 }
 */
-/* TODO: 使用extends 来继承 */
+/* 
+TODO: 使用extends 来继承 */
 /* 
 // bad
 const inherits = require('inherits');
@@ -57,7 +59,8 @@ class Jedi {
 TODO:toString方法 可以用字符串模板
 console.log({...[`${num}`]}); 
 */
-/* TODO:类继承中 构造器 的继承 */
+/*
+ TODO:类继承中 构造器 的继承 */
 /* 
 // bad
 class Jedi {

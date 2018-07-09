@@ -1,4 +1,5 @@
-/* TODO:原始数据类型：Primitives: When you access a primitive type you work directly on its value. 
+/* 
+TODO:原始数据类型：Primitives: When you access a primitive type you work directly on its value. 
 const foo = 1
 let bar = foo
 bar = '9'
@@ -7,16 +8,16 @@ console.log(foo, bar)
 //var  声明的变量会绑定到全局中，
 //let,const 声明的变量不会被绑定到全局中，并且不会变量提升
 
- /* TODO: 引用数据类型:When you access a complex type you work on a reference to its value. 
+ /* 
+ TODO: 引用数据类型:When you access a complex type you work on a reference to its value. 
  const fooOne = [1, 2]
  const barOne = fooOne
  barOne[0] = 9 
  console.log(fooOne[0], barOne[0])
 */
 
-/* TODO:  Use const for all of your references; avoid using var.
-           If you must reassign references, use let instead of var. eslint: no-var
-          Why? let is block-scoped rather than function-scoped like var.
+/* 
+TODO:  Use const for all of your references; avoid using var.If you must reassign references, use let instead of var. eslint: no-var。Why? let is block-scoped rather than function-scoped like var.
 // bad
 var count = 1;
 if (true) {
@@ -29,7 +30,8 @@ if (true) {
   count += 1;
 }
 */
-/*TODO: let 和const的作用域 // const and let only exist in the blocks they are defined in.
+/*
+TODO: let 和const的作用域 // const and let only exist in the blocks they are defined in.
 {
   let a = 1;
   const b = 1;
@@ -37,7 +39,8 @@ if (true) {
 console.log(a); // ReferenceError
 console.log(b); // ReferenceError 
  */
-/* TODO:声明对象，使用字面量
+/* 
+TODO:声明对象，使用字面量
 //bad
 const item = new Object()
 //good
@@ -64,7 +67,8 @@ const obj = {
   [getKey('enabled')]: true,
 };
 */
-/* TODO:对象中方法简写
+/* 
+TODO:对象中方法简写
 Use object method shorthand. eslint: object-shorthand
 
 // bad
@@ -84,7 +88,7 @@ const atom = {
     return atom.value + value;
   },
 }; 
-      TODO:对象中属性简写：
+TODO:对象中属性简写：
 // bad
 const obj = {
   lukeSkywalker: lukeSkywalker,

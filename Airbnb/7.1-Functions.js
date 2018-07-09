@@ -12,14 +12,17 @@ const foo = function () {
 const short = function longUniqueMoreDescriptiveLexicalFoo() {
   // ...
 }; */
-/* TODO:使用（）包裹立即调用表达式，模块化思想 */
+/* 
+TODO:使用（）包裹立即调用表达式，模块化思想 */
 /* // immediately-invoked function expression (IIFE)
 (function () {
   console.log('Welcome to the Internet. Please follow me.');
 }()); */
-/* TODO: 不要再if where 这种非函数块中声明函数
+/*
+ TODO: 不要再if where 这种非函数块中声明函数
 Never declare a function in a non-function block (if, while, etc). Assign the function to a variable instead. Browsers will allow you to do it, but they all interpret it differently, which is bad news bears.  */
-/* TODO:不定参数：...args展开运算符// bad
+/*
+ TODO:不定参数：...args展开运算符// bad
 function concatenateAll() {
   const args = Array.prototype.slice.call(arguments);
   return args.join('');
@@ -28,7 +31,8 @@ function concatenateAll() {
 function concatenateAll(...args) {
   return args.join('');
 } */
-/* TODO:使用默认参数语法，而不是或运算 */
+/*
+ TODO:使用默认参数语法，而不是或运算 */
 /* 
 // really bad
 function handleThings(opts) {
@@ -50,7 +54,8 @@ function handleThings(opts = {}) {
   // ...
 }
  */
-/* TODO:对于默认参数，避免操作改变 */
+/* 
+TODO:对于默认参数，避免操作改变 */
 /* 
 var b = 1;
 // bad
@@ -62,7 +67,8 @@ count();  // 2
 count(3); // 3
 count();  // 3
  */
-/* TODO:对于默认参数 ，放在最后（===频率高的在前面） */
+/* 
+TODO:对于默认参数 ，放在最后（===频率高的在前面） */
 /* 
 Always put default parameters last.
 // bad
@@ -74,7 +80,8 @@ function handleThings(name, opts = {}) {
   // ...
 }
  */
-/* TODO:对于空格间隙的问题：保持块的连续性 Spacing in a function signature.*/
+/* 
+TODO:对于空格间隙的问题：保持块的连续性 Spacing in a function signature.*/
 /* 
 // bad
 const f = function(){};
@@ -84,7 +91,8 @@ const h = function() {};
 const x = function () {};
 const y = function a() {};
  */
-/* TODO:对象参数 用Object.prototype.hasOwnProperty.call()*/
+/* 
+TODO:对象参数 用Object.prototype.hasOwnProperty.call()*/
 /* 
 // bad
 function f1(obj) {
@@ -95,7 +103,8 @@ function f1(obj) {
 function f2(obj) {
   const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
 } */
-/* TODO:不要重新操作参数，除非知道边界情况 */
+/* 
+TODO:不要重新操作参数，除非知道边界情况 */
 /* 
 // bad
 function f1(a) {
@@ -115,7 +124,8 @@ function f4(a = 1) {
   // ...
 }
  */
-/* TODO: 用展开运算符 去展开为想要的类型*/
+/* 
+TODO: 用展开运算符 去展开为想要的类型*/
 /* const x = [1, 2, 3, 4, 5];
 console.log(x);
 console.log(...x);
