@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Transitional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>JavaScript Canvas Clock</title>
+<style type="text/css">
+	body {
+		text-align:center;
+		font-size:12px;
+	}
+	#canvas {
+		display:block;
+		margin:40px auto;
+	}
+	strong {
+		display:block;
+		color:red;
+		font-size:20px;
+		height:300px;
+		line-height:300px;
+	}
+</style>
+</head>
+<body>
+<h1>JavaScript Canvas Clock</h1>
+<canvas id="canvas" height="500" width="500"><strong>对不起,您的浏览器不持Canvas元素!请使用FireFox 浏览器浏览!</strong></canvas>
+<!--
+canvas元素的绘制区域只能通过行内的width,height属性来调整,如果在CSS里指定它的大小,只会将图形进行扭曲放大,而不会增加绘图区大小
+canvas元素默认的的绘制区域为width=300,height=150
+canvas标签不是闭合的,和embed,iframe一样,在标签中放入文字(也可以是HTML),在不支持的浏览器上将会显示,而支持的浏览器将其忽略,这正是为处理兼容性的
+-->
+<script type="application/javascript;version=1.7">
+	var arr = [i for (i in window)];
+</script>
+<script type="text/javascript">
+window.onload = function () {
+	drawClock();
+	setInterval(drawClock,1000);
+};
+function drawClock() {
+	var canvas = document.getElementById("canvas").getContext("2d"); //用getContext方法得到绘制区域
+	canvas.save(); //保存初始状态,因为一旦使用translate改变了原点位置,就没有其它的好办法将指针移到画布的0,0点了,这里保存以在后面使用canvas.restore()方法恢复
+	canvas.clearRect(0,0,500,500); //清理矩形区域以初始化(当没有开始画图时,canvas元素的左上角被当作原点),假如画布上在500X500区域内已有图形,那么它们就将被清空
+	canvas.translate(250,250); //平移原点到x,y(也就是将画布的x,y那个点当作原点0,0)
+	canvas.scale(0.9,0.9); //将图形X,Y分别按比例缩小,这里都缩小到原来的0.9倍(但canvas元素大小不变,只是在后面画时会变小,比如画长为100的线,显示出来只有90(原来的90%))
+		//开始绘制小时刻度
+	canvas.rotate(-Math.PI/2);//旋转指针方向(目前为垂直,开始画12时的小时刻度)(实际上,整个坐标系逆时针旋转了90度)
+	canvas.strokeStyle = "green"; //线的颜色(不知道为什么它的字面意思是"线形")
+	canvas.fillStyle = "black"; //填充方式(只有在进行填充时才用到这个,填充方法比如fillRect(0,0,155,200),这个来画一个用fillStyle指定的颜色填充的矩形.前两个数字指出起始坐标)
+	canvas.lineWidth = 12; //线的粗细
+	canvas.lineCap = "square"; //线样式(目前只知道square与round,分别是方形直角线头与椭圆式)
+	
+	canvas.save();//保存当前状态
+	canvas.beginPath();//开始一条新的线,如果不使用beginPath,也能绘图,但就会接着上面的绘制(指颜色,宽度,而不是起点终点),如果在绘制时改变了线宽,颜色,那么上一条线也跟着改变
+	for (var i =1;i<=4;i++) {
+		canvas.moveTo(0,200); //将指针移向相对于当前坐标系的点0,100(和下面的lineTo合起来分析就是从(moveTo)X,Y点到(lineTo)X2,Y2点画一条线)
+		canvas.lineTo(0,225); //画线,终点为0,120(注意,此时指针不  restore-重置  或用moveTo方法移动的话就停在这点了)
+		canvas.rotate(Math.PI/2); //将坐标系角度顺时针移90(因为当前在画12,3,6,9刻度)
+	}
+	canvas.stroke(); //显示(结束一个笔画)(没有这一步,所画的线就不会显示出来)
+	canvas.restore(); //重置到之前的状态(重置到->canvas.rotate(-Math.PI/2),大致是这样一个坐标系←↑,可以看到,这就是被逆时针旋转了90度的情况,正常的因该这样↑→.;;此时原点在75,75)
+	
+	canvas.save();
+	canvas.beginPath();
+	canvas.lineWidth=10;
+	for (var i=1;i<=12;i++) {
+		canvas.rotate(Math.PI/6);
+		if (i % 3 == 0) continue; //画其它的小时刻度
+		canvas.moveTo(0,210);
+		canvas.lineTo(0,225);
+	}
+	canvas.stroke();
+	canvas.restore();
+	
+	//开始画分钟刻度
+	canvas.save();
+	canvas.beginPath();
+	canvas.lineWidth = 4;
+	canvas.strokeStyle = "blue";
+	for (var i=1;i <=60;i++) {
+		canvas.rotate(Math.PI/30);
+		if (i % 5==0) continue;
+		canvas.moveTo(0,220);
+		canvas.lineTo(0,225);
+	}
+	canvas.stroke();
+	canvas.restore();
+	
+	/*
+	到这时似乎已经看出固定的格式了
+	画之前: canvas.save();canvas.beginPath();  //先保存状态,以供后面重置,再开始一个绘制动作
+	画完后:canvas.stroke();canvas.restore();  //绘制完成后,用canvas.stroke()方法显示出来,然后再置指针
+	一般来讲,canvas.save()与canvas.restore()是一一对应的
+	而canvas.beginPath()与canvas.stroke()是一一对应的
+	事实上canvas.beginPath()所对应的应该是canvas.closePath();使用closePath()方法后,线条就自动和起点闭合,指针也自动指到beginPath时的地方
+	不定都要根据这个格式,还是要根据实际情况
+	*/
+	
+	
+	canvas.save();
+	canvas.beginPath();
+	canvas.lineWidth = 16;
+	canvas.strokeStyle = "blue";
+	canvas.arc(0,0,250,0,Math.PI*2,true);
+	//canvas.arc(画弧函数)的六个参数---->0,0前两个表示圆心坐标;140,第三个参数为半径
+	//第四个,第五个分别为圆的开始绘制弧度数和结束的弧度数(注意这里的坐标系已被逆时针旋转90度了)
+	//最后一个布尔值参数指出是正弧还是反弧(非专业说法),简单说就是设为true时是逆时针画,设为false时就顺时针画(假如起始弧度和结束弧度刚如是一个整圆(2PI,也就是它们其实是同一个),设为true和false没什么区别)
+	canvas.stroke();
+	canvas.restore();
+	
+	//获取时间,开始画时针,分针和秒针
+	var now = new Date();
+	var s = now.getSeconds();
+	var m = now.getMinutes();
+	var h = now.getHours();
+	h = h>12?h-12:h;
+	
+	//获取秒针角度
+	var sa = Math.PI/30*s;
+	//获取分针角度
+	var ma = Math.PI/30*m+sa/60;
+	//获取时针角度
+	var ha = Math.PI/6*h+ma/60;
+	
+	canvas.lineCap = "round"; //弄个圆滑的线头
+	
+	//绘制时针
+	canvas.save();
+	canvas.rotate(ha);
+	canvas.lineWidth =16;
+	canvas.strokeStyle = "#050";
+	canvas.beginPath();
+	canvas.moveTo(120,0);
+	canvas.lineTo(-20,0);
+	canvas.stroke();
+	canvas.restore();
+	
+	//给时针端上加些东西
+	canvas.save();
+	canvas.rotate(ha);
+	canvas.lineWidth =7;
+	canvas.strokeStyle = "aqua";
+	canvas.beginPath();
+	canvas.moveTo(118,0);
+	canvas.lineTo(102,0);
+	canvas.stroke();
+	canvas.restore();
+	
+	
+	
+	
+	//绘制分针
+	canvas.save();
+	canvas.rotate(ma);
+	canvas.lineWidth=12;
+	canvas.strokeStyle = "rgba(0,255,10,0.9)";
+	canvas.beginPath();
+	canvas.moveTo(180,0);
+	canvas.lineTo(-30,0);
+	canvas.stroke();
+	canvas.restore();
+	
+	//给分针端上加些东西
+	canvas.save();
+	canvas.rotate(ma);
+	canvas.lineWidth =5;
+	canvas.strokeStyle = "white";
+	canvas.beginPath();
+	canvas.moveTo(178,0);
+	canvas.lineTo(158,0);
+	canvas.stroke();
+	canvas.restore();
+	
+	//绘制秒针
+	canvas.save();
+	canvas.rotate(sa);
+	canvas.lineWidth=6;
+	canvas.strokeStyle = "rgba(255,10,0,0.8)"; //rgba 颜色比rgb颜色多了一个可设置的透明度,最后一个0.8就是透明度;
+	canvas.beginPath();
+	canvas.moveTo(210,0);
+	canvas.lineTo(-40,0);
+	canvas.stroke();
+	canvas.restore();
+	
+	//在秒针尾上加个小圆圈
+	canvas.save();
+	canvas.rotate(sa);
+	canvas.strokeStyle ="rgba(255,0,0,0.8)"; //透明度为0.8
+	canvas.beginPath();
+	canvas.arc(175,0,2,0,Math.PI*2,true);
+	canvas.stroke();
+	canvas.restore();
+	
+	//在秒针尾上再加个小圆圈
+	canvas.save();
+	canvas.rotate(sa);
+	canvas.lineWidth =4;
+	canvas.strokeStyle ="white";
+	canvas.beginPath();
+	canvas.arc(175,0,2,0,Math.PI*2,true);
+	canvas.stroke();
+	canvas.restore();
+	
+	
+	//最后再在钟的中心加个圆形的东西好看一点
+	canvas.save();
+	
+	canvas.strokeStyle = "blue";
+	canvas.beginPath();
+	canvas.arc(0,0,8,0,Math.PI*2,true);
+	canvas.stroke();
+	
+	canvas.strokeStyle = "aqua";
+	canvas.beginPath();
+	canvas.arc(0,0,4,0,Math.PI*2,true);
+	canvas.stroke();
+	
+	canvas.strokeStyle = "blue";
+	canvas.beginPath();
+	canvas.arc(0,0,1,0,Math.PI*2,true);
+	canvas.stroke();
+	
+	canvas.restore();
+	
+
+	canvas.restore();//这个restore对应一开头的save,这之后,原点就被重置到画布左上角,指针方向也变成正常的水平和垂直的了
+	
+	
+	//给钟加个矩形边框
+	canvas.save();
+	canvas.strokeStyle = "red";
+	canvas.lineWidth=8;
+	canvas.translate(0,0);
+	canvas.beginPath();
+	canvas.moveTo(0,0);
+	canvas.lineTo(500,0);
+	canvas.lineTo(500,500);
+	canvas.lineTo(0,500);
+	canvas.closePath();
+	canvas.stroke();
+	canvas.restore();
+	
+	//再用strokeRect方法画个边框
+	canvas.save();
+	canvas.strokeStyle = "blue";
+	canvas.lineWidth = 2;
+	canvas.beginPath();
+	canvas.strokeRect(2,2,496,496);
+	canvas.restore();
+	
+	/*
+	两个画曲线的
+	quadraticCurveTo(cp1x, cp1y, x, y) // BROKEN in Firefox 1.5 (see work around below)  //一个控制点(抛物线)
+	bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x, y) //两个控制点(双曲线)
+	画矩形
+	rect(x, y, width, height)
+	roundedRect(ctx,135,119,25,49,10);
+	
+	//载入图象
+	ctx.drawImage(document.getElementById('source'), 33,71,104,124,21,20,87,104);
+
+	
+	*/
+}
+</script>
+</body>
+</html>
