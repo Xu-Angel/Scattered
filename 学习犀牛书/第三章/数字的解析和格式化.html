@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        Number类定义了个toString()方法 可以接受表示转换基数(radix)的可选参数
+        如果不指定此参数，则转换规则是基于十进制的。radix进制转换范围在(2~36)
+
+    </p>
+<p>
+    toFixed()根据小数点后的指定位数将数字转为字符串
+    toExponential()使用指数计数法
+    toPrecision()有效数字位数
+</p>
+
+<p>
+    转为数字：
+    Number()函数的这几个方法
+
+    而parseInt()函数和parseFloat()函数 他们是全局函数，从不属于任何类的方法
+    因此更加灵活。
+</p>
+<p>
+    parseInt()和parseFloat()会跳过任意数量的前导空格，尽可能的解析更多的数值字符
+    并忽略后面的内容，如果第一个非空格字符是非法的数字直接量，将最终返回NaN。
+
+    另外parseInt() 可以接受第二个参数  指定数字转换的基数(2~36)
+</p>
+    <script>
+    var n=17;
+    binary_string=n.toString(2)   //二进制10001、
+    octal_string='o' + n.toString(8)  //o21
+    hex_string='ox' + n.toString(16)  //ox11
+    console.log(binary_string)
+    console.log(octal_string)
+    console.log(hex_string)
+
+
+
+    var n=123456.789;
+    console.log(n.toFixed(0))//  123457
+    console.log(n.toFixed(2))//123456.79
+    console.log(n.toFixed(5))//123456.78900
+    console.log(n.toExponential())    // 1.23456789e+5
+    console.log(n.toExponential(1))//1.2e+5
+    console.log(n.toExponential(3))//1.235e+5
+    console.log(n.toPrecision())//123456.789
+    console.log(n.toPrecision(1)) //    1e+5
+    console.log(n.toPrecision(3))//   1.23e+5
+
+
+
+
+console.log(parseInt('3 ddd  mice'))//3
+console.log(parseFloat('3.14 ddd  mice'))//3.14
+console.log(parseInt('-12.34'))     //12
+console.log(parseInt('0xff'))     //255
+console.log(parseInt('-0xff'))     //-255
+console.log(parseFloat('.1'))     //0.1
+console.log(parseInt('.1'))     //NaN
+console.log(parseInt('0.1'))     //0
+console.log(parseFloat('$0.1'))     //NaN
+    </script>
+</body>
+</html>

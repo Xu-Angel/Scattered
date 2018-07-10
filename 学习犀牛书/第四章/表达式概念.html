@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        表达式为JS中的一个短语，JS解释器会将其计算(evaluate)出一个结果
+
+    </p>
+    <p>
+        最简单的表达式是‘原始表达式(primary expression)’ 。他是表达
+        式最小的单位---他不再包含其他表达式。<br>
+        JS中原始表达式包括：常量或直接量，关键字和变量。<br>
+        <hr>
+        直接量是直接在程序中出现的常数值eg：<br>
+        1.23//数字直接量<br>
+        'hello'//字符串直接量<br>
+        /pattern/   //正则表达式直接量<br>
+        <hr>
+        关键字和保留字也是一类<br>
+        <hr>
+        变量：<br>i//返回变量i的值  <br>sum //返回sum的值<br>undefined//undefined
+        是全局变量，和null不同，他不是个关键字。
+    </p>
+    <p>
+        属性访问表达式<br>
+        两种方式：<br>
+        expression.identifier   //表达式指定对象，标识符指定需要访问的属性的名称<br>
+        expression[expression]   //多合适对象和数组<br>
+        第一种合适已经知道的，固定的属性的名字<br>
+        第二种：属性名字是保留字或者包含空格和标点符号，或者是一个数字（对于数组来说），则必须
+        使用第二种，并且属性名是通过运算得出的值而不是固定的值的时候也必须。
+    </p>
+    <p>
+        调用表达式：<br>
+        调用（执行）函数或方法的语法表示。以一个函数表达式开始，后跟随一对圆括号，括号内为以逗号隔开的
+        参数列表。<br>
+        f(0); //f为一个函数表达式；0是一个参数表达式<br>
+        Math.max(x,y,z) //Math.max 是一个函数；x,y,z是参数 <br>
+        a.sort()  //a.sort()是一个函数，它无参数
+    </p>
+    <p>
+        对象调用表达式<br>
+        new Object() <br>
+        new Point() <br>
+        如果没有传入任何参数给构造函数的话，那么可以省略圆括号 <br>
+        new Object; <br>
+        new Point;  
+    </p>
+    <script>
+        var matrix = [1,,,,5]
+        console.log(matrix[2])
+        console.log(matrix[0])
+        var mat = [1,,,,]
+        console.log(mat[mat.length-1])
+        console.log(mat.length)    //4
+        var square = function ss (x) { return x * x;}   //当然也可以包括函数名字
+        var square = function  (x) { return x * x;}  //典型函数定义表达式
+        function yy (x) { return x * x;}       //函数语句的方式来定义
+        function yyy (x) {  x * x;}       //函数语句的方式来定义
+        console.log(square(4))
+  //  console.log(ss(5))   //错误   ss  is  not  defined
+        console.log(yy(4))
+        console.log(yyy(555))   //undefined   默认返回值
+    </script>
+</body>
+</html>

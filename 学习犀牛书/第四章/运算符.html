@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        元：操作数的个数。，不同运算符对操作数类型有着不同程度的依赖 <br>
+        左值：古老的术语，指的是“表达式只能出现在赋值运算符的左侧”，如JS中
+        的变量，对象属性，数组元素
+    </p>
+    <p>
+        运算符的副作用：赋值运算符，++，--，delete运算符
+    </p>
+    <p>
+        运算符的结合性：<br>
+        从左到右：运算的执行是按照由左到右的顺序进行。例如减法运算符 <br>
+        从右到左：一元操作符，赋值和三元条件运算符都具有从右到左的结合性。
+    </p>
+    <p>
+        运算顺序：如果没规定，则JS严格按照从左到右的顺序来计算表达式<br>
+        w=x+y*z  ： 先计算w,然后计算x,y和z，然后y的值和z的值相乘，再加上x
+        最后将其赋值给表达式w所指代的变量或属性。<br>
+        eg:a=1;b=(a++)+a;     b=3
+    </p>
+    <p>
+        JS中所有的数字都是浮点型的，% 模运算，计算的是第一个操作数对第二个操作数
+        的模，也就是第一个操作数除以第二个操作数的余数。结果的符号和第一个操作数
+        （被除数）的符号保持一致。eg：5%2 为1   -5%2为-1 <br>
+        求余数余运算符的操作数通常都是整数，但也适用于浮点数，比如，6.5%2.1结果为0.2
+    </p>
+    <script>
+        a=1;b=(a++)+a;
+        console.log(b)
+        A=1;B=A+++A;
+        console.log(B)
+        10>4 && console.log('duide ');  //利用‘短路’特性  
+        var ma;
+        var preferences={}
+        // preferences.max=1;
+        var max= ma || preferences.max || 500;  //这种习惯用法常用在函数体内，用于给参数提供默认值
+        console.log(ma)
+        console.log(max)
+        i=j=k=0;   //利用赋值运算符的结合性是从右到左，对多个变量统一赋值
+        console.log(i,j,k)
+        //?:  典型应用场景
+        var username;
+        greeting = 'hello' + (username? username:' three');
+        console.log(greeting)
+        //delete运算符 用来删除对象属性或数组元素，做的是删除操作，不是用来返回
+        //一个值，因此也具有副作用。eg：
+        var o ={x:1,y:2}
+        delete o.x;
+        console.log('x' in o)   //false
+        var a=[1,2,3];
+        delete a[2];
+        console.log( 2 in a)  //false
+        console.log(a.length)  //3   数组的长度并没有改变，尽管已经删除了，但删除操作留下了一个'洞'
+        console.log(a[2])  //undefined    这个位置空了  填补了个undefined
+        console.log(o.x)  //undefined
+    </script> 
+</body>
+</html>

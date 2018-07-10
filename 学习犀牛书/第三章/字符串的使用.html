@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var s='hello, world';
+        console.log(s.charAt(0))//第一个
+        console.log(s.charAt(s.length-1))//最后一个
+        console.log(s.substring(1,4))//包头不包尾   ell
+        console.log(s.substr(1,4))//包头不包尾   第二个为截取长度  ello
+        console.log(s.slice(1,4))//包头不包尾     ell
+        console.log(s.slice(-3))//最后三个字符   rld
+        console.log(s.indexOf('l'))//l  第一次出现的位置    2    返回Number类型
+        console.log(s.lastIndexOf('l'))//l  最后一次出现的位置    10  返回Number类型
+        console.log(s.split(','))//以，分割          ['hello','world']
+        console.log(s.replace('l','H'))//将全文中的第一个l替换成H
+        console.log(s.toUpperCase())       
+        console.log(s.toLowerCase())
+        console.log(s)    //经过一番折腾   s还是原样   在JS中 字符串是固定不变的，
+                          // 这些操作方法知识返回一个新的字符串
+        
+        //类似chaArt()方法的   在ECMA5中  
+        //字符串可以当作只读数组  也就是可以用方括号来访问单个字符
+        console.log(s[0])    //h
+        console.log(s[s.length-1])    //d
+
+
+        var text='testing: 1, 2, 3';
+        var pattern=/\d+/g 
+        console.log(pattern.test(text))   //true
+       console.log( text.search(pattern))  //9   首次匹配成功的位置
+       console.log(text.match(pattern))    //返回匹配的 字符组成的数组
+       console.log(text.replace(pattern,'#'))   //替换testing: #, #, #
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        显式转换 
+        Bollean([])  =>ture 
+        Number('3')  =>3 
+        String(false)  => 'false'  或者使用false.toString() 
+         Object(3)     => new Number(3)
+    </p>
+    <p>
+        除了null和undefined之外的任何值都具有toString()方法
+    </p>
+
+    <p>
+        运算符中的隐式转换
+        X + ''   //等价与String(X)
+        +X         //等价于Number(X)   也可以写成X-0
+        !!X          //等价于Boolean(X)
+    </p>
+</body>
+</html>

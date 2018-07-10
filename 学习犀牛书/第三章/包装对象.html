@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    JS中对象是一种复合值，他是属性或已命名值的集合。通过‘.’符号来引用属性
+    值。当属性值是一个函数的时候，则成为方法。例如o.m(),调用对象o中的m()方法
+
+    我们看到的字符串也同样具有属性和方法：
+    var s='hello';//定义一个字符串
+    var world=s.substring(s.indexOf('')+1,s.length); //使用字符串的属性
+    
+    但是字符串是不是对象，为何会有属性呢，因为只要引用了字符串s的属性，JS中会
+    将字符串值通过调用new String（s）的方法转换成对象  这个对象继承了字符串的方法
+    并被用来处理属性的引用。一旦引用结束，这个新创建的对象就会被销毁（其实在实现上
+    并不一定创建或者销毁这个临时对象），然而整个过程看起来是这样的。
+    
+
+
+    例如下面的例子，
+    读取字符串，数字，布尔值的属性值（或方法）
+    说明如果你试图给其属性赋值，则会忽略这个操作：修改只是发生在临时对象上
+    而这个临时对象并没有继续保存下来
+
+    因此在这里提出改变“包装对象”指的就是存取字符串，数字，布尔值的属性时创建的
+    临时对象，为了偶尔用来区分字符串值和字符串对象，数字和数值对象以及布尔值和布尔对象
+    <script>
+        var s='test';  //创建一个字符串
+        s.len=4;   //设置属性     这是通过一个临时对象来赋予len属性的值4   随即被销毁
+        var t=s.len;   //查询属性   这是查询原始的对象的len属性  这个属性还没定义，自然不存在  所以不存在
+
+        console.log(t)    //undefined
+    </script> 
+
+</body>
+</html>

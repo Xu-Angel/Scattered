@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        函数体内局部变量优先级高于全局变量。如果函数内声明了一个局部变量的名字和全局变量或者函数带得参数中的
+        变量同名，则局部变量会覆盖全局变量。
+        虽然全局变量可以不用var关键字来声明（历史遗留问题） 但是在严格模式下。。
+    </p>
+    <p>
+        非正式的   称为声明提前，\因此定义的时候，将变量声明放在函数提顶部才是好习惯
+    </p>
+    <p>
+        作为属性的变量，JS的全局变量是作为JS的全局对象的一个属性。
+        是否可以删除上：如果用var关键字定义的变量，则创建的这个属性是不可配置的
+        也就是无法通过delete运算符删除，在非严格模式下，没用var关键字声明的变量（
+        提升为全局变量）则为全局对象的正常的可配值属性，并且可以删除他们。
+    </p>
+    <script>
+        var scope='globle';
+        function f(){
+            console.log(scope);//为undefined
+            var scope='local';
+            console.log(scope);//local   
+            //这里局部变量优先级高，覆盖全局变量了。
+        }
+
+        //等价下面：
+        function f(){
+            var scope;
+            console.log(scope);
+            scope='local';
+            console.log(scope);
+        }
+
+
+        var truevar=1;  //声明一个不可删除的全局变量
+        fakevar=2;     //创建全局对象的一个可删除的属性
+        this.fakevar2=3; //同上
+        console.log( delete truevar)  //=>false
+        console.log(delete fakevar )    //=>true
+        console.log(delete this.fakevar2)  //=>true
+       
+    </script>
+</body>
+</html>

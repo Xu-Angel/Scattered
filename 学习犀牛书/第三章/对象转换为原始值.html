@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        看犀牛书 52页
+    </p>
+    <p>
+        toString()方法：
+        数组类(Array class)的：将每个数组元素转换成一个字符串，并在元素之间
+        添加逗号(,)后合并成结果字符串。<br>
+        函数类(Function class)的: 返回这个函数的实现定义的表达方式，这里的实现方式
+        通常是将用户定义的函数转换为JavaScript源代码字符串。<br>
+        日期类(Date class)的：返回一个可读的(可以被JS解析的)日期和时间字符串<br>
+        RegExp对象：转换为正则表达式直接量的字符串
+    </p>
+    <p>
+        另一个转换对象的函数valueOf(),如果存在任意的原始值，则默认将对象转换为
+        表示它的原始值。对象是复合值，而且大多数对象无法真正表示为一个原始值
+        因此默认的valueOf()方法简单的返回对象本身，而不是返回原始值。
+    </p>
+    <p>
+        JS中对象到字符串的转换步骤：
+        如果有toString()方法，，
+        则valueOf()方法
+        则抛出类型错误异常
+    </p>
+    <p>
+        JS中对象到数字的转换步骤：
+        如果有valueOf()方法，，
+        则toString()方法
+        则抛出类型错误异常
+    </p>
+    <p>
+        对象到原始值和对象到字符串中  日期对象都做特殊讨论、看犀牛书p54
+    </p>
+    
+    <script>
+        console.log( ['55w',2,3].toString());//55w,2,3
+        console.log((function(x){f(x);}).toString());  //function (x){f(x);}
+        console.log((/\d+/g.toString()))///\d+/g
+        console.log(new Date(2018,02,08).toString())//Thu Mar 08 2018 00:00:00 GMT+0800 (中国标准时间)
+    </script>
+</body>
+</html>

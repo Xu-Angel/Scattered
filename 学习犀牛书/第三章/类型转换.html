@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        JS中取值非常灵活，JS会自动期望使用什么值，自己就尝试转换成那个值的类型
+        eg：
+        10 + 'objects' => '10 objects'   数字10 转为字符串
+        '7'*'4'     =>  28   两个字符串转为数字
+
+        var n= 1- 'x';    =>NaN   字符串'x' 无法转为数字
+
+    </p>
+    <script>
+        var n= 1- 'x';
+        var t= n + 'object';  
+        console.log(t)   //NaNobject
+        console.log(null + '1')   //null1
+        console.log(null + 1)   //1
+        console.log(true + 1)   //2     true转 =》1
+        console.log([5] + 1)   //'51'
+        console.log(['5'] + 1)   //'51'
+        console.log(['5'] + '1')   //'51'
+
+
+
+
+
+        /* 类型转换和相等性
+          == 相等运算符也随相等的含义多变： 以下结果都为true
+         */
+         console.log(null == undefined)  //
+         console.log('0' ==  0)    //字符串转为数字 后比较
+         console.log(0 == false)   //布尔值转为数字 后比较
+         console.log('0' == false) // 字符串和布尔值都转为数字 后比较
+    </script>
+</body>
+</html>

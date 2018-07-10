@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    全局对象：
+     当JS解释器或者说浏览器加载新页面的时候，它将会创建一个新的全局对象
+     并且赋予一组定义的初始属性：
+
+     全剧属性：undefined    Infinity  NaN等
+     全局函数：isNaN（），parseInt(),eval()等
+     构造函数：Date() RegExp() String() Object() Array()等
+     全局对象：Math JSON 等
+     
+     在代码的最顶级--不在任何函数内的JS代码--可以使用JS关键字this
+     来引用全局对象：var global=this
+     
+     在JS客户端中，在表示浏览器窗口的所有JS代码中 Window对象充当全局
+     对象，其中他的一个属性window引用其自身，它可以代替this来引用全局对象、
+     
+</body>
+</html>

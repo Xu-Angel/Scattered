@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    JS中的原始值（undefined，null，布尔值，数字，字符串）和对象（数组，函数）
+    有着根本的区别。原始值是不可更改的（JS禁止修改），那些修改只是返回一个字符串（例如修改
+    字符串）
+     var s='hello'；
+     s.toUpperCase();
+     s   >>还是原来的s
+
+    并且  原始值的比较是 值 的比较 ： 只有 在他们的值相等的时候他们才相等
+    例如字符串的相等：当且仅当他们的长度相等并且每个索引的字符都相等的时候
+    JS则认为他们是相等的
+
+    JS中的对象，对象是可变的--他们的值是可以修改的
+    var o={x:1};
+    o.x=2;    修改属性值
+    o.y=4;     增加属性并且赋值
+    var a=[1,2,3,]
+    a[0]=0;   修改数组的一个元素
+    a[3]=4;   给数组增加一个新元素
+
+    并且  对象的比较是 不是值的  比较
+    var o={x:1},p={x:1}
+    o===p  =>false
+    var a=[],b=[]
+    a === b   => false
+
+    我们通常把对象称为引用类型，也就是说对象值都是引用，对象的比较也都是引用的比较
+    当且仅当他们引用同一个基对象的时候，他们才相等。
+    var a=[];   //定义一个引用空数组的变量a
+    var b=a;    //变量b引用同一个数组
+    b[0]=1;     //通过变量b修改引用的数组
+    a[0]   =>1   //变量a也会被修改
+    a===b  =>true   //a和b引用同一个数组，因此他们相等
+
+    如上，将对象（或数组）赋值给一个变量，仅仅是赋值的引用值，对象本身并没有复制一次
+
+
+    因此，复制一个数组：
+    var a=['4','5','6'];
+    var b=[] //定义一个空数组存放
+    for(var i=0;i<a.length;i++){
+     b[i]=a[i];
+    }
+     
+    因此比较两个单独的数组或者对象，必须比较他们的元素或属性：
+    function equalArrays(a,b){
+        if(a.length != b.length) return false;
+        for(var i=0;i<a.length;i++){
+                    if(a[i] != b[i]) return false
+        }
+        return true;
+    }
+</body>
+</html>

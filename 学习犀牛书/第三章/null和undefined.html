@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    null  是js中的关键字 描述“空值”  可以认为null是一个特殊的对象值
+    通常认为null是他自有类型的唯一一个成员，他可以表示
+    数字，字符串和对象是“无值”的、
+
+    undefined  是js中预定义的全局变量、属性（他不是关键字） 他描述“未定义”
+    ECMA3 中他是可读写的   但是在ECMA5中修改BUG  为只读,也认为他是undefined
+    的类型中的唯一成员
+
+
+     但是他们都表示值的空缺 两者往往可以互换 相等运算符下两者被认为是
+     相等的  严格相等运算符下则是不相等
+
+     但是他们都不包含任何的属性和方法，在实际中用‘.’和‘[]’来存取这两个
+     值的成员或方法都会产生一个类型错误
+
+     也可以认为undefined是表示系统级的，出乎意料地或类似错误的值的空缺
+     而null是表示程序级的，正常的或在意料之中的值的空缺，所以一边赋值给变量
+     或者属性，或者作为参数传入函数，我们一般选择null。
+
+
+    <script>
+        console.log(typeof null)   //object
+        console.log(typeof undefined)  //undefined
+        console.log(null==undefined)   //TRUE
+        console.log(null===undefined)   //FALSE
+    </script>
+</body>
+</html>
