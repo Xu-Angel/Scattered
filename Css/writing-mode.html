@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .vertical-mode {
+    writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
+img {
+    display: block;
+    margin: auto 0;
+}
+.btn:active {
+    text-indent: 2px;
+}
+
+  </style>
+</head>
+<body>
+    改变CSS世界纵横规则的writing-mode，如此强大的功能，居然没有被大家发掘和广发应用起来，实属遗憾了，话不多说，往下看
+
+    writing-mode作用及真正需要关注的属性值
+    writing-mode可以改变排版，变成垂直流
+    <p></p>
+    在使用语法上，也是需要记两套的，一套是IE私有属性，一套是CSS3规范属性
+CSS3语法：
+writing-mode: horizontal-tb;    默认值
+    文本流是水平方向的
+writing-mode: vertical-rl; 
+    文本是垂直方向的，阅读顺序从右向左(古诗的顺序)
+writing-mode: vertical-lr;
+    文本垂直方向，阅读顺序从左到右(水平变成了垂直展示)
+复制代码IE语法：
+IE的writing-mode多达11个，真正有用的记住两个就好了
+
+-ms-writing-mode: lr-tb;    初始值
+    lr-tb对应的是CSS3语法中的horizontal-tb
+-ms-writing-mode: tb-rl;
+    tb-rl对应的是CSS3语法中的vertical-rl
+-ms-writing-mode: tb-lr;
+    tb-lr对应的是CSS3语法中的vertical-lr
+复制代码针对实战版来整理一份writing-mode是这样的
+writing-mode: lr-tb | tb-rl | tb-lr (IE8+)
+writing-mode: horizontal-tb | vertical-rl | vertical-lr;
+<p></p>
+水平方向也能margin合并
+我们都知道两个相邻的元素垂直的margin会合并，当元素变为垂直流的时候，水平的margin也会合并
+<div class="div vertical-mode">
+    <div class="list" style="margin-left: 20px;">one</div>
+    <div class="list" style="margin-right: 50px;">two</div>
+</div>
+<p>普通块元素可以使用margin: auto实现垂直居中</p>
+<div class="box vertical-mode">
+    <img src="../1.jpg" alt="">
+</div>
+<div class="box vertical-mode" style="text-align: -center;background: gray;">
+    <div class="demo">青花瓷</div>
+    <!-- <img src="../2.png" alt=""> -->
+</div>
+<p>text-align:center实现图片垂直居中(同上实现的效果)</p>
+<div class="box vertical-mode" style="text-align: center;">
+    <img src="../2.png" alt="">
+</div>
+<p>使用text-indent实现文字下沉效果</p>
+<a href="javascript:;" class="btn vertical-mode">领</a>
+</body>
+</html>

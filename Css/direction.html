@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    流向的改变
+    说出来你可能不信，direction可以改变水平流向，尽管知道或者使用过的人少之又少，但并不妨碍它的发光发热
+    而且属性简单好记，值少，兼容极好ie6支持，可以来挖掘一下它的神奇功效
+    direction
+    仅仅两个值：
+    
+    direction: ltr;  默认值
+    
+    ltr -> left-to-right(从左到右)
+    东亚、欧美文字书写都是属于ltr模式的
+    
+    
+    direction: rtl;
+    
+    rtl -> right-to-left(从右到左)
+    阿拉伯语、希伯来语的书写属于rtl模式
+    
+    
+    
+    当然看到这里你可能会感觉，这些说起来都没什么鸟用，因为大招是不轻易放出的，而真正有用的地方在于改变网页布局的时候
+    direction属性默认有一个特性
+    可以改变替换元素(img,input,textarea,select)或inline-block/inline-table元素的水平呈现顺序
+    举个栗子：颠倒顺序
+    <div class="box" dir="rtl">
+        <p>我是第2名</p>
+        <p>我是第一名</p>
+    </div>
+    
+    <p dir="rtl">
+        <img src="../1.jpg" alt="猫">
+        <img src="../2.png" alt="狗">
+    </p>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    [type="submit"] {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 2px 12px;
+      background-color: #19b955;
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    :focus+label.btn {
+      outline: 1px dashed hotpink;
+      outline: 3px auto -webkit-focus-ring-color;
+    }
+
+    .footer {
+      height: 50px;
+    }
+
+    .footer>p {
+      position: absolute;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 15px 0;
+      background-color: #00a1f5;
+      outline: 9999px solid #00a1f5;
+      color: #fff;
+      clip: rect(0, 9999px, 9999px, 0);
+    }
+
+  </style>
+</head>
+
+<body>
+  真正的不占据空间的outline及其应用 outline是一个真正意义上不占任何空间的属性，Amazing
+  <div class="panel">
+    <input type="submit" id="box">
+    <label for="box" class="btn">提交</label>
+  </div>
+  <div>
+    自动填满屏幕剩余空间的应用技巧 开发中很多时候，由于页面内容不够多，导致底部footer会出现尴尬的剩余空间，解决方法往往也有很多种，在此我们还是依然利用outline的功能来完美实现一下 关键的css就是设置一个超大轮廓范围的outline属性，如给个9999px，保证无论屏幕多高，轮廓颜色都能覆盖
+    值得注意的是，outline无法指定方位，它是直接向四周发散的，所以需要配合clip剪裁来进行处理,以左边和上边为边界进行裁剪 《CSS世界》
+  </div>
+  <div class="footer">
+    <p>没错，我就是footer</p>
+  </div>
+</body>
+
+</html>

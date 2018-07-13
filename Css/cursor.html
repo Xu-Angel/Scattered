@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    p {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+  </style>
+</head>
+
+<body>
+  <p>1</p>
+  <div>
+    光标属性 光标属性cursor我们真的是最熟悉的陌生人啊 为什么这么说呢，因为在众多的属性值面前，我们似乎只用到了pointer(手形)(最常用的，没有之一)，move(移动)，default(系统默认)这几样 在cursor的世界里，远比我们想象的要丰富很多，下面按照功能特性来对其进行分类吧
+    琳琅满目的cursor属性值 友情不友情的小提示：☆（表示常用） 常规 cursor: auto; 默认值 输入框表现是cursor: text (文本光标) href属性的链接表现为cursor: pointer (手形光标) button表现为cursor:
+    default (默认箭头) ☆ cursor: default; 系统默认光标 误区产生的小故事： 由于浏览器原生按钮样式兼容方面无法完善，尤其是IE盛行的年代，黑框、宽高不一致等问题层出不穷， 于是大家就使用a标签来模拟按钮，在每次hover上去的时候都会有一个手型效果，省去了额外添加，
+    所以久而久之就成了业内约定俗成的做法了
+    <p></p>
+    <h>cursor: none; 这是让光标隐藏不见</h>
+    what? 有何用？它的作用在看视屏的时候，全屏后鼠标静止不动3秒钟，就设置隐藏光标效果 IE8不支持，还要通过自定义光标来处理 // 自定义光标 .cur-none { cursor: url(transparent.cur), auto;
+    } :root .cur-none { // IE9+ cursor: none }
+  </div>
+  <div>
+    <p>sfddsfdsf</p>
+    <h>cursor: progress; 进行中</h>
+    <p></p>
+    一个适用场景是网页加载js的情况，网络不好时，加载js时间过长 body { cursor: progress; }, // 当js加载完成后再将光标cursor设为auto; // 增加了用户体验 document.addEventListener('DOMContentLoaded',
+    () => { document.body.style.cursor = 'auto'; });
+
+  </div>
+  <div>
+      ☆ ccursor: move;
+      移动光标，表示当前元素是可移动的
+      常用的弹窗组件给标题栏加上cursor:move，让用户知道是可以拖动的
+      cursor: copy;
+      复制光标，表示当前元素可以复制，IE8不支持，需自定义，无实用
+      cursor: alias;
+      别名光标，表示当前元素可以创建别名或快捷方式，同上copy一样，没个卵用
+      cursor: no-drop与cursor: not-allowed;
+      样式相同，都表示禁止的
+      值得注意的是：
+      不要给禁用按钮加cursor: not-allowed
+      因为它的状态只与拖拽行为相关
+      所以禁用按钮光标还是用default更合适
+      都是CSS3新增的光标类型
+      缩放
+      cursor: zoom-in;    放大
+      cursor: zoom-out;   缩小
+      抓取
+      cursor: grab;   五指张开的手
+      cursor: grabbing;   五指收起的手
+      Chrome下还需要加-webkit前缀生效
+      这里QQ音乐PC端做了这样的cursor处理，如下图框选的位置
+  </div>
+</body>
+
+</html>
