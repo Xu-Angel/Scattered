@@ -1,0 +1,4 @@
+.nav.scroll-nav
+    each item in listTitle
+      a(href='/tags?cateid=' + item.id + '&catetile=' + item.title)
+        p=item.title
