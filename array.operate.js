@@ -245,3 +245,10 @@ console.log(arr.reduce(function(pre,cur){
   return pre+cur
 },10));
  */
+
+
+ //TODO:去重
+ Array.from(new Set('dd'))  //传入类数组，数组
+
+ //TODO:
+ https://juejin.im/post/5b5570a96fb9a04fa671a937?utm_source=gold_browser_extension
