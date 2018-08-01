@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        #container {
+            border: 1px solid #ccc; height: 100px; overflow: scroll; width: 100px;
+        }
+        #content {
+            background-color: #ccc; width: 250px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {   
+            var button = document.getElementById('slide');
+            button.onclick = function () {
+                document.getElementById('container').scrollLeft += 20;
+            };
+        }, false);
+    </script>
+</head>
+<body>
+    <div id="container">
+        <div id="content">Lorem ipsum dolor sit amet.</div>
+    </div>
+    <button id="slide" type="button">Slide</button>
+</body>
+</html>
