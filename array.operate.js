@@ -252,3 +252,14 @@ console.log(arr.reduce(function(pre,cur){
 
  //TODO:
  https://juejin.im/post/5b5570a96fb9a04fa671a937?utm_source=gold_browser_extension
+
+//TODO:数组 位置调换
+  // 取消点击切到第一位
+    /* const title = params.catetile
+    const first = listTitle[0]
+    listTitle.forEach((val, index, arr) => {
+      if (val.title === title) {
+        listTitle[0] = listTitle[index]
+        listTitle[index] = first
+      }
+    }) */
