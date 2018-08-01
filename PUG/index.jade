@@ -1,0 +1,214 @@
+extends layout
+
+block content
+  h2 文档声明和头尾标签
+
+  h3 标签语法
+  section
+    div
+      ul
+      p
+
+  h3 元素属性
+  #id.class1(class='class2')
+  div#id.class1.class2
+    a(href='http://imooc.com', target='_blank') link
+
+  h3 元素的值，文本
+  p
+    a(href='http://imooc.com',title='imooc jade study', data-uid='1000') link
+    input(name='course', type='text', value='jade')
+    input(name='type', type='checkbox', checked)
+
+  h3 混排的大段文本
+  p.
+    1. aa
+    2. bb
+    <strong>333</strong>
+    3. c
+    4. dd
+  p
+    | 1. aa
+    strong 11
+    | 2. bb
+    | 3. c
+
+  h2 注释
+  h3 单行注释
+  // h3.title(id='title', class='title3') imooc
+  h3 非缓冲注释
+  //- #id.classname
+  h3 块注释
+  //-
+    p
+      a(href='http://imooc.com',title='imooc jade study', data-uid='1000') link
+      input(name='course', type='text', value='jade')
+      input(name='type', type='checkbox', checked)
+
+  h2 声明变量和替换数据
+  h3 转义
+  - var data = 'text'
+  - var htmlData = '<script>alert(1);</script><span>script</span>;'
+  p #{data}
+  p #{htmlData}
+  p= data
+  p= htmlData
+
+  h3 非转义
+  p!= htmlData
+  p !{htmlData}
+
+  h3 非解析变量符
+  p \#{htmlData}
+  p \!{htmlData}
+
+  h3 不输出 undefined
+  input(value='#{newData}')
+  input(value=newData)
+
+  h3 样式和脚本块语法
+  style.
+    body {color: #ff6600;}
+  script.
+    var imoocCourse = 'jade';
+
+  h2 流程逻辑
+  h3 if else
+  - var isImooc = true
+  - var lessons = ['jade', 'node']
+  if lessons
+    if lessons.length > 2
+      p more than 2: #{lessons.join(', ')}
+    else if lessons.length > 1
+      p more than 1: #{lessons.join(', ')}
+    else
+      p no lesson
+  else
+    p no lesson
+
+  h3 unless
+  unless !isImooc
+    p #{lessons.length}
+
+  h3 case
+  - var name = 'jade'
+  case name
+    when 'java'
+    when 'node'
+      p Hi node!
+    when 'jade': p Hi jade!
+    when 'express': p Hi exress
+    default
+      p Hi #{name}
+
+  h3 for
+  - var imooc = {course: 'jade', level: 'high'}
+  - for (var k in imooc)
+    p= imooc[k]
+
+  h3 each
+  - each value, key in imooc
+    p #{key}: #{value}
+  each value, key in imooc
+    p #{key}: #{value}
+
+  h3 遍历数组
+  - var courses = ['node', 'jade', 'express']
+  each item in courses
+    p= item
+
+  h3 嵌套循环
+  - var sections = [{id: 1, items: ['a', 'b']}, {id: 2, items: ['c', 'd']}]
+  dl
+    each section in sections
+      dt= section.id
+      each item in section.items
+        dd= item
+
+  h3 while
+  - var n = 0
+  ul
+    while n < 4
+      li= n++
+
+  h2 神奇的 mixins
+  mixin lesson
+    p imooc jade study
+  +lesson
+  mixin study(name, courses)
+    p #{name} study
+    ul.courses
+      each course in courses
+        li= course
+
+  h3 嵌套的 mixin
+  +study('tom', ['jade', 'node'])
+  mixin group(student)
+    h4 #{student.name}
+    +study(student.name, student.courses)
+  +group({name: 'tom', courses: ['jade', 'node']})
+
+  h3 mixin 的块包含
+  mixin team(slogon)
+    h4 #{slogon}
+    if block
+      block
+    else
+      p no team
+  +team('slogon')
+    p Good job!
+
+  h3 mixin 传递属性
+  mixin attr(name)
+    p(class!=attributes.class) #{name}
+  +attr('attr')(class='magic')
+  mixin attrs(name)
+    p&attributes(attributes) #{name}
+  +attrs('attrs')(class='magic2', id='attrid')
+
+  h3 mixin 传递位置个数参数
+  mixin magic(name, ...items)
+    ul(class='#{name}')
+     each item in items
+      li= item
+  +magic('magic', 'node', 'jade', '..')
+
+  h2 模板包含和继承
+  h3 包含
+  include style
+    style.
+      h2 {
+        color: #000;
+      }
+  include title.html
+  block desc
+    p desc from index
+
+  h2 过滤器 filters
+  h3 markdown
+  :markdown
+    Hi, this is **imooc** [link](http://imooc.com)
+  h3 less
+  style
+    :less
+      body {
+        p {
+          color: #ccc;
+        }
+      }
+
+  h3 coffee
+  script
+    :coffee
+      console.log 'This is coffee!'
+
+  h2 浏览器端使用 jade
+  #runtime
+  script(src='node_modules/jade/runtime.js')
+  script(src='runtime.js')
+  script.
+    var runtimeNode = document.getElementById('runtime');
+    var runtimeHtml = template({isRuntime: true});
+    runtimeNode.innerHTML = runtimeHtml;
+
+    span 12
