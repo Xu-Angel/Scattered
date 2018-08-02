@@ -19,7 +19,7 @@ new Promise((resolve, reject) => {
 }).catch(r => {
   console.log(r,22)
 });
- // 底部状态更新
+ /* // 底部状态更新
  Promise.all([getConcernCount(), getNoteCount()]).then(rs => {
   let dataCount = rs[0].result
   let dataNote = rs[1].result
@@ -50,4 +50,4 @@ new Promise((resolve, reject) => {
   // 渲染回答列表
   getNoteAnswer({id: param.id}).then(rs => {
     comments(rs.result)
-  })})()
+  })})() */
