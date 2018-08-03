@@ -9,7 +9,7 @@ function al(t){
 }
 asy().then(v => {console.log(v);},e =>{console.log(e);}); */
 
-/* async function f( ){
+async function f( ){
   try{
    await setTimeout(() => {
       console.log('dd');
@@ -24,8 +24,8 @@ console.log(e);
   await al(9)
   return await Promise.resolve('hello')
 }
-f().then( v =>{console.log(v,22);}) */
-// 一个异步操作
+f().then( v =>{console.log(v,22);})
+/* // 一个异步操作
 function timeout(ms) {
   return new Promise((resolve) => {
     setTimeout(resolve, ms);
@@ -37,5 +37,5 @@ async function asyncPrint(value, ms) {
   console.log(value);
 }
 
-asyncPrint('hello world', 5000);
+asyncPrint('hello world', 5000); */
 
