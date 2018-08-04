@@ -1,0 +1,16 @@
+.data-box
+      each item in result.list
+        a(id=item.note_id, href='/question-detail?id=' + item.note_id + '&from=mine', style="display: block;")
+          .data-list
+            |
+            p
+              if item.is_read == '0'
+                i
+              =item.title
+            |
+            span.time
+              span=item.concern_num
+              span 人关注 · 
+              span=item.answer_num
+              span 条回答  
+      |
