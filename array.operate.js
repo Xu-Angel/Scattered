@@ -263,3 +263,39 @@ console.log(arr.reduce(function(pre,cur){
         listTitle[index] = first
       }
     }) */
+
+//!todo/* 统计数组中相同项的个数 */
+var cars = ['BMW','Benz', 'Benz', 'Tesla', 'BMW', 'Toyota'];
+var carsObj = cars.reduce(function (obj, name) {
+  console.log(obj,name);
+  obj[name] = obj[name] ? ++obj[name] : 1;
+  return obj;
+}, {});
+carsObj; // => { BMW: 2, Benz: 2, Tesla: 1, Toyota: 1 }
+
+
+//!TODO/*  数组平铺到指定深度*/
+/* 使用递归，为每个深度级别 depth 递减 1 。 使用 Array.reduce() 和 Array.concat() 来合并元素或数组。 基本情况下，depth 等于 1 停止递归。 省略第二个参数，depth 只能平铺到 1 (单层平铺) 的深度。 */
+const flatten = (arr, depth = 1) =>
+  depth != 1
+    ? arr.reduce((a, v) => a.concat(Array.isArray(v) ? flatten(v, depth - 1) : v), [])
+    : arr.reduce((a, v) => a.concat(v), []);
+flatten([1, [2], 3, 4]);                    		 // [1, 2, 3, 4]
+flatten([1, [2, [3, [4, 5], 6], 7], 8], 2);           // [1, 2, 3, [4, 5], 6, 7, 8]
+
+//!TODO 数组的对象解构 */
+/* 数组的对象解构
+数组也可以对象解构，可以方便的获取数组的第n个值 */
+const csvFileLine = '1997,John Doe,US,john@doe.com,New York';
+const { 2: country, 4: state } = csvFileLine.split(',');
+
+country			// US
+state			// New Yourk
+
+//!todo使用解构删除不必要属性
+/* 
+有时候你不希望保留某些对象属性，也许是因为它们包含敏感信息或仅仅是太大了（just too big）。你可能会枚举整个对象然后删除它们，但实际上只需要简单的将这些无用属性赋值给变量，然后把想要保留的有用部分作为剩余参数就可以了。
+下面的代码里，我们希望删除_internal和tooBig参数。我们可以把它们赋值给internal和tooBig变量，然后在cleanObject中存储剩下的属性以备后用。 */
+let {_internal, tooBig, ...cleanObject} = {el1: '1', _internal:"secret", tooBig:{}, el2: '2', el3: '3'};
+
+console.log(cleanObject);                         // {el1: '1', el2: '2', el3: '3'}

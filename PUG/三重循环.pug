@@ -1,0 +1,19 @@
+.select-modal(style="display:none;")
+  .select-wrapper
+    .side
+      ul
+        each item in result
+          li=item.title
+    each Item,index in result
+      .content(id=Item.id data-num=index)
+        .all(data-id=Item.id) 全部
+        if Item.children
+          each val in Item.children
+            p(data-id=val.id)=val.title
+            ul
+              li(data-id=val.id) 全部
+              if val.children
+                each last in val.children
+                  li(data-id=last.id)=last.title
+  //- 废弃 第一版本稿.select-mask.clearfix
+    p
