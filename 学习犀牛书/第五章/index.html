@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>多条语句联合在一起，形成一条复杂语句，compounds statement</p>
+    <p>空循环语句的用处：</p>
+    <script>
+    // 初始化一个数组   对于空语句应该进行注释
+    for( i = 0; i< a.length; a[i++] = 0); /* empty */
+    </script>
+    <p>switch 里面比较的是===</p>
+    <script>
+    function convert (x) {
+        switch (typeof x) {
+            case 'number' :
+                return x.toString(16);
+            case 'string' :
+                return '"' + x + '"';
+            default:
+                return String(x);
+        }
+    }
+    </script>
+    <p>for(initialize; test; increment)</p>
+    <p>
+        initialize;
+        while(test) {
+            statement
+            increment;
+        }
+    </p>
+    <script>
+    // 对象复制到宿主
+    var obj = {a: 'p', b: 'u'}
+    var arr = [], i=0;
+    for(arr[i++] in obj);/* empty */  // for in   列出可枚举属性
+    </script>
+    <p>标签语句</p>
+    <p>debuger 语句</p>
+</body>
+</html>
