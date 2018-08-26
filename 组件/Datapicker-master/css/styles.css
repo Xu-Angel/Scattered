@@ -1,0 +1,65 @@
+a{
+    text-decoration: none;
+}
+/*header样式*/
+.ui-datapicker-wrapper{
+    width: 240px;
+    font-size: 16px;
+    color: #666;
+    box-shadow: 2px 2px 8px 2px rgba(128,128,128,0.3);
+    position: absolute;
+    background: #ffffff;
+}
+.ui-datapicker-wrapper-show{
+    display: none;
+}
+.ui-datapicker-wrapper .ui-datapicker-header{
+    padding:0 20px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #f0f0f0;
+    font-weight: bold;
+    border-bottom: 1px solid #cccccc;
+}
+.ui-datapicker-wrapper .ui-datapicker-header .ui-datapicker-btn{
+    font-family: Serif;
+    font-size: 20px;
+    width: 20px;
+    height: 50px;
+    color: #1abc9c;
+    text-align: center;
+    cursor: pointer;
+}
+.ui-datapicker-wrapper .ui-datapicker-header .ui-datapicker-btn-prev{
+    float: left;
+}
+.ui-datapicker-wrapper .ui-datapicker-header .ui-datapicker-btn-next{
+    float: right;
+}
+
+/*body样式*/
+.ui-datapicker-wrapper .ui-datapicker-body table{
+    width:100%;
+    border-collapse: collapse;
+}
+.ui-datapicker-wrapper .ui-datapicker-body th,
+.ui-datapicker-wrapper .ui-datapicker-body td{
+    height: 30px;
+    text-align: center;
+}
+.ui-datapicker-wrapper .ui-datapicker-body th{
+    font-size: 12px;
+    height: 40px;
+    line-height: 40px;
+}
+.ui-datapicker-wrapper .ui-datapicker-body td{
+    font-size: 10px;
+    cursor: pointer;
+
+}
+.ui-datapicker-wrapper .ui-datapicker-body td:hover{
+    background-color: #1ae7c6;
+    color: black;
+}
+
