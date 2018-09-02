@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>left/right拉伸和width同时存在</title>
+<style>
+.image {
+    position: absolute; left: 0; right: 0; width: 50%; 
+}
+.button {
+	padding-top: 200px;
+}
+.button input {
+	width: 280px; height: 40px;
+	font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+<img class="image" src="http://img.mukewang.com/547c34c9000171a002560191.jpg" height="191">
+<p class="button">
+	<input type="button" value="添加margin: auto;" onClick="document.getElementsByTagName('img')[0].style.margin = 'auto';">
+</p>
+</body>
+</html>

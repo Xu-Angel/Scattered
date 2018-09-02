@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>居中、边缘定位二三事</title>
+<style>
+body { margin: 0; font: 14px/1.4 "Microsoft YaHei"; background-color: #EDEFF0; }
+.constr { width: 1200px; max-width: 80%; margin-left: auto; margin-right: auto; }
+.course-content { float: right; position: relative; width: 920px; min-height: 1200px; background: #fff; }
+.course-list-x { padding: 20px 10px; overflow: hidden; }
+.course-list { float: left; width: 280px; height: 240px; margin: 5px 10px 15px; border-radius: 0 0 1px 1px; background-color: #F7FAF9; background-color: rgba(255,255,255,1); box-shadow: 0 1px 2px #c5c5c5; text-decoration: none; }
+
+.goto_top_diaocha, .goto_top_app, .goto_top_feed { display: block; width: 48px; height: 48px; margin-top: 10px; background: url(http://img.mukewang.com/5453076e0001869c01920098.png) no-repeat; }
+.goto_top_diaocha { background-position: -48px 0; }
+.goto_top_diaocha:hover { background-position: -48px -50px; }
+.goto_top_app { background-position: -96px 0; }
+.goto_top_app:hover { background-position: -96px -50px; }
+.goto_top_feed { background-position: -144px 0; }
+.goto_top_feed:hover { background-position: -144px -50px; }
+
+.course-loading-x { height: 0; margin-top: 20px; text-align: center; letter-spacing: -.25em; overflow: hidden; }
+.course-loading { position: absolute; margin-left: -26px; }
+
+.course-fixed-x { height: 0; text-align: right; overflow: hidden; }
+.course-fixed { display: inline; position: fixed; margin-left: 20px; bottom: 100px; }
+</style>
+</head>
+
+<body>
+<div class="constr">
+    <div class="course-content">
+        <div class="course-list-x">
+        	<div class="course-list"></div>
+            <div class="course-list"></div>
+            <div class="course-list"></div>
+            <div class="course-list"></div>
+            <div class="course-list"></div>
+            <div class="course-list"></div>
+        </div>
+        <div class="course-loading-x">
+        	 <img src="http://img.mukewang.com/5453077400015bba00010001.gif" class="course-loading" alt="加载中...">
+        </div>
+        <div class="course-fixed-x">
+        	 <div class="course-fixed">
+                <a href="http://www.imooc.com/activity/diaocha" class="goto_top_diaocha"></a>
+                <a href="http://www.imooc.com/mobile/app" class="goto_top_app"></a>
+                <a href="http://www.imooc.com/user/feedback" class="goto_top_feed"></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>高度自适应的九宫格效果</title>
+<style>
+html, body { height: 100%; margin: 0; }
+.page {
+    position: absolute;
+	left: 0; top: 0; right: 0; bottom: 0;
+}
+.list {
+	float: left;
+	height: 33.3%; width: 33.3%;
+	position: relative;
+}
+.list:before {
+	content: '';
+	position: absolute;
+	left: 10px; right: 10px; top: 10px; bottom: 10px;
+	border-radius: 10px;
+	background-color: #cad5eb;
+}
+.list:after {
+	content:attr(data-index);
+	position: absolute;
+	height: 30px;
+	left: 0; right: 0; top: 0; bottom: 0;
+	margin: auto;
+	text-align: center;
+	font: 24px/30px bold 'microsoft yahei';
+}
+</style>
+</head>
+
+<body>
+<div class="page">
+	<div class="list" data-index="1"></div>
+    <div class="list" data-index="2"></div>
+    <div class="list" data-index="3"></div>
+    <div class="list" data-index="4"></div>
+    <div class="list" data-index="5"></div>
+    <div class="list" data-index="6"></div>
+    <div class="list" data-index="7"></div>
+    <div class="list" data-index="8"></div>
+    <div class="list" data-index="9"></div>
+</div>
+</body>
+</html>

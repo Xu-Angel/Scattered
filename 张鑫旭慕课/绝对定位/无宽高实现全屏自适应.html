@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>没有宽度和高度声明实现的全屏自适应效果</title>
+<style>
+html, body { height: 100%; }
+.overlay {
+    position: absolute;
+	left: 0; top: 0; right: 0; bottom: 0;
+	background-color: #000;
+	opacity: .5; filter: alpha(opacity=50);
+}
+</style>
+</head>
+
+<body>
+<div class="overlay"></div>
+</body>
+</html>

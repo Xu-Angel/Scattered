@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>折翼天使表现特性一：去浮动</title>
+<style>
+input[type=button] {
+    height: 32px;
+    font-size: 100%;    
+}
+</style>
+</head>
+
+<body>
+<img src="http://img.mukewang.com/54447b06000171a002560191.jpg">
+<img src="http://img.mukewang.com/54447f4a0001eb7d01910256.jpg">
+<img src="http://img.mukewang.com/54447f550001ccb002560191.jpg">
+<p><input type="button" id="float" value="点击第2张图片应用float:left"></p>
+<p><input type="button" id="button" value="点击第2张图片应用position:absolute"></p>
+<script>
+var flbtn = document.getElementById("float"),
+    button = document.getElementById("button"),
+    image2 = document.getElementsByTagName("img")[1];
+if (flbtn && button && image2) {
+	var value_init = button.value;
+	button.onclick = function() {
+		if (this.value == value_init) {
+			image2.style.position = "absolute";
+			this.value = "撤销";
+		} else {
+			image2.style.position = "";
+			this.value = value_init;
+		}
+	};
+	
+	flbtn.onclick = function() {
+		image2.style["cssFloat" in this.style? "cssFloat": "styleFloat"] = "left";
+	};
+}
+</script>
+</body>
+</html>

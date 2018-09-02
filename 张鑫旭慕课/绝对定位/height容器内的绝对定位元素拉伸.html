@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无固定width/height容器内的绝对定位元素拉伸</title>
+<style>
+body {
+    background-color: #ddd;
+}
+img {
+	vertical-align: bottom;
+}
+.container { 
+	display: inline-block;
+	position: relative;
+}
+.cover { 
+	position: absolute; 
+	left: 0; top: 0; right: 0; bottom: 0;
+	background-color: #fff;
+	opacity: .5; filter: alpha(opacity=50);
+}
+</style>
+</head>
+
+<body>
+<span class="container">
+	<i class="cover"></i>
+	<img src="http://img.mukewang.com/547c34cf000171a002560191.jpg" width="512" height="381">
+</span>
+<span class="container">
+	<i class="cover"></i>
+	<img src="http://img.mukewang.com/547c34c9000171a002560191.jpg" width="256" height="191">
+</span>
+</body>
+</html>

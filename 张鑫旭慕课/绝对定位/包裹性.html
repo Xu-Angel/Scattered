@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>absolute的包裹性</title>
+<style>
+.box {
+    padding: 10px;
+    background-color: #f0f0f0;	
+}
+input {
+    position: absolute; top: 234px;	
+	width: 160px; height: 32px;
+	font-size: 100%;
+}
+</style>
+</head>
+
+<body>
+<div id="box" class="box"><img src="http://img.mukewang.com/54447b06000171a002560191.jpg" width="256" height="191"></div>
+<input id="button" type="button" value="容器absolute化">
+<script>
+var eleBox = document.getElementById("box"), eleBtn = document.getElementById("button");
+if (eleBox != null && eleBtn != null) {
+	eleBtn.onclick = function() {
+		if (this.absolute) {
+			eleBox.style.position = "";
+			this.value = "容器absolute化";
+			this.absolute = false;
+		} else {
+			eleBox.style.position = "absolute";
+			this.value = "容器去absolute";
+			this.absolute = true;
+		}
+	};
+}
+</script>
+</body>
+</html>

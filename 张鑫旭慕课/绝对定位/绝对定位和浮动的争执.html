@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>absolute和float高尔基</title>
+<style>
+body {
+    background-color: #B0DEF5;
+	font-size: 14px; font-family: arial;
+	color: #444;
+}
+a {
+	color: #0078b6;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+em {
+	font-style: normal;
+	color: #aeaeae;
+	margin: 0 5px;
+}
+svg {
+	position: absolute;
+}
+.container {
+	width: 560px; height: -webkit-calc(100vh - 16px); height: calc(100vh - 16px);
+	margin-left: auto; margin-right: auto;
+	background-color: #fff;
+}
+.list {
+	padding: 20px;
+	position: relative;
+}
+.space {
+	padding-left: 60px;
+	line-height: 22px;
+}
+.space img {
+	vertical-align: text-bottom;
+}
+.info {
+	font-size: 12px;
+	overflow: hidden;
+	color: #808080;
+}
+.from {
+	float: left;
+}
+.from a {
+	color: #9abbc8;
+}
+p {
+	margin: 6px 0;
+}
+.operate {
+	float: right;
+}
+.operate img {
+	vertical-align: text-bottom;
+	margin-right: 3px;
+}
+.test {
+	position: relative;
+	font-size: 18px; font-family: 'microsoft yahei';
+}
+.test p {
+   width: 200px;
+   margin-left: auto; margin-right: auto;
+   padding: 5px;
+   background-color: #f0f0f0;	
+}
+.test input {
+	width: 20px; height: 20px;
+	vertical-align: -4px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+	<svg xmlns="http://www.w3.org/2000/svg" width="520" height="360">
+		<path d="M45 80C45 280,45 320,165 300" stroke-width="1" stroke="#444" fill="none"></path>
+	</svg>
+	<div class="list">
+    	<a href="#" id="avatar" class="avatar" style="float: left;"><img src="http://img.mukewang.com/54447ac70001f5cc00500050.jpg"></a>
+        <div class="space">
+            <a href="//weibo.com/mukewang" target="_blank" title="慕课网">慕课网</a>
+            <img src="http://img.mukewang.com/54447b1a0001750000160013.png">
+            <a href="http://huati.weibo.com/k/%E6%85%95%E8%AF%BE%E7%BD%91%E6%B4%BB%E5%8A%A8?from=501">#慕课网活动#</a>【全民晒课ing，火速赢取IT图书】无论你是慕课网的“资深粉丝”，还是刚加入的新同学，在慕课网活动帖：<a href="http://www.imooc.com/wenda/detail/30394">http://www.imooc.com/wenda/detail/30394</a> 写下你在慕课网所学习的任意一门课程，并附上课程的学习心得，就有机会赢得精品IT好书。<img src="http://img.mukewang.com/54447cc700010dbf00220022.gif">这事很急哒，仅有2天呦。在<a href="http://huati.weibo.com/k/%E7%A8%8B%E5%BA%8F%E5%91%98%E8%8A%82?from=501">#程序员节#</a>送给自己一份礼物吧！<img src="http://img.mukewang.com/54447af90001ab1c00010001.gif">
+            <p><img src="http://img.mukewang.com/54447aea0001f43301200084.jpg"></p>
+            <div class="info">    
+               	<span class="from">
+                	<a href="#">9月13日 10:27</a> 
+                    <em>来自</em><a href="#">微博 weibo.com</a>                      
+                </span>
+                <span class="operate">
+                	<a href="javascript:" title="赞"><img src="http://img.mukewang.com/54447c350001055b00120013.png">(4)</a><em>|</em>
+                    <a href="javascript:">转发(5)</a><em>|</em>
+                    <a href="javascript:">收藏</a><em>|</em>
+                    <a href="javascript:">评论(2)</a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="test">
+    	<p><input type="radio" name="layout" id="float" checked><label for="float">float: left;</label></p>
+        <p><input type="radio" name="layout" id="absolute"><label for="absolute">position: absolute;</label></p>
+    </div>
+</div>
+<script>
+var eleAvatar = document.getElementById("avatar"),
+    eleFloat = document.getElementById("float"),
+	eleAbsolute = document.getElementById("absolute");
+
+// SVG路径以及相关动画
+var elePath = document.querySelector("path"), timerPath = null;	
+var funPathMove = function(end) {
+	clearTimeout(timerPath);
+	var d = elePath.getAttribute("d"), arrD = d.split(" ");
+	// 动画起始值
+	var start = arrD.slice(-1) * 1;
+	if (start == end) return;
+	// 速率
+	var rate = 5, current = start;
+	console.log(arrD);
+	var step = function() {
+		if (Math.abs(end - current) < 1) {
+			current = end;
+		} else {
+			current += (end - current) / 5;
+			timerPath = setTimeout(step, 30);
+		}
+		// 替换最后一个值
+		arrD.splice(-1, 1, current);
+		// 曲线走起
+		elePath.setAttribute("d", arrD.join(" "));
+	};
+	step();
+};
+
+if (eleAvatar && eleFloat && eleAbsolute) {
+	var attrFloat = eleAvatar.style.cssFloat != undefined? "cssFloat": "styleFloat";
+	eleFloat.onclick = function() {
+		eleAvatar.style.position = "";
+		eleAvatar.style[attrFloat] = "left";
+		elePath && funPathMove(300);
+	};
+	eleAbsolute.onclick = function() {
+		eleAvatar.style[attrFloat] = "";
+		eleAvatar.style.position = "absolute";
+		elePath && funPathMove(340);
+	};
+}
+</script>
+</body>
+</html>

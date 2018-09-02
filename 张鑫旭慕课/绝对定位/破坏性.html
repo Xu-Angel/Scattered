@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>absolute的破坏性</title>
+<style>
+.box {
+    padding: 10px;
+    background-color: #f0f0f0;	
+}
+input {
+    position: absolute; top: 234px;	
+	width: 160px; height: 32px;
+	font-size: 100%;
+}
+</style>
+</head>
+
+<body>
+<div class="box"><img id="image" src="http://img.mukewang.com/54447b06000171a002560191.jpg" width="256" height="191"></div>
+<input id="button" type="button" value="图片absolute化">
+<script>
+var eleImg = document.getElementById("image"), eleBtn = document.getElementById("button");
+if (eleImg != null && eleBtn != null) {
+	eleBtn.onclick = function() {
+		if (this.absolute) {
+			eleImg.style.position = "";
+			this.value = "图片absolute化";
+			this.absolute = false;
+		} else {
+			eleImg.style.position = "absolute";
+			this.value = "图片去absolute";
+			this.absolute = true;
+		}
+	};
+}
+</script>
+</body>
+</html>
