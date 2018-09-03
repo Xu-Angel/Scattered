@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>浮动与display:block化</title>
+<style>
+.ovh { overflow: hidden; }
+.red { color: #cd0000; }
+[hidden] { display: none; }
+</style>
+</head>
+
+<body>
+<p id="first">这是一个没有设置<code>float</code>属性的按钮：</p>
+<p class="ovh"><input type="button" id="btnShow" value="点击我显示display属性值"></p>
+<p hidden="">此时，按钮的display属性值是：<span id="result" class="red"></span></p>
+<p>点击下面的按钮让上面的按钮添加<code>float: left</code>的声明：</p>
+<p><input type="button" id="btnAdd" value="上面的按钮添加float:left"></p>
+<script>
+var btnShow = document.getElementById("btnShow"),
+    btnAdd = document.getElementById("btnAdd"),
+	result = document.getElementById("result"),
+	first = document.getElementById("first");
+
+if (btnShow && btnAdd && result) {
+	btnShow.onclick = function() {
+		// 获得该按钮的display值
+		var display = this.currentStyle? this.currentStyle.display: window.getComputedStyle(this, null).display;
+		// 显示结果
+		result.innerHTML = display;
+		result.parentNode.removeAttribute("hidden");
+		// repain fix IE7/IE8 bug
+		document.body.className = "any";
+	};
+	
+	// 设置浮动按钮的点击事件
+	btnAdd.onclick = function() {
+		btnShow.style["cssFloat" in this.style? "cssFloat": "styleFloat"] = "left";
+		// 文字描述的变化
+		this.value = "上面的按钮已经设置了float:left";
+		btnShow.value = "再次点击我确认display属性值";
+		first.innerHTML = first.innerHTML.replace("没有", '<del>没有</del>');
+		// 结果隐藏
+		result.parentNode.setAttribute("hidden", "");
+		// 按钮禁用
+		this.setAttribute("disabled", "");
+	};
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>浮动元素倒数2个莫名垂直间距bug（超过3浮动元素）</title>
+<style type="text/css">
+html, body {
+    background: #fff;
+    color: #333;
+}
+
+div {
+    width: 100px;
+}
+
+p {
+    margin-right: 1px;
+}
+
+span {
+    border: 1px solid #aaa;
+    float: left;
+    width: 120px;
+    padding: 5px;
+}
+</style>
+
+</head>
+
+<body>
+<div>
+    <p>
+        <span>A</span>
+        <span>B</span>
+        <span>C</span>
+        <span>D</span>
+    </p>
+</div>
+</body>
+</html>

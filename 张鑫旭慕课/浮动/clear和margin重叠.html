@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>clear与margin重叠</title>
+</head>
+
+<body>
+1.
+<div style="background-color: #f5f5f5;">
+    <img src="http://img.mukewang.com/53d60af3000171a002560191.jpg" style="float:left;">
+	<div style="clear:both; margin-bottom:100px;">clear:both;</div>
+</div>
+<div style="margin-top: 100px;">本文字离图片的距离是？</div>
+<br><br><br><br>2.
+<div style="background-color: #f5f5f5; overflow: hidden;">
+	<img src="http://img.mukewang.com/53d60af3000171a002560191.jpg" style="float:left; margin-bottom: 100px;">
+</div>
+<div style="margin-top: 100px;">本文字离图片的距离是？</div>
+</body>
+</html>

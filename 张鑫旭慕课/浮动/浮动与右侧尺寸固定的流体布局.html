@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>浮动与右侧尺寸固定的流体布局</title>
+<style>
+
+body { font-size: 14px; background-color: #DDF3F7; color: #333; }
+a { color: #0082CB; text-decoration: none; }
+p { margin: 0; } img { border: 0; }
+
+.mib_body { width: 600px; margin-left: auto; margin-right: auto; }
+.mib_x { margin-bottom: 10px; background-color: #fff; }
+.mib_list { padding: 20px; overflow: hidden; _zoom: 1; resize: none; }
+.mib_resize { overflow: auto; resize: both; }
+.mib_vip { display: inline-block; width: 11px; height: 10px; margin-left: 1px; background: url(data:image/gif;base64,R0lGODlhCwAKAJEDAPyZCveDBuJmBP///yH5BAEAAAMALAAAAAALAAoAAAIdhD1zopgTXgMpsBdylVCPK2UCKI0j95hoRa0NVwAAOw==); }
+
+/* 下面这个是右浮动，改变DOM位置的流体布局写法 */
+.mib_head_r { width: 56px; float: right; }
+.mib_feed_flow { margin-right: 76px; }
+/* 下面这个是左浮动，不改变DOM位置的流体布局写法 */
+.mib_full_float { width: 100%; float: left; }
+.mib_head_l { width: 56px; float: left; margin-left: -56px;}
+
+.mib_sms { line-height: 22px; padding-bottom: 6px; font-size: 14px; }
+.mib_input { width: 70px; padding: 4px; font-size: 100%; }
+.mib_btn { width: 70px; padding: 5px; font-size: 100%; }
+</style>
+</head>
+
+<body>
+<div id="mibBody" class="mib_body">
+    <div class="mib_x mib_resize">
+        <div class="mib_list">
+            <a href="http://t.sina.com.cn/xuruoxuan" class="mib_head_r">
+                <img title="徐若瑄VIVIAN" src="http://img.mukewang.com/53e2e9470001dfd200500050.jpg">
+            </a>
+            <div class="mib_feed_flow">
+                <p class="mib_sms"><a title="徐若瑄VIVIAN" href="#">徐若瑄VIVIAN<i title="新浪认证" class="mib_vip"></i></a>：一個人的晚餐！茶泡飯！飯、飯、飯… 今日不減肥，先把病治好再說！ 我認真吃完這，燒就會退了吧？！ 開動啦~~~~~~~~~~~~~~~~~~</p>
+                <div class="feed_img"><img src="http://img.mukewang.com/53e2e9b10001948000890120.jpg" height="120"></div>
+            </div>    
+        </div>
+    </div>
+    <div class="mib_x mib_resize">
+        <div class="mib_list">
+        	<div class="mib_full_float">
+                <div class="mib_feed_flow">
+                    <p class="mib_sms"><a title="徐若瑄VIVIAN" href="#">徐若瑄VIVIAN<i title="新浪认证" class="mib_vip"></i></a>：一個人的晚餐！茶泡飯！飯、飯、飯… 今日不減肥，先把病治好再說！ 我認真吃完這，燒就會退了吧？！ 開動啦~~~~~~~~~~~~~~~~~~</p>
+                    <div class="feed_img"><img src="http://img.mukewang.com/53e2e9b10001948000890120.jpg" height="120"></div>
+                </div>
+            </div>
+            <a href="http://t.sina.com.cn/xuruoxuan" class="mib_head_l">
+                <img title="徐若瑄VIVIAN" src="http://img.mukewang.com/53e2e9470001dfd200500050.jpg">
+            </a>	
+        </div>
+    </div>
+</div>
+</body>
+</html>

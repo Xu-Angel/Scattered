@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>浮动去空格</title>
+<style>
+button { margin: 0; }
+p { clear: both; }
+</style>
+</head>
+
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<p><input type="button" id="trigger" value="点击按钮浮动"></p>
+<script>
+var trigger = document.getElementById("trigger"),
+    buttons = document.getElementsByTagName("button");
+
+var length = buttons.length;
+
+if (trigger && length > 0) {
+	trigger.onclick = function() {
+		for (var index = 0; index < length; index += 1) {
+			buttons[index].style["cssFloat" in trigger.style? "cssFloat": "styleFloat"] = "left";
+		}
+	};
+}	
+</script>
+</body>
+</html>

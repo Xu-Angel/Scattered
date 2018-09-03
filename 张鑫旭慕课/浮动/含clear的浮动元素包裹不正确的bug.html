@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>含clear的浮动元素包裹不正确的bug</title>
+<style type="text/css">
+html, body {
+    background: #fff;
+    color: #000;
+}
+
+div {
+    padding: 5px;
+	margin: 5px;
+    background-color: #eee;
+    border: 1px solid #bbb;
+    clear: left;
+    color: black;
+    float: left;
+}
+</style>
+</head>
+
+<body>
+<div>
+    这个&lt;div&gt; 包含 float: left 和 clear: left. 与我们通常理解的表现一致，宽度就是文字内容的宽度。
+</div>
+
+<div>
+    这个同样是一个 &lt;div&gt;, 左浮动，同时含有 clear: left  的 &lt;div&gt;. 因为这一段的文字内容很长，所以，按照我们通常的理解，这个 &lt;div&gt; 占据的长度应该有整个 body 这么长。但是，在 Internet Explorer 7 下，事与愿违。 这个具有左浮动，同时含有 clear: left 的 &lt;div&gt; 仅仅占据了部分body的内容区域宽度。---- 我是占位置的文字，我是占位置的文字，我是占位置的文字，我是占位置的文字，我是占位置的文字，我是占位置的文字，我是占位置的文字……
+</div>
+<div>
+    这是第3个具有float: left 和 clear: left 的 &lt;div&gt; . 改变你浏览器的宽度。
+</div>
+</body>
+</html>
