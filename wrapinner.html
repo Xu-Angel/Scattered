@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  ul,li {
+    list-style: none;
+  }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>d</li>
+    <li>dd</li>
+    <li>44</li>
+    <li>55</li>
+    <li>88</li>
+  </ul>
+  <p>dd<img src="" alt=""></p>
+  <script>
+    function $ (el) {
+      return document.querySelector(el)
+    }
+var _wrap = function(target,html){ 
+var wrap = html ; 
+wrap = html.cloneNode(true) 
+html.parentNode.removeChild(html)
+target.insertBefore(wrap,target.firstChild); 
+while ( wrap.firstChild && wrap.firstChild.nodeType === 1 ) { 
+wrap = wrap.firstChild; 
+} 
+for(var i=1,n=target.childNodes.length;i<n;i++){ 
+wrap.appendChild(target.childNodes[i],null) 
+} 
+} 
+let div = document.createElement('div')
+$('p').appendChild(div)
+_wrap($('div'), $('img'))
+  </script>
+  
+  <script>
+  export function preview() {
+  $('pre img', 'all') && $('pre img', 'all').forEach((ele, index) => {
+    addClass(ele, 'preview')
+    const oldImg = ele.cloneNode(true)
+    let div = document.createElement('div')
+    div.setAttribute('href', oldImg.getAttribute('src'))
+    div.setAttribute('class', `preview-wrap${index}`)
+    div.appendChild(oldImg)
+    ele.parentNode.appendChild(div)
+    ele.parentNode.removeChild(ele)
+    new SmartPhoto(`.preview-wrap${index}`, {
+      arrows: false,
+      nav: false
+    })
+  })
+}
+  </script>
+</body>
+</html>
