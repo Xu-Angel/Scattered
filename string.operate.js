@@ -76,3 +76,13 @@ console.log(str.trim());
 
 "function" */
 /* console.log(typeof(null)); */
+
+let str = '12px'
+str.split('px')
+(2) ["12", ""]
+let str2 = '12px'
+str2.slice('-2')
+"px"
+let str3 = '12px'
+str3.slice(0,-2)
+"12"
