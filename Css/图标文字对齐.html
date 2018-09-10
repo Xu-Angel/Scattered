@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <style>
+  span{
+    display: inline-flex; 
+    align-items: center；
+}
+ele { 
+    position: relative; 
+    display: inline-block; 
+    line-height: 1; /* 使文本高度为图标高度  */
+    width: 1em; /* //图标大小，用来占位 */ } 
+ele img { 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 1em; 
+    height: 1em; 
+}
+  </style>
+  <script src="main.js"></script>
+</head>
+<body>
+  <div>
+    <span>&#8203;<img src="img.png"/></span>
+    文字内容
+</div>
+<div style="display:flex;align-items: center;">
+  <img src="img.png"/>
+  <em>
+    文字内容
+  </em>
+</div>
+<div>
+  <ele>&#8203;<img src="img.png"/></ele>
+  文字内容
+</div>
+</body>
+</html>
