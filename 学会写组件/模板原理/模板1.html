@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+
+<body>
+  <pre>
+    描述：
+
+1.模板字符串
+
+2.模板解析（字符串替换）
+
+3.将第二步返回值显示屏幕 
+  </pre>
+  <div class="result"></div>
+
+  <script type="template" id="template">
+    <a href="{{href}}">{{title}}</a>
+</script>
+
+
+  <script>
+    var data = [{
+        title: "Knockout应用开发指南",
+        href: "#",
+        imgSrc: "#"
+      },
+      {
+        title: "微软ASP.NET站点部署指南",
+        href: "#",
+        imgSrc: "#"
+      },
+      {
+        title: "HTML5学习笔记简明版",
+        href: "#",
+        imgSrc: "#"
+      }
+    ];
+
+    var result = document.querySelector('.result'),
+
+      for (let i = 0; i < data.length; i++) {
+        var fragment = '';
+        fragment += template
+          .replace(/\{\{title\}\}/, data[i].title)
+          .replace(/\{\{href\}\}/, data[i].href)
+          .replace(/\{\{imgSrc\}\}/, data[i].imgSrc);
+      }
+
+    result.innerHTML = fragment;
+  </script>
+</body>
+
+</html>
