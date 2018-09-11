@@ -53,3 +53,9 @@ const { store, form, loading, errors, entity } = this.props;
 //甚至可以指定自己的变量名：
 
 const { store, form, loading, errors, entity:contact } = this.props;
+
+
+// 解构赋值交换位置
+var arr = [5,4,8,9,6,5,4,12,3,6,7,8,56];
+[arr[0], arr[1]] = [arr[1], arr[0]]
+console.log(arr);
