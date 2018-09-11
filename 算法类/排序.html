@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>排序</title>
+  <style>
+    .container {
+      text-align: center;
+    }
+
+    .sort {
+      transition: 1s;
+      height: 50px;
+      width: 50px;
+      border: 1px solid black;
+      line-height: 50px;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <p>出处<a href="https://juejin.im/post/5b8fcaaee51d450e44378a5f?utm_source=gold_browser_extension"></a></p>
+  <div class="container">
+  </div>
+  <script>
+    var arr = [5, 4, 8, 9, 6, 5, 4, 12, 3, 6, 7, 8, 56];
+    var container = document.querySelector('.container');
+    var fragment = document.createDocumentFragment();
+    var len = arr.length;
+    for (let i = 0; i < len; i++) {
+      var temp = document.createElement('div');
+      temp.className = 'sort';
+      temp.style.left = i * 60 + 'px';
+      temp.id = i;
+      temp.innerHTML = arr[i];
+      fragment.append(temp);
+    }
+    container.append(fragment);
+    var time = 1;
+    for (let i = 0; i < len; i++) {
+      for (let j = 0; j < len - i; j++) {
+        if (arr[j] > arr[j + 1]) {
+          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+          setTimeout(function() {
+            [...document.getElementsByClassName('sort')].forEach(ele => ele.style.borderColor = 'black')
+            var x = document.getElementById(j)
+            var y = document.getElementById(j + 1);
+            [x.style.left, y.style.left] = [y.style.left, x.style.left];
+            x.style.borderColor = 'red';
+            y.style.borderColor = 'red';
+            [x.id, y.id] = [y.id, x.id];
+          }, time * 1000)
+          time++;
+        }
+      }
+    }
+  </script>
+</body>
