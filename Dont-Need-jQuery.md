@@ -11,7 +11,7 @@
   Array.from(el.parentNode.children).filter((child) =>
     child !== el
   );
-  // Native - IE10+
+  // Native - IE9+
   Array.prototype.filter.call(el.parentNode.children, (child) =>
     child !== el
   );
@@ -122,6 +122,12 @@ $el.addClass(className);
 
 // Native
 el.classList.add(className);
+
+// ie8+
+if (el.classList)
+  el.classList.add(className);
+else
+  el.className += ' ' + className;
 ```
  - Remove Class
  ```javascript
@@ -138,6 +144,12 @@ $el.hasClass(className);
 
 // Native
 el.classList.contains(className);
+
+// IE8+
+if (el.classList)
+  el.classList.contains(className);
+else
+  new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
  ```
  - Toggle Class
  ```javascript
@@ -146,6 +158,21 @@ $el.toggleClass(className);
 
 // Native
 el.classList.toggle(className);
+
+// IE9+
+if (el.classList) {
+  el.classList.toggle(className);
+} else {
+  var classes = el.className.split(' ');
+  var existingIndex = classes.indexOf(className);
+
+  if (existingIndex >= 0)
+    classes.splice(existingIndex, 1);
+  else
+    classes.push(className);
+
+  el.className = classes.join(' ');
+}
 ```
 # Width && Height
  - Window height
@@ -174,6 +201,17 @@ const height = Math.max(
   html.offsetHeight;
   html.scrollHeight;
 )
+
+ // jQuery
+$(el).offset();
+
+// ie8+
+var rect = el.getBoundingClientRect();
+
+{
+  top: rect.top + document.body.scrollTop,
+  left: rect.left + document.body.scrollLeft
+}
  ```
  - Element height
  ```javascript
@@ -229,6 +267,29 @@ $(window).scrollTop();
 
 // Native
 (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+ ```
+ - Outer Height
+ ```javascript
+ // jQuery
+ $(el).outerHeight();
+ // IE8+
+ el.offsetHeight
+ ```
+ - Outer Height With Margin
+ ```javascript
+ // jQuery
+ $(el).outerHeight(true);
+
+ /// IE9+
+ function outerHeight(el) {
+  var height = el.offsetHeight;
+  var style = getComputedStyle(el);
+
+  height += parseInt(style.marginTop) + parseInt(style.marginBottom);
+  return height;
+}
+
+outerHeight(el);
  ```
 # DOM 混合操作
  - Text
@@ -302,9 +363,17 @@ if (el.parentNode) {
 ```javascript
 // jQuery
 $el.is(selector);
+$(el).is('.my-class');
 
 // Native
 el.matches(selector);
+
+// IE9+
+var matches = function(el, selector) {
+  return (el.matches || el.matchesSelector || el.msMatchesSelector || el.mozMatchesSelector || el.webkitMatchesSelector || el.oMatchesSelector).call(el, selector);
+};
+
+matches(el, '.my-class');
 ```
 - wrap 把每个被选元素放置在指定的HTML结构中。
 ```javascript
@@ -372,4 +441,377 @@ parse(`<ol>
   <li>c</li>
   <li>d</li>
 </ol>`);
+```
+# AJAX
+ Fetch API 是用于替换 XMLHttpRequest 处理 ajax 的新标准，Chrome 和 Firefox 均支持，旧浏览器可以使用 polyfills 提供支持。
+
+IE9+ 请使用 github/fetch，IE8+ 请使用 fetch-ie8，JSONP 请使用 fetch-jsonp。
+- 从服务器读取数据并替换匹配元素的内容。
+```javascript
+// jQuery
+$(selector).load(url, completeCallback)
+
+// Native
+fetch(url).then(data => data.text()).then(data => {
+  document.querySelector(selector).innerHTML = data
+}).then(completeCallback)
+```
+# 基本工具类
+- isArray 检测参数是不是数组。
+```javascript
+// jQuery
+$.isArray(range);
+
+// Native
+Array.isArray(range);
+isWindow
+检测参数是不是 window。
+
+// jQuery
+$.isWindow(obj);
+
+// Native
+function isWindow(obj) {
+  return obj !== null && obj !== undefined && obj === obj.window;
+}
+- inArray在数组中搜索指定值并返回索引 (找不到则返回 -1)。
+```javascript
+// jQuery
+$.inArray(item, array);
+
+// Native
+array.indexOf(item) > -1;
+
+// ES6-way
+array.includes(item);
+```
+- isNumeric检测传入的参数是不是数字。 `Use typeof to decide the type or the type example for better accuracy.`
+```javascript
+// jQuery
+$.isNumeric(item);
+
+// Native
+function isNumeric(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+```
+- isFunction 检测传入的参数是不是 JavaScript 函数对象。
+```javascript
+// jQuery
+$.isFunction(item);
+
+// Native
+function isFunction(item) {
+  if (typeof item === 'function') {
+    return true;
+  }
+  var type = Object.prototype.toString(item);
+  return type === '[object Function]' || type === '[object GeneratorFunction]';
+}
+```
+
+- isEmptyObject 检测对象是否为空 (包括不可枚举属性).
+```javascript
+// jQuery
+$.isEmptyObject(obj);
+
+// Native
+function isEmptyObject(obj) {
+  return Object.keys(obj).length === 0;
+}
+```
+- isPlainObject检测是不是扁平对象 (使用 “{}” 或 “new Object” 创建).
+```javascript
+// jQuery
+$.isPlainObject(obj);
+
+// Native
+function isPlainObject(obj) {
+  if (typeof (obj) !== 'object' || obj.nodeType || obj !== null && obj !== undefined && obj === obj.window) {
+    return false;
+  }
+
+  if (obj.constructor &&
+      !Object.prototype.hasOwnProperty.call(obj.constructor.prototype, 'isPrototypeOf')) {
+    return false;
+  }
+
+  return true;
+}
+```
+extend合并多个对象的内容到第一个对象。 object.assign 是 ES6 API，也可以使用 polyfill。
+```javascript
+// jQuery
+$.extend({}, defaultOpts, opts);
+
+// Native
+Object.assign({}, defaultOpts, opts);
+```
+trim移除字符串头尾空白。
+```javascript
+// jQuery
+$.trim(string);
+
+// Native
+string.trim();
+```
+map将数组或对象转化为包含新内容的数组。
+```javascript
+// jQuery
+$.map(array, (value, index) => {
+});
+
+// Native
+array.map((value, index) => {
+});
+```
+each轮询函数，可用于平滑的轮询对象和数组。
+```javascript
+// jQuery
+$.each(array, (index, value) => {
+});
+
+// Native
+array.forEach((value, index) => {
+});
+
+// IE9+ nodelist 节点操作
+var elements = document.querySelectorAll(selector);
+Array.prototype.forEach.call(elements, function(el, i){
+
+});
+```
+grep找到数组中符合过滤函数的元素。
+```javascript
+// jQuery
+$.grep(array, (value, index) => {
+});
+
+// Native
+array.filter((value, index) => {
+});
+
+// ie9+
+Array.prototype.filter.call(document.querySelectorAll(selector), filterFn);
+```
+type检测对象的 JavaScript [Class] 内部类型。
+```javascript
+// jQuery
+$.type(obj);
+
+// Native
+function type(item) {
+  const reTypeOf = /(?:^\[object\s(.*?)\]$)/;
+  return Object.prototype.toString.call(item)
+    .replace(reTypeOf, '$1')
+    .toLowerCase();
+}
+```
+merge合并第二个数组内容到第一个数组。
+```javascript
+// jQuery
+$.merge(array1, array2);
+
+// Native
+// 使用 concat，不能去除重复值
+function merge(...args) {
+  return [].concat(...args)
+}
+
+// ES6，同样不能去除重复值
+array1 = [...array1, ...array2]
+
+// 使用 Set，可以去除重复值
+function merge(...args) {
+  return Array.from(new Set([].concat(...args)))
+}
+```
+now返回当前时间的数字呈现。
+```javascript
+// jQuery
+$.now();
+
+// Native
+Date.now();
+```
+proxy传入函数并返回一个新函数，该函数绑定指定上下文。
+```javascript
+// jQuery
+$.proxy(fn, context);
+
+// Native
+fn.bind(context);
+```
+makeArray类数组对象转化为真正的 JavaScript 数组。
+```javascript
+// jQuery
+$.makeArray(arrayLike);
+
+// Native
+Array.prototype.slice.call(arrayLike);
+
+// ES6-way
+Array.from(arrayLike);
+```
+# 包含
+
+- 检测 DOM 元素是不是其他 DOM 元素的后代.
+```javascript
+// jQuery
+$.contains(el, child);
+
+// Native
+el !== child && el.contains(child);
+```
+- 全局执行 JavaScript 代码。
+```javascript
+// jQuery
+$.globaleval(code);
+
+// Native
+function Globaleval(code) {
+  const script = document.createElement('script');
+  script.text = code;
+
+  document.head.appendChild(script).parentNode.removeChild(script);
+}
+
+// Use eval, but context of eval is current, context of $.Globaleval is global.
+eval(code);
+```
+# 解析
+
+- parseHTML 解析字符串为 DOM 节点数组.
+```javascript
+// jQuery
+$.parseHTML(htmlString);
+
+// Native
+function parseHTML(string) {
+  const context = document.implementation.createHTMLDocument();
+
+  // Set the base href for the created document so any parsed elements with URLs
+  // are based on the document's URL
+  const base = context.createElement('base');
+  base.href = document.location.href;
+  context.head.appendChild(base);
+
+  context.body.innerHTML = string;
+  return context.body.children;
+}
+```
+- parseJSON传入格式正确的 JSON 字符串并返回 JavaScript 值
+```javascript
+// jQuery
+$.parseJSON(str);
+
+// Native
+JSON.parse(str);
+```
+# Animation
+- Toggle 显示或隐藏元素。
+```javascript
+// jQuery
+$el.toggle();
+
+// Native
+if (el.ownerDocument.defaultView.getComputedStyle(el, null).display === 'none') {
+  el.style.display = ''|'inline'|'inline-block'|'inline-table'|'block';
+} else {
+  el.style.display = 'none';
+}
+```
+- FadeIn & FadeOut
+```javascript
+// jQuery
+$el.fadeIn(3000);
+$el.fadeOut(3000);
+
+// Native
+el.style.transition = 'opacity 3s';
+// fadeIn
+el.style.opacity = '1';
+// fadeOut
+el.style.opacity = '0';
+
+// IE9+
+function fadeIn(el) {
+  el.style.opacity = 0;
+
+  var last = +new Date();
+  var tick = function() {
+    el.style.opacity = +el.style.opacity + (new Date() - last) / 400;
+    last = +new Date();
+
+    if (+el.style.opacity < 1) {
+      (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+    }
+  };
+  tick();
+}
+
+fadeIn(el);
+```
+- FadeTo调整元素透明度。
+```javascript
+// jQuery
+$el.fadeTo('slow',0.15);
+// Native
+el.style.transition = 'opacity 3s'; // 假设 'slow' 等于 3 秒
+el.style.opacity = '0.15';
+```
+-  FadeToggle动画调整透明度用来显示或隐藏
+```javascript
+// jQuery
+$el.fadeToggle();
+
+// Native
+el.style.transition = 'opacity 3s';
+const { opacity } = el.ownerDocument.defaultView.getComputedStyle(el, null);
+if (opacity === '1') {
+  el.style.opacity = '0';
+} else {
+  el.style.opacity = '1';
+}
+```
+- SlideUp & SlideDown
+```javascript
+// jQuery
+$el.slideUp();
+$el.slideDown();
+
+// Native
+const originHeight = '100px';
+el.style.transition = 'height 3s';
+// slideUp
+el.style.height = '0px';
+// slideDown
+el.style.height = originHeight;
+```
+- SlideToggle滑动切换显示或隐藏
+```javascript
+// jQuery
+$el.slideToggle();
+
+// Native
+const originHeight = '100px';
+el.style.transition = 'height 3s';
+const { height } = el.ownerDocument.defaultView.getComputedStyle(el, null);
+if (parseInt(height, 10) === 0) {
+  el.style.height = originHeight;
+}
+else {
+ el.style.height = '0px';
+}
+```
+- Animate执行一系列 CSS 属性动画。
+```javascript
+// jQuery
+$el.animate({ params }, speed);
+
+// Native
+el.style.transition = 'all ' + speed;
+Object.keys(params).forEach((key) =>
+  el.style[key] = params[key];
+)
 ```
