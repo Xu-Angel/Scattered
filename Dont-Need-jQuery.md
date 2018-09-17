@@ -1,4 +1,4 @@
-#### 目录
+## 目录
 
 1. [查找元素&属性获取](#查找元素&属性获取)
 1. [Width&&Height](#Width&&Height)
@@ -185,6 +185,8 @@ if (el.classList) {
   el.className = classes.join(' ');
 }
 ```
+**[⬆ 回到顶部](#目录)**
+
 ## Width&&Height
  - `Window height`
  ```javascript
@@ -302,7 +304,9 @@ $(window).scrollTop();
 
 outerHeight(el);
  ```
-## DOM 混合操作
+**[⬆ 回到顶部](#目录)**
+
+## DOM混合操作
  - `Text`
      - `Get Text` 返回指定元素及其后代的文本内容。
       ```javascript
@@ -453,6 +457,8 @@ parse(`<ol>
   <li>d</li>
 </ol>`);
 ```
+**[⬆ 回到顶部](#目录)**
+
 ## AJAX
  `Fetch API` 是用于替换 `XMLHttpRequest` 处理 `ajax` 的新标准，`Chrome` 和 `Firefox` 均支持，旧浏览器可以使用 `polyfills` 提供支持。
 
@@ -467,6 +473,8 @@ fetch(url).then(data => data.text()).then(data => {
   document.querySelector(selector).innerHTML = data
 }).then(completeCallback)
 ```
+**[⬆ 回到顶部](#目录)**
+
 ## 基本工具类
 - `isArray` 检测参数是不是数组。
 ```javascript
@@ -664,6 +672,8 @@ Array.prototype.slice.call(arrayLike);
 // ES6-way
 Array.from(arrayLike);
 ```
+**[⬆ 回到顶部](#目录)**
+
 ## 包含
 
 - 检测 `DOM` 元素是不是其他 `DOM` 元素的后代.
@@ -690,6 +700,8 @@ function Globaleval(code) {
 // Use eval, but context of eval is current, context of $.Globaleval is global.
 eval(code);
 ```
+**[⬆ 回到顶部](#目录)**
+
 ## 解析
 
 - `parseHTML` 解析字符串为 `DOM` 节点数组.
@@ -719,6 +731,8 @@ $.parseJSON(str);
 // Native
 JSON.parse(str);
 ```
+**[⬆ 回到顶部](#目录)**
+
 ## Animation
 - `Toggle` 显示或隐藏元素。
 ```javascript
@@ -826,3 +840,4 @@ Object.keys(params).forEach((key) =>
   el.style[key] = params[key];
 )
 ```
+**[⬆ 回到顶部](#目录)**
