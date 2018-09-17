@@ -1,3 +1,14 @@
+## 目录
+
+1. [查找元素&属性获取](#查找元素&属性获取)
+1. [Width && Height](#Width&&Height)
+1. [DOM 混合操作](#DOM混合操作)
+1. [AJAX](#AJAX)
+1. [基本工具类](#基本工具类)
+1. [包含](#包含)
+1. [解析](#解析)
+1. [Animation](#Animation)
+
 # 查找元素&属性获取
  - 兄弟元素
   ```javascript
@@ -77,7 +88,7 @@ function parentsUntil(el, selector, filter) {
   return result;
 }
   ```
-  - Form 表单下获取 e.currentTarget 在 .radio 中的数组索引
+  - `Form` 表单下获取 `e.currentTarget` 在 `.radio` 中的数组索引
   ```javascript
   // jQuery
 $('.radio').index(e.currentTarget);
@@ -85,7 +96,7 @@ $('.radio').index(e.currentTarget);
 // Native
 Array.prototype.indexOf.call(document.querySelectorAll('.radio'), e.currentTarget);
   ```
-  - jQuery 对象的 iframe contents() 返回的是 iframe 内的 document
+  - `jQuery` 对象的 `iframe contents()` 返回的是 `iframe` 内的 `document`
   ```javascript
   // jQuery
 $iframe.contents();
@@ -93,7 +104,7 @@ $iframe.contents();
 // Native
 iframe.contentDocument;
   ```
-  - 获取 data- 属性
+  - 获取 `data-` 属性
 ```javascript
 // jQuery
 $el.data('foo');
@@ -105,7 +116,7 @@ el.getAttribute('data-foo');
 el.dataset['foo'];
 ```
 # CSS&Style
-- Get style
+- `Get style`
 ```javascript
 // jQuery
 $el.css("color");
@@ -115,7 +126,7 @@ const win = el.ownerDocument.defaultView;
 // null 的意思是不返回伪类元素
 win.getComputedStyle(el, null).color;
 ```
-- Add class
+- `Add class`
 ```javascript
 // jQuery
 $el.addClass(className);
@@ -129,7 +140,7 @@ if (el.classList)
 else
   el.className += ' ' + className;
 ```
- - Remove Class
+ - `Remove Class`
  ```javascript
  // jQuery
 $el.removeClass(className);
@@ -137,7 +148,7 @@ $el.removeClass(className);
 // Native
 el.classList.remove(className);
  ```
- - Has Class
+ - `Has Class`
  ```javascript
  // jQuery
 $el.hasClass(className);
@@ -151,7 +162,7 @@ if (el.classList)
 else
   new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
  ```
- - Toggle Class
+ - `Toggle Class`
  ```javascript
  // jQuery
 $el.toggleClass(className);
@@ -175,7 +186,7 @@ if (el.classList) {
 }
 ```
 # Width && Height
- - Window height
+ - `Window height`
  ```javascript
  // window height
 $(window).height();
@@ -186,7 +197,7 @@ window.document.documentElement.clientHeight;
 // 不含 scrollbar，与 jQuery 行为一致
 window.innerHeight;
  ```
- - Document height
+ - `Document height`
  ```javascript
  // jQuery
 $(document).height();
@@ -213,7 +224,7 @@ var rect = el.getBoundingClientRect();
   left: rect.left + document.body.scrollLeft
 }
  ```
- - Element height
+ - `Element height`
  ```javascript
  // jQuery
 $el.height();
@@ -237,7 +248,7 @@ el.getBoundingClientRect().height;
  ```
  - Position & Offset
 
-   - Position 获得匹配元素相对父元素的偏移
+   - `Position` 获得匹配元素相对父元素的偏移
    ```javascript
    // jQuery
     $el.position();
@@ -245,7 +256,7 @@ el.getBoundingClientRect().height;
     // Native
     { left: el.offsetLeft, top: el.offsetTop }
    ```
-    - Offset 获得匹配元素相对文档的偏移
+    - `Offset` 获得匹配元素相对文档的偏移
     ```javascript
         // jQuery
     $el.offset();
@@ -260,7 +271,7 @@ el.getBoundingClientRect().height;
       }
     }
     ```
- - Scroll Top 获取元素滚动条垂直位置
+ - `Scroll Top` 获取元素滚动条垂直位置
  ```javascript
  // jQuery
 $(window).scrollTop();
@@ -268,14 +279,14 @@ $(window).scrollTop();
 // Native
 (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
  ```
- - Outer Height
+ - `Outer Height`
  ```javascript
  // jQuery
  $(el).outerHeight();
  // IE8+
  el.offsetHeight
  ```
- - Outer Height With Margin
+ - `Outer Height With Margin`
  ```javascript
  // jQuery
  $(el).outerHeight(true);
@@ -292,8 +303,8 @@ $(window).scrollTop();
 outerHeight(el);
  ```
 # DOM 混合操作
- - Text
-     - Get Text 返回指定元素及其后代的文本内容。
+ - `Text`
+     - `Get Text` 返回指定元素及其后代的文本内容。
       ```javascript
             // jQuery
       $el.text();
@@ -309,7 +320,7 @@ outerHeight(el);
     // Native
     el.textContent = string;
       ```
- - Append 插入到子节点的末尾
+ - `Append` 插入到子节点的末尾
 ```javascript
 // jQuery
 $el.append("<div id='container'>hello</div>");
@@ -320,7 +331,7 @@ el.insertAdjacentHTML('beforeend', '<div id="container">Hello World</div>');
 // Native (Element)
 el.appendChild(newEl);
 ```
- - Prepend
+ - `Prepend`
  ```javascript
  // jQuery
 $el.prepend("<div id='container'>hello</div>");
@@ -331,7 +342,7 @@ el.insertAdjacentHTML('afterbegin', '<div id="container">Hello World</div>');
 // Native (Element)
 el.insertBefore(newEl, el.firstChild);
  ```
- - insertBefore 在选中元素前插入新节点
+ - `insertBefore` 在选中元素前插入新节点
  ```javascript
  // jQuery
 $newEl.insertBefore(queryString);
@@ -345,7 +356,7 @@ if (el.parentNode) {
   el.parentNode.insertBefore(newEl, el);
 }
  ```
-  - insertAfter 在选中元素后插入新节点
+  - `insertAfter` 在选中元素后插入新节点
   ```javascript
   // jQuery
 $newEl.insertAfter(queryString);
@@ -359,7 +370,7 @@ if (el.parentNode) {
   el.parentNode.insertBefore(newEl, el.nextSibling);
 }
   ```
-- is 如果匹配给定的选择器，返回true
+- `is` 如果匹配给定的选择器，返回`true`
 ```javascript
 // jQuery
 $el.is(selector);
@@ -375,7 +386,7 @@ var matches = function(el, selector) {
 
 matches(el, '.my-class');
 ```
-- wrap 把每个被选元素放置在指定的HTML结构中。
+- ` wrap` 把每个被选元素放置在指定的HTML结构中。
 ```javascript
 //jQuery
 $(".inner").wrap('<div class="wrapper"></div>');
@@ -389,7 +400,7 @@ Array.prototype.forEach.call(document.querySelector('.inner'), (el) => {
    wrapper.appendChild(el);
 });
 ```
-- unwrap  移除被选元素的父元素的DOM结构
+- `unwrap`  移除被选元素的父元素的DOM结构
 ```javascript
 // jQuery
 $('.inner').unwrap();
@@ -404,7 +415,7 @@ Array.prototype.forEach.call(document.querySelectorAll('.inner'), (el) => {
       }
 });
 ```
-- replaceWith 用指定的元素替换被选的元素
+- `replaceWith` 用指定的元素替换被选的元素
 ```javascript
 //jQuery
 $('.inner').replaceWith('<div class="outer"></div>');
@@ -417,7 +428,7 @@ Array.prototype.forEach.call(document.querySelectorAll('.inner'),(el) => {
   el.parentNode.removeChild(el);
 });
 ```
-- simple parse 解析 HTML/SVG/XML 字符串
+- `simple parse` 解析 HTML/SVG/XML 字符串
 ```javascript 
 // jQuery
 $(`<ol>
@@ -443,9 +454,9 @@ parse(`<ol>
 </ol>`);
 ```
 # AJAX
- Fetch API 是用于替换 XMLHttpRequest 处理 ajax 的新标准，Chrome 和 Firefox 均支持，旧浏览器可以使用 polyfills 提供支持。
+ `Fetch API` 是用于替换 `XMLHttpRequest` 处理 `ajax` 的新标准，`Chrome` 和 `Firefox` 均支持，旧浏览器可以使用 `polyfills` 提供支持。
 
-IE9+ 请使用 github/fetch，IE8+ 请使用 fetch-ie8，JSONP 请使用 fetch-jsonp。
+IE9+ 请使用 `github/fetch`，IE8+ 请使用 `fetch-ie8`，JSONP 请使用 `fetch-jsonp`。
 - 从服务器读取数据并替换匹配元素的内容。
 ```javascript
 // jQuery
@@ -457,7 +468,7 @@ fetch(url).then(data => data.text()).then(data => {
 }).then(completeCallback)
 ```
 # 基本工具类
-- isArray 检测参数是不是数组。
+- `isArray` 检测参数是不是数组。
 ```javascript
 // jQuery
 $.isArray(range);
@@ -474,7 +485,7 @@ $.isWindow(obj);
 function isWindow(obj) {
   return obj !== null && obj !== undefined && obj === obj.window;
 }
-- inArray在数组中搜索指定值并返回索引 (找不到则返回 -1)。
+- `inArray`在数组中搜索指定值并返回索引 (找不到则返回 -1)。
 ```javascript
 // jQuery
 $.inArray(item, array);
@@ -485,7 +496,7 @@ array.indexOf(item) > -1;
 // ES6-way
 array.includes(item);
 ```
-- isNumeric检测传入的参数是不是数字。 `Use typeof to decide the type or the type example for better accuracy.`
+- `isNumeric`检测传入的参数是不是数字。 `Use typeof to decide the type or the type example for better accuracy.`
 ```javascript
 // jQuery
 $.isNumeric(item);
@@ -495,7 +506,7 @@ function isNumeric(n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 }
 ```
-- isFunction 检测传入的参数是不是 JavaScript 函数对象。
+- `isFunction` 检测传入的参数是不是 JavaScript 函数对象。
 ```javascript
 // jQuery
 $.isFunction(item);
@@ -510,7 +521,7 @@ function isFunction(item) {
 }
 ```
 
-- isEmptyObject 检测对象是否为空 (包括不可枚举属性).
+- `isEmptyObject` 检测对象是否为空 (包括不可枚举属性).
 ```javascript
 // jQuery
 $.isEmptyObject(obj);
@@ -520,7 +531,7 @@ function isEmptyObject(obj) {
   return Object.keys(obj).length === 0;
 }
 ```
-- isPlainObject检测是不是扁平对象 (使用 “{}” 或 “new Object” 创建).
+- `isPlainObject`检测是不是扁平对象 (使用 “{}” 或 “new Object” 创建).
 ```javascript
 // jQuery
 $.isPlainObject(obj);
@@ -539,7 +550,7 @@ function isPlainObject(obj) {
   return true;
 }
 ```
-extend合并多个对象的内容到第一个对象。 object.assign 是 ES6 API，也可以使用 polyfill。
+- `extend` 合并多个对象的内容到第一个对象。 `object.assign` 是 ES6 API，也可以使用 polyfill。
 ```javascript
 // jQuery
 $.extend({}, defaultOpts, opts);
@@ -547,7 +558,7 @@ $.extend({}, defaultOpts, opts);
 // Native
 Object.assign({}, defaultOpts, opts);
 ```
-trim移除字符串头尾空白。
+- `trim` 移除字符串头尾空白。
 ```javascript
 // jQuery
 $.trim(string);
@@ -555,7 +566,7 @@ $.trim(string);
 // Native
 string.trim();
 ```
-map将数组或对象转化为包含新内容的数组。
+- `map` 将数组或对象转化为包含新内容的数组。
 ```javascript
 // jQuery
 $.map(array, (value, index) => {
@@ -565,7 +576,7 @@ $.map(array, (value, index) => {
 array.map((value, index) => {
 });
 ```
-each轮询函数，可用于平滑的轮询对象和数组。
+- `each` 轮询函数，可用于平滑的轮询对象和数组。
 ```javascript
 // jQuery
 $.each(array, (index, value) => {
@@ -581,7 +592,7 @@ Array.prototype.forEach.call(elements, function(el, i){
 
 });
 ```
-grep找到数组中符合过滤函数的元素。
+- `grep` 找到数组中符合过滤函数的元素。
 ```javascript
 // jQuery
 $.grep(array, (value, index) => {
@@ -594,7 +605,7 @@ array.filter((value, index) => {
 // ie9+
 Array.prototype.filter.call(document.querySelectorAll(selector), filterFn);
 ```
-type检测对象的 JavaScript [Class] 内部类型。
+- `type` 检测对象的 JavaScript [Class] 内部类型。
 ```javascript
 // jQuery
 $.type(obj);
@@ -607,7 +618,7 @@ function type(item) {
     .toLowerCase();
 }
 ```
-merge合并第二个数组内容到第一个数组。
+- `merge` 合并第二个数组内容到第一个数组。
 ```javascript
 // jQuery
 $.merge(array1, array2);
@@ -626,7 +637,7 @@ function merge(...args) {
   return Array.from(new Set([].concat(...args)))
 }
 ```
-now返回当前时间的数字呈现。
+- `now` 返回当前时间的数字呈现。
 ```javascript
 // jQuery
 $.now();
@@ -634,7 +645,7 @@ $.now();
 // Native
 Date.now();
 ```
-proxy传入函数并返回一个新函数，该函数绑定指定上下文。
+- `proxy` 传入函数并返回一个新函数，该函数绑定指定上下文。
 ```javascript
 // jQuery
 $.proxy(fn, context);
@@ -642,7 +653,7 @@ $.proxy(fn, context);
 // Native
 fn.bind(context);
 ```
-makeArray类数组对象转化为真正的 JavaScript 数组。
+- `makeArray` 类数组对象转化为真正的 `JavaScript` 数组。
 ```javascript
 // jQuery
 $.makeArray(arrayLike);
@@ -655,7 +666,7 @@ Array.from(arrayLike);
 ```
 # 包含
 
-- 检测 DOM 元素是不是其他 DOM 元素的后代.
+- 检测 `DOM` 元素是不是其他 `DOM` 元素的后代.
 ```javascript
 // jQuery
 $.contains(el, child);
@@ -663,7 +674,7 @@ $.contains(el, child);
 // Native
 el !== child && el.contains(child);
 ```
-- 全局执行 JavaScript 代码。
+- 全局执行 `JavaScript` 代码。
 ```javascript
 // jQuery
 $.globaleval(code);
@@ -681,7 +692,7 @@ eval(code);
 ```
 # 解析
 
-- parseHTML 解析字符串为 DOM 节点数组.
+- `parseHTML` 解析字符串为 `DOM` 节点数组.
 ```javascript
 // jQuery
 $.parseHTML(htmlString);
@@ -700,7 +711,7 @@ function parseHTML(string) {
   return context.body.children;
 }
 ```
-- parseJSON传入格式正确的 JSON 字符串并返回 JavaScript 值
+- `parseJSON` 传入格式正确的 `JSON` 字符串并返回 JavaScript 值
 ```javascript
 // jQuery
 $.parseJSON(str);
@@ -709,7 +720,7 @@ $.parseJSON(str);
 JSON.parse(str);
 ```
 # Animation
-- Toggle 显示或隐藏元素。
+- `Toggle` 显示或隐藏元素。
 ```javascript
 // jQuery
 $el.toggle();
@@ -721,7 +732,7 @@ if (el.ownerDocument.defaultView.getComputedStyle(el, null).display === 'none') 
   el.style.display = 'none';
 }
 ```
-- FadeIn & FadeOut
+- `FadeIn` & `FadeOut`
 ```javascript
 // jQuery
 $el.fadeIn(3000);
@@ -752,7 +763,7 @@ function fadeIn(el) {
 
 fadeIn(el);
 ```
-- FadeTo调整元素透明度。
+- `FadeTo` 调整元素透明度。
 ```javascript
 // jQuery
 $el.fadeTo('slow',0.15);
@@ -760,7 +771,7 @@ $el.fadeTo('slow',0.15);
 el.style.transition = 'opacity 3s'; // 假设 'slow' 等于 3 秒
 el.style.opacity = '0.15';
 ```
--  FadeToggle动画调整透明度用来显示或隐藏
+-  `FadeToggle` 动画调整透明度用来显示或隐藏
 ```javascript
 // jQuery
 $el.fadeToggle();
@@ -774,7 +785,7 @@ if (opacity === '1') {
   el.style.opacity = '1';
 }
 ```
-- SlideUp & SlideDown
+- `SlideUp` & `SlideDown`
 ```javascript
 // jQuery
 $el.slideUp();
@@ -788,7 +799,7 @@ el.style.height = '0px';
 // slideDown
 el.style.height = originHeight;
 ```
-- SlideToggle滑动切换显示或隐藏
+- `SlideToggle` 滑动切换显示或隐藏
 ```javascript
 // jQuery
 $el.slideToggle();
@@ -804,7 +815,7 @@ else {
  el.style.height = '0px';
 }
 ```
-- Animate执行一系列 CSS 属性动画。
+- `Animate` 执行一系列 CSS 属性动画。
 ```javascript
 // jQuery
 $el.animate({ params }, speed);
