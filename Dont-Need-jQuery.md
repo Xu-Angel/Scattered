@@ -1,15 +1,15 @@
 ## 目录
 
-1. [查找元素&属性获取](#查找元素&属性获取)
-1. [Width&&Height](#Width&&Height)
+1. [操作DOM](#操作DOM)
+1. [操作宽高](#操作宽高)
 1. [DOM混合操作](#DOM混合操作)
-1. [AJAX](#AJAX)
+1. [请求](#请求)
 1. [基本工具类](#基本工具类)
 1. [包含](#包含)
 1. [解析](#解析)
-1. [Animation](#Animation)
+1. [动画](#动画)
 
-## 查找元素&属性获取
+## 操作DOM
  - 兄弟元素
   ```javascript
   // jQuery
@@ -187,7 +187,7 @@ if (el.classList) {
 ```
 **[⬆ 回到顶部](#目录)**
 
-## Width&&Height
+## 操作宽高
  - `Window height`
  ```javascript
  // window height
@@ -459,7 +459,7 @@ parse(`<ol>
 ```
 **[⬆ 回到顶部](#目录)**
 
-## AJAX
+## 请求
  `Fetch API` 是用于替换 `XMLHttpRequest` 处理 `ajax` 的新标准，`Chrome` 和 `Firefox` 均支持，旧浏览器可以使用 `polyfills` 提供支持。
 
 IE9+ 请使用 `github/fetch`，IE8+ 请使用 `fetch-ie8`，JSONP 请使用 `fetch-jsonp`。
@@ -733,7 +733,7 @@ JSON.parse(str);
 ```
 **[⬆ 回到顶部](#目录)**
 
-## Animation
+## 动画
 - `Toggle` 显示或隐藏元素。
 ```javascript
 // jQuery
