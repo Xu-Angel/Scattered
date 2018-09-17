@@ -1,13 +1,13 @@
 #### 目录
 
-1. [查找元素&属性获取](##查找元素&属性获取)
-1. [宽高位置操作](##Width&&Height)
-1. [DOM混合操作](##DOM混合操作)
-1. [AJAX](##AJAX)
-1. [基本工具类](##基本工具类)
-1. [包含](##包含)
-1. [解析](##解析)
-1. [Animation](##Animation)
+1. [查找元素&属性获取](#查找元素&属性获取)
+1. [Width&&Height](#Width&&Height)
+1. [DOM混合操作](#DOM混合操作)
+1. [AJAX](#AJAX)
+1. [基本工具类](#基本工具类)
+1. [包含](#包含)
+1. [解析](#解析)
+1. [Animation](#Animation)
 
 ## 查找元素&属性获取
  - 兄弟元素
@@ -185,7 +185,7 @@ if (el.classList) {
   el.className = classes.join(' ');
 }
 ```
-## Width && Height
+## Width&&Height
  - `Window height`
  ```javascript
  // window height
