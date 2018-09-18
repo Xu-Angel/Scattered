@@ -493,7 +493,8 @@ $.isWindow(obj);
 function isWindow(obj) {
   return obj !== null && obj !== undefined && obj === obj.window;
 }
-- `inArray`在数组中搜索指定值并返回索引 (找不到则返回 -1)。
+```
+- `inArray`在数组中搜索指定值并返回索引(找不到则返回-1)
 ```javascript
 // jQuery
 $.inArray(item, array);
