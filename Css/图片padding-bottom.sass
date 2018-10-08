@@ -1,0 +1,28 @@
+避免页面内容闪动
+ https://w3ctrain.com/2016/09/05/avoid-content-jump/ 
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  padding-bottom: ($height / $width) * 100%;
+  img,
+  video,
+  iframe,
+  object,
+  embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+
+.ratio-sixteen-nine {
+  @include aspect-ratio(1600, 900);
+}
+
+
+<figure class="ratio-sixteen-nine">
+  <img src="waterfall.jpg" alt="Waterfall in Iceland">
+</figure>

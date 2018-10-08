@@ -23,7 +23,7 @@
 ## typeof
 
 - 操作符
-`typeof`是个操作符，和 `+ - * /`属于同一类，所以正常的写法是：
+  `typeof`是个操作符，和 `+ - * /`属于同一类，所以正常的写法是：
 ```js
 typeof msg
 ```
@@ -314,15 +314,15 @@ Object.getOwnPropertyDescriptor({x:1},'x') // ==>{value: 1, writable: true, enum
 - 使用原型创建对象：Object.create()
 
 ```js
-    var p={x:1}
-    var o=Object.create(p)
-    p.isPrototypeOf(o)  //==>true
-    Object.prototype.isPrototypeOf(o)  //==>true
+		var p={x:1}
+		var o=Object.create(p)
+		p.isPrototypeOf(o)  //==>true
+		Object.prototype.isPrototypeOf(o)  //==>true
 ```
 - 使用默认的 `toString()`方法可以查询类属性：
 ```js
-    var s={}
-    console.log(s.toString()) // ==> [object Object]
+		var s={}
+		console.log(s.toString()) // ==> [object Object]
 ```
 - `Function.call()`
 
@@ -389,13 +389,13 @@ var o=Object.seal(Object.create(Object.freeze({x:1}),{y:{value:2,writable:false}
 第二个可选，为函数操作初始值，`reduceRight()`是从右向左进行操作。
 
 ## 作为数组的字符串 
-  字符串的行为类似于只读的数组，除了charAt()的方法访问单个字符意外，还可以使用方括号：
+	字符串的行为类似于只读的数组，除了charAt()的方法访问单个字符意外，还可以使用方括号：
 ```js
 var a='test'
 a.charAt(0)  //==>'t'
 a[0]  //==>'t'
 ```
-  一些通用的数组方法也可以应用到字符串上,只不过需要间接地调用 `Function.call()`方法来模拟实现：
+	一些通用的数组方法也可以应用到字符串上,只不过需要间接地调用 `Function.call()`方法来模拟实现：
 ```js
 	var s='Javascript'
 	Array.prototype.join.call(s,'-')  //==>"J-a-v-a-s-c-r-i-p-t"
@@ -476,7 +476,7 @@ function outer(){
 	var b=function{
 		return b.count++
 	}
-    b() //==> Uncaught SyntaxError: Unexpected token
+		b() //==> Uncaught SyntaxError: Unexpected token
 ```
 
 ## call()  apply()
@@ -538,7 +538,7 @@ add=function(num){
 - `call()`
 
 二者的区别仅在于接受参数的方式不同
-    
+		
 ## 构造函数
 
 ```js
@@ -613,7 +613,7 @@ o.constructor===F       //==>true，constructor属性指代这个类
 
 - replace()
 	第一个参数是一个正则表达式或者字符串，
-  第二个参数是要进行替换的字符串，或者也可以是一个函数，方便动态匹配。
+	第二个参数是要进行替换的字符串，或者也可以是一个函数，方便动态匹配。
 
 - match()
 	唯一参数就是一个正则表达式，如果不是一个正则表达式，则首先会通过 `RegExp`构造函数将之转换为正则表达式。
@@ -621,8 +621,8 @@ o.constructor===F       //==>true，constructor属性指代这个类
 	数组的前面一个或多个元素就是匹配的字符串，余下的元素则是正则表达式中用圆括号括起来的子表达式
 
 - RegExp() 对象
-  RegExp()对象带有两个字符串参数，第一个参数包含正则表达式的主体部分，第二个参数可选，提供修饰符(`g i m`)，同时支持三个方法和一些属性。
-  一般不会直接使用此 对象创建正则，而在需要动态创建正则表达式（无法将正则表达式写死）的时候很有用，例如，如果待检索的字符串是由用户输入的。
+	RegExp()对象带有两个字符串参数，第一个参数包含正则表达式的主体部分，第二个参数可选，提供修饰符(`g i m`)，同时支持三个方法和一些属性。
+	一般不会直接使用此 对象创建正则，而在需要动态创建正则表达式（无法将正则表达式写死）的时候很有用，例如，如果待检索的字符串是由用户输入的。
 	```js
 	var pattern='k'
 	var r = new RegExp(pattern)
@@ -639,7 +639,7 @@ o.constructor===F       //==>true，constructor属性指代这个类
 	```
 
 - 解构对象
-  需要注意表达式左侧部分的键值对顺序：
+	需要注意表达式左侧部分的键值对顺序：
 	```js
 	let transparent={r:224,g:123,b:223,a:0.8}
 	let {r:red,g:green,b:blue}=transparent
@@ -668,7 +668,7 @@ o.constructor===F       //==>true，constructor属性指代这个类
 
 ```html
 <!--if IE 6>
-    It will only be display in IE6
+		It will only be display in IE6
 <![endif]-->
 ```
 
@@ -789,9 +789,9 @@ console.log(y)    //2
 
 ```js
 here: for(var i=0;i<10;i++){
-  for(var j=0;j<10;j++){
-    if(j>5) break here;
-  }
+	for(var j=0;j<10;j++){
+		if(j>5) break here;
+	}
 }
 ```
 
@@ -834,8 +834,8 @@ o.propertyIsEnumerable('toString')  //=>false：o继承了Object的toString属�
 ```js
 function Person() {}
 Person.prototype = {
-  name: 'Join',
-  getName: function () { return this.name }
+	name: 'Join',
+	getName: function () { return this.name }
 }
 ```
 
@@ -852,9 +852,9 @@ console.log(p1.constructor === Object)   // => true
 所以需要手动引用回去：
 ```js
 Person.prototype = {
-  constructor: Person,
-  name: 'Join',
-  getName: function () { return this.name }
+	constructor: Person,
+	name: 'Join',
+	getName: function () { return this.name }
 }
 ```
 
@@ -961,15 +961,15 @@ fn1()
 ```js
 var btn = document.querySelector('.button');
 var ev = new Event('test', {
-    // 以下属性都是内置的
-    bubbles: true,
-    cancelable: true
+		// 以下属性都是内置的
+		bubbles: true,
+		cancelable: true
 });
 
 btn.addEventListener('test', function(e){
-    console.log(e.bubbles);         // true
-    console.log(e.cancelable);      // true
-    console.log(e.detail);          // undefined
+		console.log(e.bubbles);         // true
+		console.log(e.cancelable);      // true
+		console.log(e.detail);          // undefined
 }, false);  // 事件在冒泡阶段执行，默认就为false
 
 btn.dispatchEvent(ev);
@@ -980,16 +980,16 @@ btn.dispatchEvent(ev);
 ```js
 var btn = document.querySelector('.button');
 var ev = new CustomEvent('test', {
-    // 以下属性都是内置的
-    bubbles: true,
-    cancelable: true,
-    detail:'good'
+		// 以下属性都是内置的
+		bubbles: true,
+		cancelable: true,
+		detail:'good'
 });
 
 btn.addEventListener('test', function(e){
-    console.log(e.bubbles);         // true
-    console.log(e.cancelable);      // true
-    console.log(e.detail);          // good
+		console.log(e.bubbles);         // true
+		console.log(e.cancelable);      // true
+		console.log(e.detail);          // good
 }, false);  // 事件在冒泡阶段执行，默认就为false
 
 btn.dispatchEvent(ev);
