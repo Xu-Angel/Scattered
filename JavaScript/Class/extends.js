@@ -3,7 +3,7 @@ class Point {}
 class DocPoint extends Point {}
 const doc = new DocPoint()
 
-// DocPoint继承了Point类的所有属性和方法。但是由于没有部署任何代码，所以这两个类完全一样，等于复制了一个Point类。
+// DocPoint 继承了 Point类的所有属性和方法。但是由于没有部署任何代码，所以这两个类完全一样，等于复制了一个Point类。
 
 // 进行一些改造
 class Point {
@@ -43,7 +43,7 @@ const doc = new DocPoint() // ReferenceError: Must call super constructor in der
 //todo 另一个需要注意的地方是，在子类的构造函数中，只有调用super之后，才可以使用this关键字，否则会报错。这是因为子类实例的构建，基于父类实例，只有super方法才能调用父类实例。
 class Point {
   constructor(x, y) {
-    this.x = this.x
+    this.x = x
     this.y = y
   }
 }

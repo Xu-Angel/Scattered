@@ -17,5 +17,5 @@ class Point {
 }
 
 console.log(new Point() instanceof Point)
-// !类必须使用new调用，否则会报错。这是它跟普通构造函数的一个主要区别，后者不用new也可以执行。
+// !类必须使用new调用，否则会报错。这是它跟普通构造函数的一个主要区别，后者不用new也可以执行。 ES5内置函数可以不用new， 如 Date
 // TypeError: Class constructor Point cannot be invoked without 'new'
