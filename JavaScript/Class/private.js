@@ -47,7 +47,7 @@ class Widget {
     this.hello = 'hello'
   }
 }
-// bar和snaf都是Symbol值，导致第三方无法获取到它们，因此达到了私有方法和私有属性的效果。
+// bar 和 snaf 都是 Symbol值，导致第三方无法获取到它们，因此达到了私有方法和私有属性的效果。
 // Object.getOwnPropertyNames(Point.prototype)
 console.log(Object.getOwnPropertyNames(Widget.prototype)); //[ 'constructor', 'foo', 'hello' ]
 

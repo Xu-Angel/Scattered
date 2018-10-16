@@ -72,4 +72,5 @@ for (let x of new Foo('hello', 'world')) {
 }
 // hello
 // world
-//上面代码中，Foo类的Symbol.iterator方法前有一个星号，表示该方法是一个 Generator 函数。Symbol.iterator方法返回一个Foo类的默认遍历器，//for...of循环会自动调用这个遍历器。
+//上面代码中，Foo类的 Symbol.iterator方法前有一个星号，表示该方法是一个 Generator 函数。Symbol.iterator 方法返回一个Foo 类的默认遍历器，//for...of循环会自动调用这个遍历器。
+

@@ -12,7 +12,7 @@ Foo.classMethod()  // hello
 const foo = new Foo()
 foo.classMethod() // foo.classMethod is not a function
 
-// 上面代码中，Foo类的classMethod方法前有static关键字，表明该方法是一个静态方法，可以直接在Foo类上调用（Foo.classMethod()），而不是在Foo类的实例上调用。如果在实例上调用静态方法，会抛出一个错误，表示不存在该方法。
+// 上面代码中，Foo类的 classMethod方法前有 static关键字，表明该方法是一个静态方法，可以直接在Foo类上调用（Foo.classMethod()），而不是在Foo类的实例上调用。如果在实例上调用静态方法，会抛出一个错误，表示不存在该方法。
 
 // !，如果静态方法包含this关键字，这个this指的是类，而不是实例。
 class Foo {
@@ -28,7 +28,7 @@ class Foo {
 }
 
 Foo.bar() // class baz
-// 静态方法bar调用了this.baz，这里的this指的是Foo类，而不是Foo的实例，等同于调用Foo.baz。另外，从这个例子还可以看出，静态方法可以与非静态方法重名。
+// 静态方法 bar调用了 this.baz，这里的 this指的是 Foo类，而不是Foo的实例，等同于调用Foo.baz。另外，从这个例子还可以看出，静态方法可以与非静态方法重名。
 
 // !父类静态方法可以被子类继承
 
@@ -67,9 +67,9 @@ class Foo {
 
 Foo.prop = 1;
 Foo.prop // 1
-上面的写法为Foo类定义了一个静态属性prop。
+上面的写法为 Foo类定义了一个静态属性 prop。
 
-目前，只有这种写法可行，因为 ES6 明确规定，Class 内部只有静态方法，没有静态属性。
+// !目前，只有这种写法可行，因为 ES6 明确规定，Class 内部只有静态方法，没有静态属性。
 
 // 以下两种写法都无效
 class Foo {

@@ -1,5 +1,5 @@
 //! 与 ES5 一样，实例的属性除非显式定义在其本身（即定义在this对象上），否则都是定义在原型上（即定义在class上）
-/* 上面代码中，x和y都是实例对象point自身的属性（因为定义在this变量上），所以hasOwnProperty方法返回true，而toString是原型对象的属性（因为定义在Point类上），所以hasOwnProperty方法返回false。这些都与 ES5 的行为保持一致。
+/* 上面代码中，x 和 y都是实例对象 point自身的属性（因为定义在this变量上），所以hasOwnProperty 方法返回true，而toString是原型对象的属性（因为定义在Point类上），所以 hasOwnProperty方法返回 false。这些都与 ES5 的行为保持一致。
 
 与 ES5 一样，类的所有实例共享一个原型对象。 */
 class Point {
@@ -22,7 +22,7 @@ console.log(
   point.__proto__.hasOwnProperty('toString'), //t
   point.__proto__ === point2.__proto__ //t
 )
-/* 上面代码中，point和point2都是Point的实例，它们的原型都是Point.prototype，所以__proto__属性是相等的。
+/* 上面代码中，point 和 point2都是Point的实例，它们的原型都是Point.prototype，所以__proto__属性是相等的。
 
 !这也意味着，可以通过实例的__proto__属性为“类”添加方法。
 
@@ -37,6 +37,6 @@ point2.printName() // __proto__
 const point3 = new Point()
 point3.printName() // __proto__
 
-/* 上面代码在point的原型上添加了一个printName方法，由于point的原型就是point2的原型，因此point也可以调用这个方法。而且，此后新建的实例point3也可以调用这个方法。
+/* 上面代码在 point 的原型上添加了一个 printName方法，由于 point 的原型就是 point2的原型，因此point也可以调用这个方法。而且，此后新建的实例point3也可以调用这个方法。
 !这意味着，使用实例的__proto__属性改写原型，必须相当谨慎，不推荐使用，因为这会改变“类”的原始定义，影响到所有实例。
  */
