@@ -14,7 +14,7 @@ function foo() {}
 function foo() {
 }
  
-var counter;
+var counter;  // 声明但未赋值
 var add;
 
 counter = 0;

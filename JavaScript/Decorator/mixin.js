@@ -1,5 +1,6 @@
 // 在修饰器的基础上，可以实现Mixin模式。所谓Mixin模式，就是对象继承的一种替代方案，中文译为“混入”（mix in），意为在一个对象之中混入另外一个对象的方法。
-// 例子混入方法
+
+// 类方式实现:
 
 const Foo = {
   foo () {
@@ -9,7 +10,7 @@ const Foo = {
 
 class MyClass {}
 
-Object.assign(MyClass.prototype, Foo)
+Object.assign(MyClass.prototype, Foo)  //两类入堆合并
 
 let obj = new MyClass()
 obj.foo() // 'foo'
@@ -31,6 +32,7 @@ const Foo = {
 @mixins(Foo)
 class MyClass {}
 
+//TODO:
 // 上述两种实现方式会改变prototype，可通过类继承实现，不改变prototype
 
 class MyClass extends MyBaseClass {
