@@ -545,7 +545,7 @@ export someIdentifier from "someModule";
 export someIdentifier, { namedIdentifier } from "someModule";
 ```
 
-//TODO
+//TODO:
 
 # 模块的继承
 
@@ -587,7 +587,7 @@ console.log(exp(math.e));
 
 上面代码中的`import exp`表示，将`circleplus`模块的默认方法加载为`exp`方法。
 
-// TODO:
+// TODO:--->>>
 # 跨模块常量
 
 本书介绍`const`命令的时候说过，`const`声明的常量只在当前代码块有效。如果想设置跨模块的常量（即跨多个文件），或者说一个值要被多个模块共享，可以采用下面的写法。
@@ -637,6 +637,7 @@ export {users} from './users';
 // script.js
 import {db, users} from './constants/index';
 ```
+
 //FIXME:
 # import()
 
