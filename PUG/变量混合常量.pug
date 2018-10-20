@@ -1,0 +1,12 @@
+each item in result.data
+  .course-li
+    a(href="")
+      .course-sup
+        img(src=item.thumb_url)
+      .course-sub
+        h1=item.goods_name
+        .sub
+          .course-count
+            figure
+            span #{item.pay_num}人已购买
+          .course-price ￥#{item.goods_price}元
