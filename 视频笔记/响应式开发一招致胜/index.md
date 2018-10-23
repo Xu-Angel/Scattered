@@ -3,3 +3,17 @@
 
 
 picturefill(响应式图片)   // owlcarousel2  (jQ轻量轮播)
+
+
+browserhacks.com   // hack网站  ---   pollfill     shiv： eg html5shiv  ||  Respond || Modernizr: 检测兼容性  -->全面兼容
+can i use?
+
+
+----->
+
+同步调试： BroswerSync
+
+----->
+9th
+
+压缩文件： javascript-minifier
