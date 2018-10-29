@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .css-not-selector-shortcut {
+  display: flex;
+}
+ul {
+  padding-left: 0;
+}
+li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 0.75rem;
+}
+li:not(:last-child) {
+  border-right: 2px solid #d2d5e4;
+}
+span {
+  padding: 0 1rem;
+  transition: opacity 0.2s;
+}
+.sibling-fade:hover span:not(:hover) {
+  opacity: 0.5;
+}
+  </style>
+</head>
+<body>
+  <ul class="css-not-selector-shortcut">
+    <li>One</li>
+    <li>Two</li>
+    <li>Three</li>
+    <li>Four</li>
+  </ul>
+  <div class="sibling-fade">
+    <span>Item 1</span>
+    <span>Item 2</span>
+    <span>Item 3</span>
+    <span>Item 4</span>
+    <span>Item 5</span>
+    <span>Item 6</span>
+  </div>
+</body>
+</html>

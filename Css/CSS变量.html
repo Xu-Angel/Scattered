@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  :root {
+    --some-color: red;
+  --some-keyword: italic;
+  --some-size: 1.25em;
+  --some-complex-value: 1px 1px 2px whitesmoke, 0 0 1em slategray, 0 0 0.2em slategray;
+  color: var(--some-color);
+  /* Place variables within here to use the variables globally. */
+}
+.custom-variables {
+  --some-color: #da7800;
+  --some-keyword: italic;
+  --some-size: 1.25em;
+  --some-complex-value: 1px 1px 2px whitesmoke, 0 0 1em slategray, 0 0 0.2em slategray;
+  color: var(--some-color);
+  font-size: var(--some-size);
+  font-style: var(--some-keyword);
+  text-shadow: var(--some-complex-value);
+}
+  </style>
+</head>
+<body>
+  <p class="custom-variables">CSS is awesome!</p>
+</body>
+</html>

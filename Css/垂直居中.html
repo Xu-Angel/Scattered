@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .grid-centering {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+}
+.parent {
+  border: 1px solid #333;
+  height: 250px;
+  position: relative;
+  width: 250px;
+}
+.child {
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+  </style>
+</head>
+<body>
+  <div class="grid-centering">
+    <div class="child">Centered content.</div>
+  </div>
+  <div class="parent">
+    <div class="child">Centered content</div>
+  </div>
+</body>
+</html>
