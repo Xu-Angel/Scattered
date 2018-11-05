@@ -10,7 +10,7 @@ const Foo = {
 
 class MyClass {}
 
-Object.assign(MyClass.prototype, Foo)  //两类入堆合并
+Object.assign(MyClass.prototype, Foo)  //两类入堆合并(可被枚举 的属性)
 
 let obj = new MyClass()
 obj.foo() // 'foo'
