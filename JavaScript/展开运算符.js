@@ -30,3 +30,11 @@ const { a, b, ...z } = { a: 1, b: 2, c: 3, d: 4 };
 console.log(a) // 1
 console.log(b) // 2
 console.log(z) // { c: 3, d: 4 }
+
+// 扩展运算符（...）也会调用默认的 Iterator 接口。
+
+	// 例一
+	var str = 'hello';
+	[...str] //  ['h','e','l','l','o']
+console.log([...`${'123.s52df'}`])  // [ '1', '2', '3', '.', 's', '5', '2', 'd', 'f' ]
+console.log([...`${123}`])  // [ '1', '2', '3' ]
