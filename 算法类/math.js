@@ -95,3 +95,16 @@ isEven(3) // false
 /* 是否可以被整除 */
 const isDivisible = (dividend, divisor) => dividend % divisor === 0;
 isDivisible(6, 3); // true
+
+/* 字符串置换可能性 */
+const stringPermutations = str => {
+  if (str.length <= 2) return str.length === 2 ? [str, str[1] + str[0]] : [str];
+  return str
+    .split('')
+    .reduce(
+      (acc, letter, i) =>
+        acc.concat(stringPermutations(str.slice(0, i) + str.slice(i + 1)).map(val => letter + val)),
+      []
+    );
+};
+stringPermutations('abc'); // ['abc','acb','bac','bca','cab','cba']
