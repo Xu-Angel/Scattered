@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>keyEvent</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 100%;
+      }
+      #content {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 95%;
+        margin: auto;
+      }
+      .item {
+        width: 18%;
+        height: 200px;
+        background-color: rgb(184, 176, 255);
+        margin: 10px 0;
+      }
+      .item.focus {
+        outline: 4px solid blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <div class="item focus"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+      <div class="item"></div>
+    </div>
+    <script src="../js/jquery.js"></script>
+    <script src="./keyEvent.js"></script>
+    <script>
+      focusArea = 'content';
+      focusIndex = 0;
+      $(document).keydown(function(e) {
+        CORE.keyEvents(e, 'content', 5, [
+          { code: 'LEFT' },
+          { code: 'RIGHT' },
+          { code: 'UP' },
+          { code: 'DOWN' },
+          { code: 'ENTER', callback: enterBlock }
+        ]);
+      });
+      function enterBlock() {
+        console.log('enter block');
+      }
+    </script>
+  </body>
+</html>
