@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .bird {
+    width: 300px; height: 232px;
+    background: url(./piece-bird.png) no-repeat;
+    background-size: contain;
+    /* 动画 */
+    animation: pulse 5s linear infinite;
+}
+@keyframes pulse {
+    from {
+        filter: hue-rotate(0);
+    }
+    to {
+        filter: hue-rotate(360deg);
+    }
+}
+  </style>
+</head>
+<body>
+<p>CSS hue-rotate滤镜改变图片颜色动效实例页面</p>
+<div class="bird"></div>
+</body>
+</html>
