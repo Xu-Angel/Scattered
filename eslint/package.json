@@ -1,0 +1,49 @@
+{
+  "name": "eslint-config-mingelz",
+  "version": "2.2.0",
+  "description": "A shared ESLint configuration with Chinese comments. 一份带有完整中文注释的 ESLint 规则。",
+  "keywords": [
+    "eslint",
+    "config",
+    "eslintconfig",
+    "eslint-config",
+    "linting",
+    "linter",
+    "linter-config",
+    "javascript",
+    "styleguide",
+    "style-guide",
+    "chinese",
+    "mandarin"
+  ],
+  "homepage": "https://github.com/mingelz/eslint-config-mingelz",
+  "bugs": {
+    "url": "https://github.com/mingelz/eslint-config-mingelz/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "mingelz",
+    "email": "mingelz@gmail.com"
+  },
+  "files": [
+    "lib",
+    "rules"
+  ],
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mingelz/eslint-config-mingelz.git"
+  },
+  "scripts": {
+    "lint": "NODE_ENV=production eslint --fix --report-unused-disable-directives index.js lib/ rules/"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0"
+  },
+  "peerDependencies": {
+    "eslint": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=6.14.0"
+  }
+}
