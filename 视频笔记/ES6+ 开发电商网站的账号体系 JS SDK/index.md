@@ -22,3 +22,16 @@ fetch-mock
 symbol  
 
 需要 New class 的私有方法  不可被循环getOwnPropertySymbol枚举，使用...
+
+
+---->
+8 个人信息模板渲染 unicode 省市级三联插件
+
+---->
+9 支付方式
+
+---->
+10 账号设置模块
+
+---->
+11 密码找回
