@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .textShadowBasic{
+  color:red;
+}
+.textShadowBasic:hover{
+  text-shadow:0 0 0 green;
+}
+.textShadowBasicX{
+  color:green;
+}
+.textShadowBasicX:hover{
+  text-shadow:10px 0 0 red;
+}
+.textShadowBasicY{
+  color:gray;
+}
+.textShadowBasicY:hover{
+  text-shadow: 0 10px 0 pink;
+}
+.textShadowBasicBlur{
+  color:pink;
+}
+.textShadowBasicBlur:hover{
+  text-shadow: 10px 10px 2px gray;
+}
+.textShadowMutiple{
+  color:blue;
+}
+.textShadowMutiple:hover{
+  text-shadow: 20px 20px 2px red,
+           10px 10px 2px green;
+}
+.textShadowShine{
+  width:200px;
+  text-align:center;
+  color:white;
+  padding:20px;
+  background:#333;
+}
+.textShadowShine:hover{
+  text-shadow: 0 0 5px white,
+           0 0 10px white,
+           0 0 18px pink,
+           0 0 20px pink;
+}
+.textShadowChange{
+  width:200px;
+  text-align:center;
+  color:white;
+  padding:20px;
+  background:#333;
+  -webkit-animation: bilingbiling 2s ease infinite alternate;
+  animation: bilingbiling 2s ease infinite alternate;
+}
+
+@keyframes bilingbiling {
+  from {
+  text-shadow: 0 0 1px white,
+          0 0 2px white,
+          0 0 4px pink,
+          0 0 8px pink;
+  }
+  20%{
+  text-shadow: 0 0 5px white,
+          0 0 10px white,
+          0 0 18px pink,
+          0 0 20px pink;
+  }
+  40%{
+  text-shadow: 0 0 1px white,
+          0 0 2px white,
+          0 0 4px blue,
+          0 0 8px blue;
+  }
+  60%{
+  text-shadow: 0 0 5px white,
+          0 0 10px white,
+          0 0 18px blue,
+          0 0 20px blue;
+  }
+  80%{
+  text-shadow: 0 0 1px white,
+          0 0 2px white,
+          0 0 4px red,
+          0 0 8px red;
+  }
+  to {
+  text-shadow: 0 0 5px white,
+          0 0 10px white,
+          0 0 18px red,
+          0 0 20px red;
+  }
+}
+  </style>
+</head>
+<body>
+  <p class="textShadowBasic">textShadowBasic</p>
+  <p class="textShadowBasicX">水平偏移</p>
+  <p class="textShadowBasicY">垂直偏移</p>
+  <p class="textShadowBasicBlur">巴拉巴拉变模糊</p>
+  <p class="textShadowMutiple">多层渐变</p>
+  
+  <p class="textShadowShine">发光特效</p>
+  
+  <p class="textShadowChange">WELCOME~~</p>
+</body>
+</html>
