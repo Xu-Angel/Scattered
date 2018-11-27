@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+  <style>
+  .scroll-style {
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: #e5e5e5;    
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #b7b7b7;
+      border-radius: 3px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #a1a1a1;
+    }
+    &::-webkit-scrollbar-thumb:active {
+      background-color: #a1a1a1;
+    }
+    &::-webkit-scrollbar-track {
+      box-shadow: 0 0 0px #808080 inset;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div>
+      <textarea ref="mdEditor" @scroll="scroll('mdEditor', $event)" class="post-markdown-editor scroll-style" v-model="mdText"></textarea>
+      <div v-if="editorModeFlag" ref="mdPreview"  @scroll="scroll('mdPreview', $event)" class="markdown-body post-markdown-preview scroll-style" v-html="markdownText"></div>
+  </div>
+  <script>
+    //TODO
+     // 让两边滚动条移动相同比例的距离
+     scroll(who: string ,e: any) {
+      // 防止两个滚动条相互调用
+      if (who != this.tirgger || !this.editorModeFlag) {
+        this.tirgger = who
+        return
+      }
+      const [target, mdEditor, mdPreview] = [e.target, this.$refs.mdEditor, this.$refs.mdPreview]
+      const otherScroll: any = target == mdEditor ? mdPreview : mdEditor
+      // 当前滚动条移动的比例
+      let proporation = target.scrollTop / (target.scrollHeight - target.clientHeight)
+      // 另一条滚动条需要移动的距离
+      otherScroll.scrollTop = (otherScroll.scrollHeight - otherScroll.clientHeight) * proporation
+    }
+  </script>
+</body>
+</html>
