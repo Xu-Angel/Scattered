@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3D立方体</title>
+  <link rel="stylesheet" href="cude.css">
+  <style>
+  .box {
+    position: absolute;
+    top: 40%;
+    left: 500px;
+    margin-top: -150px;
+    -webkit-transition: transform .6s;
+    transition: transform .6s;
+}
+
+.dice {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    margin: 100px auto;
+    font-family: 'font';
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transform: rotateX(-30deg) rotateY(-80deg);
+    transform-origin: 50% 50% 0;
+    -webkit-transform-origin: 50% 50% 0;
+    -webkit-animation: rotate 20s infinite;
+    animation: rotate 20s infinite;
+}
+
+.face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: #666;
+    opacity: 0.8;
+    font-size: 60px;
+    text-align: center;
+    line-height: 200px;
+    font-weight: bold;
+    color: #fff;
+    border: 1px solid #fff;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.face img {
+    width: 100%;
+    height: 100%;
+}
+
+.front {
+    transform: rotateY(0) translateZ(100px);
+}
+
+.back {
+    transform: translateZ(-100px) rotateY(180deg);
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(100px);
+}
+
+.right {
+    transform: rotateY(90deg) translateZ(100px);
+}
+
+.top {
+    transform: rotateX(90deg) translateZ(100px);
+}
+
+.bottom {
+    transform: rotateX(90deg) translateZ(-100px);
+}
+
+.dice:hover .front {
+    transform: rotateY(0) translateZ(150px);
+}
+
+.dice:hover .back {
+    transform: translateZ(-150px) rotateY(180deg);
+}
+
+.dice:hover .left {
+    transform: rotateY(-90deg) translateZ(150px);
+}
+
+.dice:hover .right {
+    transform: rotateY(90deg) translateZ(150px);
+}
+
+.dice:hover .top {
+    transform: rotateX(90deg) translateZ(150px);
+}
+
+.dice:hover .bottom {
+    transform: rotateX(90deg) translateZ(-150px);
+}
+
+@-webkit-keyframes rotate {
+    from {
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+
+.face-in {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+}
+
+.face-in img {
+    width: 100px;
+    height: 100px;
+}
+
+.front-in {
+    transform: rotateY(0deg) translateZ(50px);
+}
+
+.back-in {
+    transform: rotateY(180deg) translateZ(50px);
+}
+
+.left-in {
+    transform: rotateY(-90deg) translateZ(50px);
+}
+
+.right-in {
+    transform: rotateY(90deg) translateZ(50px);
+}
+
+.top-in {
+    transform: rotateX(90deg) translateZ(-50px);
+}
+
+.bottom-in {
+    transform: rotateX(-90deg) translateZ(-50px);
+}
+  
+  </style>
+</head>
+<body>
+	<div class="box">
+
+		<!-- 骰子外部 -->
+		<div class="dice">
+			<div class="face front">
+				<img src="http://photo.ssyer.com/user//20170827/order/51ca8f4cf57fef490ffa9f8f9ea524115571water1126562jpg.jpg" alt="" />
+			</div>
+			<div class="face left">
+				<img src="http://photo.ssyer.com/user//20170827/order/51ca8f4cf57fef490ffa9f8f9ea524115571water1126562jpg.jpg" alt="" />
+			</div>
+			<div class="face right">
+				<img src="http://photo.ssyer.com/user//20170827/order/51ca8f4cf57fef490ffa9f8f9ea524115571water1126562jpg.jpg" alt="" />
+			</div>
+			<div class="face bottom">
+				<img src="http://photo.ssyer.com/user//20170827/order/51ca8f4cf57fef490ffa9f8f9ea524115571water1126562jpg.jpg" alt="" />
+			</div>
+			<div class="face top">
+				<img src="http://photo.ssyer.com/user//20170827/order/51ca8f4cf57fef490ffa9f8f9ea524115571water1126562jpg.jpg" alt="" />
+			</div>
+			<div class="face back">
+				<img src="http://photo.ssyer.com/user//20170827/order/51ca8f4cf57fef490ffa9f8f9ea524115571water1126562jpg.jpg" alt="" />
+			</div>
+
+	    	<!-- 骰子内部 -->
+			<div class="face-in front-in">
+				<img src="http://photo.ssyer.com/user//20170827/order/cf3e58599512c94fad99d06973239a6b4abfstorm2567670jpg.jpg" alt="" />
+			</div>
+			<div class="face-in back-in">
+				<img src="http://photo.ssyer.com/user//20170827/order/cf3e58599512c94fad99d06973239a6b4abfstorm2567670jpg.jpg" alt="" />
+			</div>
+			<div class="face-in left-in">
+				<img src="http://photo.ssyer.com/user//20170827/order/cf3e58599512c94fad99d06973239a6b4abfstorm2567670jpg.jpg" alt="" />
+			</div>
+			<div class="face-in right-in">
+				<img src="http://photo.ssyer.com/user//20170827/order/cf3e58599512c94fad99d06973239a6b4abfstorm2567670jpg.jpg" alt="" />
+			</div>
+			<div class="face-in top-in">
+				<img src="http://photo.ssyer.com/user//20170827/order/cf3e58599512c94fad99d06973239a6b4abfstorm2567670jpg.jpg" alt="" />
+			</div>
+			<div class="face-in bottom-in">
+				<img src="http://photo.ssyer.com/user//20170827/order/cf3e58599512c94fad99d06973239a6b4abfstorm2567670jpg.jpg" alt="" />
+			</div>
+		</div>
+	</div>
+</body>
+</html>
