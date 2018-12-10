@@ -19,17 +19,17 @@ splice() 方法可删除从 index 处开始的零个或多个元素，并且用�
 
 如果从 arrayObject 中删除了元素，则返回的是含有被删除的元素的数组。
 */
-var lang = ["php","java","javascript"]; 
+var lang = ["php", "java", "javascript"];
 //删除 
-var removed = lang.splice(1,1); 
+var removed = lang.splice(1, 1);
 console.log(lang); //php,javascript 
-console.log(removed); //java ,返回删除的项 
+console.log(removed); //java ,//!返回删除的项 
 //插入 
-var insert = lang.splice(0,0,"asp"); //!从第0个位置开始插入 
+var insert = lang.splice(0, 0, "asp"); //!从第0个位置开始插入 
 console.log(insert); //返回空数组 
 console.log(lang); //asp,php,javascript 
 //替换 
-var replace = lang.splice(1,1,"c#","ruby"); //删除一项，插入两项 
+var replace = lang.splice(1, 1, "c#", "ruby"); //删除一项，插入两项 
 console.log(lang); //asp,c#,ruby ,javascript
 console.log(replace); //php,返回删除的项 
 
@@ -38,11 +38,11 @@ console.log(replace); //php,返回删除的项
 slice()方法可以接受一或两个参数，即要返回项的起始和结束位置。在只有一个参数的情况下， slice()方法返回从该参数指定位置开始到当前数组末尾的所有项。
 !如果有两个参数，该方法返回起始和结束位置之间的项——但不包括结束位置的项。
  */
-var arr = [1,3,5,7,9,11];
+var arr = [1, 3, 5, 7, 9, 11];
 var arrCopy = arr.slice(1);
-var arrCopy2 = arr.slice(1,4);
-var arrCopy3 = arr.slice(1,-2);
-var arrCopy4 = arr.slice(-4,-1);
+var arrCopy2 = arr.slice(1, 4);
+var arrCopy3 = arr.slice(1, -2);
+var arrCopy4 = arr.slice(-4, -1);
 console.log(arr); //[1, 3, 5, 7, 9, 11](原数组没变)
 console.log(arrCopy); //[3, 5, 7, 9, 11]
 console.log(arrCopy2); //[3, 5, 7]
@@ -229,7 +229,7 @@ console.log(arr3); // false */
 /* 
 TODO:some() some()：判断数组中是否存在满足条件的项，
 !只要有一项满足条件，就会返回true。
-*/ 
+*/
 /* var arr = [1,2,3,4,]
 
 console.log(arr.some(function (x,index,arr) {
@@ -259,27 +259,27 @@ console.log(arr.reduce(function(pre,cur){
  */
 
 
- //TODO:去重
- Array.from(new Set('dd'))  //传入类数组，数组
+//TODO:去重
+Array.from(new Set('dd')) //传入类数组，数组
 
- //TODO:
- https://juejin.im/post/5b5570a96fb9a04fa671a937?utm_source=gold_browser_extension
+//TODO:
+https: //juejin.im/post/5b5570a96fb9a04fa671a937?utm_source=gold_browser_extension
 
-//TODO:数组 位置调换
+  //TODO:数组 位置调换
   // 取消点击切到第一位
-    /* const title = params.catetile
-    const first = listTitle[0]
-    listTitle.forEach((val, index, arr) => {
-      if (val.title === title) {
-        listTitle[0] = listTitle[index]
-        listTitle[index] = first
-      }
-    }) */
+  /* const title = params.catetile
+  const first = listTitle[0]
+  listTitle.forEach((val, index, arr) => {
+    if (val.title === title) {
+      listTitle[0] = listTitle[index]
+      listTitle[index] = first
+    }
+  }) */
 
-//!todo/* 统计数组中相同项的个数 */
-var cars = ['BMW','Benz', 'Benz', 'Tesla', 'BMW', 'Toyota'];
+  //!todo/* 统计数组中相同项的个数 */
+  var cars = ['BMW', 'Benz', 'Benz', 'Tesla', 'BMW', 'Toyota'];
 var carsObj = cars.reduce(function (obj, name) {
-  console.log(obj,name);
+  console.log(obj, name);
   obj[name] = obj[name] ? ++obj[name] : 1;
   return obj;
 }, {});
@@ -289,11 +289,11 @@ carsObj; // => { BMW: 2, Benz: 2, Tesla: 1, Toyota: 1 }
 //!TODO/*  数组平铺到指定深度*/
 /* 使用递归，为每个深度级别 depth 递减 1 。 使用 Array.reduce() 和 Array.concat() 来合并元素或数组。 基本情况下，depth 等于 1 停止递归。 省略第二个参数，depth 只能平铺到 1 (单层平铺) 的深度。 */
 const flatten = (arr, depth = 1) =>
-  depth != 1
-    ? arr.reduce((a, v) => a.concat(Array.isArray(v) ? flatten(v, depth - 1) : v), [])
-    : arr.reduce((a, v) => a.concat(v), []);
-flatten([1, [2], 3, 4]);                    		 // [1, 2, 3, 4]
-flatten([1, [2, [3, [4, 5], 6], 7], 8], 2);           // [1, 2, 3, [4, 5], 6, 7, 8]
+  depth != 1 ?
+  arr.reduce((a, v) => a.concat(Array.isArray(v) ? flatten(v, depth - 1) : v), []) :
+  arr.reduce((a, v) => a.concat(v), []);
+flatten([1, [2], 3, 4]); // [1, 2, 3, 4]
+flatten([1, [2, [3, [4, 5], 6], 7], 8], 2); // [1, 2, 3, [4, 5], 6, 7, 8]
 
 //!TODO 数组的对象解构 */
 /* 数组的对象解构
@@ -301,13 +301,13 @@ flatten([1, [2, [3, [4, 5], 6], 7], 8], 2);           // [1, 2, 3, [4, 5], 6, 7,
 const csvFileLine = '1997,John Doe,US,john@doe.com,New York';
 const { 2: country, 4: state } = csvFileLine.split(',');
 
-country			// US
-state			// New Yourk
+country // US
+state // New Yourk
 
 //!todo使用解构删除不必要属性
 /* 
 有时候你不希望保留某些对象属性，也许是因为它们包含敏感信息或仅仅是太大了（just too big）。你可能会枚举整个对象然后删除它们，但实际上只需要简单的将这些无用属性赋值给变量，然后把想要保留的有用部分作为剩余参数就可以了。
 下面的代码里，我们希望删除_internal和tooBig参数。我们可以把它们赋值给internal和tooBig变量，然后在cleanObject中存储剩下的属性以备后用。 */
-let {_internal, tooBig, ...cleanObject} = {el1: '1', _internal:"secret", tooBig:{}, el2: '2', el3: '3'};
+let { _internal, tooBig, ...cleanObject } = { el1: '1', _internal: "secret", tooBig: {}, el2: '2', el3: '3' };
 
-console.log(cleanObject);                         // {el1: '1', el2: '2', el3: '3'}
+console.log(cleanObject); // {el1: '1', el2: '2', el3: '3'}

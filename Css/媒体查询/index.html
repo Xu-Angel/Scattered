@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>021-HTML响应式布局</title>
+  <meta name="author" content="Yexiaomo">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <!--这段JS代码是为了让 figure,figcaption兼容 IE7,8-->
+  <script type="text/javascript">
+    (function(){ 
+      document.createElement('figcaption');
+      document.createElement('figure');
+      } 
+    )(); 
+  </script>
+</head>
+<body>
+  <figure>
+    <img src="images/021.jpg"/>
+    <figcaption>
+      <p>改变浏览器窗口宽度的大小</p>
+      <p>观察图片位置的变化</p>
+    </figcaption>
+  </figure>
+  <figure>
+    <img src="images/021.jpg"/>
+  </figure>
+  <figure>
+    <img src="images/021.jpg"/>
+  </figure>
+</body>
+</html>
