@@ -26,7 +26,8 @@ symbol
 
 ---->
 8 个人信息模板渲染 unicode 省市级三联插件
-
+    optinons = Object.assing(defaultOpt, options)
+    emoji table---> charCodeAt()   ///  codePointAt 65535  ->>  在正则下 ES5时代  有个界限 导致BUG   判断不到65535后那种复杂的表情  --> es6:/[\u{4e00}-\u{ffff}]/u  /u？？
 ---->
 9 支付方式
 
