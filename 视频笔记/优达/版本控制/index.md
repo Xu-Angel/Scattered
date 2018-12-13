@@ -20,3 +20,6 @@ git reset --hard
 git log
 git log --graph --oneline master    显示图表形式的提交记录  XX分支
 git log --graph   显示提交记录
+
+
+head  是你的 在解决冲突的时候
