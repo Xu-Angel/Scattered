@@ -38,7 +38,11 @@ git diff HEAD^                                            # 比较与上一个�
 git diff HEAD -- ./lib                                    # 比较与HEAD版本lib目录的差异
 git diff origin/master..master                            # 比较远程分支master上有本地分支master上没有的
 git diff origin/master..master --stat                     # 只显示差异的文件，不显示具体内容
+git fetch                                                 # 获取更新查看
+git pull                                                  # 拉取更新
 git remote add origin git+ssh://git@192.168.53.168/VT.git # 增加远程定义（用于push/pull/fetch）
+git remote                                                # 列出所有远程主机
+git remote -v                                             # 使用-v选项，可以参看远程主机的网址。
 git branch                                                # 显示本地分支
 git branch --contains 50089                               # 显示包含提交50089的分支
 git branch -a                                             # 显示所有分支
