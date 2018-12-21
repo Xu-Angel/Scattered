@@ -5,6 +5,8 @@
   .btn { filter: hue-rotate(60deg); }
     https://www.zhangxinxu.com/wordpress/2018/11/css-filter-hue-rotate-button/
 
+- CSS -webkit-伪元素选择器不再导致整行无效  https://www.zhangxinxu.com/wordpress/2018/12/css-webkit-%e4%bc%aa%e5%85%83%e7%b4%a0-%e9%80%89%e6%8b%a9%e5%99%a8-%e6%97%a0%e6%95%88/
+
 ## 文字两端对齐
 
 css有一个文字两端对齐的属性text-align: justify, 它可以在多行文字(中英数字符号交错)导致一行不能很好的占满时, 实现两端对齐的效果. 但是有个问题是, 在一行没有占满时, 这个属性就不起作用了.
