@@ -1,0 +1,16 @@
+<view class="navigate" style="background-color:{{tabbar.backgroundColor}}">
+  <block wx:for="{{tabbar.list}}" wx:key="{{item.pagePath}}">
+    <view wx:if="{{item.isSpecial}}" bind:tap="{{item.handler}}" class="item" hover-class="none" url="{{item.pagePath}}">
+      <view class='special'>
+        <image class="icon" src="{{item.iconPath}}"></image>
+      </view>
+      <view class="text special-text">{{item.text}}</view>
+    </view>
+    <view wx:else class="item" bind:tap="{{item.handler}}" hover-class="none" url="{{item.pagePath}}">
+      <image class="icon" src="{{item.pagePath === currentPagePath ? item.selectedIconPath : item.iconPath}}"></image>
+      <view class="text" style="color:{{item.pagePath === currentPagePath ? tabbar.selectedColor : tabbar.color}}">
+        {{item.text}}
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,3 @@
+<view class="vtag-wrap">
+	<text class="vtag">{{ msg }}</text>
+</view>

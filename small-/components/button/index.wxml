@@ -1,0 +1,30 @@
+<block wx:if="{{size === 'mini'}}">
+  <view class="rhh_" hover-class="none" hover-stop-propagation="false">
+  <block wx:if="{{type === 'warn'}}">
+    <view class="rhh_btn_mini .rhh_btn_warn" bindtap="onBtnTap" hover-class="none" hover-stop-propagation="false">
+      <image wx:if="{{icon}}" class="rhh_icon" src="{{icon}}"></image>
+      <view class="rhh_small_text" hover-class="none" hover-stop-propagation="false">
+        {{value}}
+      </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view class="rhh_btn_mini {{type === 'active' ? 'rhh_btn-active' : 'rhh_btn-default'}}" bindtap="onBtnTap" hover-class="none" hover-stop-propagation="false">
+      <image wx:if="{{icon}}" class="rhh_icon" src="{{icon}}"></image>
+      <view class="rhh_small_text" hover-class="none" hover-stop-propagation="false">
+        {{value}}
+      </view>
+    </view>
+  </block>
+</view>
+</block>
+<block wx:else>
+  <view class="rhh_" hover-class="none" hover-stop-propagation="false">
+    <view class="rhh_btn {{type === 'active' ? 'rhh_btn-active' : 'rhh_btn-default'}}" bindtap="onBtnTap" hover-class="none" hover-stop-propagation="false">
+      <image wx:if="{{icon}}" class="rhh_icon" src="{{icon}}"></image>
+      <view class="rhh_text" hover-class="none" hover-stop-propagation="false">
+        {{value}}
+      </view>
+    </view>
+  </view>
+</block>

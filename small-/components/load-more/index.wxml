@@ -1,0 +1,4 @@
+<view class="load-more-wrap" wx:if="{{ loadShow }}" bindtap="clickLoadMore">
+    <v-loading type="spinner" wx:if="{{ iconShow }}" />
+    <text class="load-text">{{ text }}</text>
+</view>

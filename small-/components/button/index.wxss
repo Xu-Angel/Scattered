@@ -1,0 +1,51 @@
+@import "../../scss/var.scss";
+
+.rhh_ {
+  .rhh_icon {
+    width: 48rpx;
+    height: 40rpx;
+    margin-right: 15rpx;
+  }
+
+  .rhh_btn {
+    display: flex;
+    width: 750rpx;
+    height: 97rpx;
+    line-height: 97rpx;
+    text-align: center;
+    background-color: #ccc;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .rhh_text {
+    color: #fff;
+    font-size: $font-title-m;
+  }
+  .rhh_small_text {
+    color: #fff;
+    font-size: $font-normal-l;
+  }
+
+  .rhh_btn-default {
+    background-color: #ccc;
+  }
+
+  .rhh_btn-active {
+    background-image: linear-gradient(135deg,
+      #2a95ff 0%,
+      #007dfc 100%),
+      linear-gradient(#cccccc,
+      #cccccc);
+  }
+  .rhh_btn_mini {
+    display: inline-flex;
+    line-height: normal;
+    padding: 6rpx 25rpx;
+  }
+
+  .rhh_btn_warn{
+    background-color: $emphasize-color;
+  }
+}
