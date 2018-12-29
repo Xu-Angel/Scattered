@@ -312,3 +312,5 @@ const CORE = {
     }
   }
 };
+const obj = { 1: "研发", 2: "设计", 3: "策划", 4: "推广", 5: "生产", 6: "物流", 7: "渠道", 8: "产品" }
+console.log(Object.values(obj));
