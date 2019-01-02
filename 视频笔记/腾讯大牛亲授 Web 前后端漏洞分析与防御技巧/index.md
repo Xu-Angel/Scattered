@@ -32,3 +32,9 @@
     轮子：---》 npm i xss
 
     CSP处理：内容安全策略 ---指定哪些内容可执行
+
+ ------CSRF 跨站请求伪造 cross site request forgy
+    一点就爆炸
+    处理
+        引用不允许带cookies -ref
+        拦击cookies-set-cookies
