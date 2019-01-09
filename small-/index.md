@@ -1,3 +1,6 @@
+https://juejin.im/post/5c2ecdc26fb9a049ed30ffab?utm_source=gold_browser_extension
+https://cloud.tencent.com/developer/article/1038403
+
 框架的核心是一个响应的数据绑定系统。
 整个小程序框架系统分为两部分：视图层（View）和逻辑层（App Service）
 框架可以让数据与视图非常简单地保持同步。当做数据修改的时候，只需要在逻辑层修改数据，视图层就会做相应的更新。
