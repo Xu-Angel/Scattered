@@ -89,3 +89,21 @@
 
   上面的写法是先运行`npm run build-js`，然后再运行`npm run build-css`，两个命令中间用&&连接。
   > 如果希望两个命令同时平行执行，它们中间可以用&连接。
+
+- 检查所有模块新版本
+
+  命令检查当前项目所依赖的模块，是否已经有新版本。
+  ```
+  npm outdated
+  ```
+  它会输出当前版本（current version）、应当安装的版本（wanted version）和最新发布的版本（latest version）。
+
+- 锁版本
+
+  作用是锁定当前项目的依赖模块的版本。
+  ```
+  $ npm shrinkwrap
+  ```
+  运行该命令后，会在当前项目的根目录下生成一个npm-shrinkwrap.json文件，内容是node_modules目录下所有已经安装的模块，以及它们的精确版本。
+
+  下次运行npm install命令时，npm发现当前目录下有npm-shrinkwrap.json文件，就会只安装里面提到的模块，且版本也会保持一致。
