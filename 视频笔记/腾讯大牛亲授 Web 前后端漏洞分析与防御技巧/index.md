@@ -38,3 +38,12 @@
     处理
         引用不允许带cookies -ref
         拦击cookies-set-cookies
+        一定要经过网站前端--》
+          加验证码
+          加token  生成随机字符串  --每次请求--校对 -cookies-表单比较
+        reffer
+
+------- Cookies
+    同源
+    // 串改
+    // 被盗
