@@ -27,9 +27,61 @@
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+mark {
+	outline: 1px dotted red;
+}
+mark[data-title] {
+  text-indent: 0;
+  position: relative;
+  overflow: visible;
+}
+
+mark[data-title]::before,
+mark[data-title]::after {
+  position: absolute;
+  left: 50%;
+  -ms-pointer-events: none;
+  pointer-events: none;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  visibility: hidden; 
+}
+
+mark[data-title]::before {
+  content: attr(data-title);
+  top: -42px;
+  max-width: 250px;
+  padding: 6px 10px;
+  line-height: 18px;
+  border-radius: 3px;
+  background-color: #373c42;
+  text-align: left;
+  color: #fff;
+  font-size: 12px;
+  font-style: normal;
+  white-space: nowrap; }
+
+mark[data-title]::after {
+  content: '';
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border: 6px solid transparent;
+  border-top-color: #373c42;
+  top: -12px; }
+
+mark[data-title]:hover::before,
+mark[data-title]:hover::after,
+mark[data-title]:focus::before,
+mark[data-title]:focus::after {
+  -webkit-transition: visibility .1s .1s;
+  transition: visibility .1s .1s;
+  visibility: visible; 
+}
   </style>
 </head>
 <body>
   <p class="hover-underline-animation">Hover this text to see the effect!</p>
+  <mark data-title="dddddd">dd</mark>
 </body>
 </html>
