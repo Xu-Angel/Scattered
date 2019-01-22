@@ -25,6 +25,9 @@ multipart/from-data
 text/plain
 其他资料也说过，默认请求就是application/json,所以不需要自己加上头部，现在上正确的代码：
 
+解决方法
+现在问题所在已经很明显了，那么面对这种跨域预检机制造成的多次请求问题，我们可以在后台设置Access-Control-Max-Age来控制浏览器在多长时间内（单位s）无需在请求时发送预检请求，从而减少不必要的预检请求。
+
 参考：
 http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html
 
