@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端隐藏滚动条解决方案</title>
+    <style type="text/css">
+    * {
+        padding: 0;
+        margin: 0;
+    }
+
+    .par-type {
+        height: 50px;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .type {
+        height: 100%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        background-color: #999;
+        /*解决ios上滑动不流畅*/
+        -webkit-overflow-scrolling: touch;
+        /* 挤开底部滚动条 */
+        padding-bottom: 20px;
+    }
+    .con {
+        width: 640px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    .con>li {
+        text-align: center;
+        font-size: 16px;
+        width: 80px;
+        color: #fff;
+        list-style: none;
+    }
+
+    .par-type ::-webkit-scrollbar {
+        display: none;
+    }
+    </style>
+</head>
+<body>
+  <a href="https://segmentfault.com/a/1190000017992819">出处</a>
+    <div class="par-type">
+        <nav class="type">
+            <ul class="con">
+                <li>推荐</li>
+                <li>娃娃</li>
+                <li>日用品</li>
+                <li>美妆护肤</li>
+                <li>娃娃</li>
+                <li>日用品</li>
+                <li>美妆护肤</li>
+                <li>娃娃</li>
+            </ul>
+        </nav>
+    </div>
+</body>
+
+</html>
