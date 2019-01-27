@@ -50,3 +50,17 @@
 ------- 点击劫持
     // iframe 透明度为零 遮盖图片重合点击区域
     // js禁止内嵌
+-------  传输安全
+    // http 查看经过节点的命令 traceroute  XXXX
+    // anyProxy 
+    // 谷歌调试工具 remoteAddress
+
+  -- HTTP窃听 -窃取用户密码，传输的敏感数据，个人资料
+  -- HTTP串改 -插入广告，重定向网站，无法防御的XSS和CSRF
+     -- 运营商劫持。。
+  解决
+      ---TLS(SSL)加密
+       CA
+       --switchHost
+       --toobug.net
+       --部署HTTPS
