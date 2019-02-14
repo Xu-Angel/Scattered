@@ -1,3 +1,6 @@
+
+https://juejin.im/post/5965943ff265da6c30653879
+
 /* 在 JavaScript 中创建正则表达式有两种方式：
 // 正则字面量
 var pattern1 = /\d+/;
