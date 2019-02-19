@@ -92,7 +92,8 @@ git grep -e '#define' --and -e SORT_DIRENT
 git shortlog -sn                                          # 显示所有提交过的用户，按提交次数排序
 $ git diff --shortstat "@{0 day ago}"                     # 显示今天你写了多少行代码
 $ git reflog                                              # 显示当前分支的最近几次提交
-
+git checkout -- file可以丢弃工作区的修改：                  $ git checkout -- readme.txt
+git checkout -- file命令中的--很重要，没有--，就变成了“切换到另一个分支”的命令，我们在后面的分支管理中会再次遇到git checkout命令。
 --------
 ## 统计类
 
