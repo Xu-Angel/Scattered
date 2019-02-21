@@ -1,4 +1,0 @@
-/* FIXME:Semicolons */
-/* 
-TODO:
-*/
