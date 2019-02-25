@@ -1,4 +1,4 @@
-// 接口合并
+// ! 接口合并
 interface Alarm {
   price: number
 }
@@ -13,13 +13,13 @@ interface Alarm {
   weight: number
 }
  
-// 合并的属性的类型必须是唯一的：
+// ! 合并的属性的类型必须是唯一的：
 
 interface Alarm {
     price: number;
 }
 interface Alarm {
-    price: number;  // 虽然重复了，但是类型都是 `number`，所以不会报错
+    price: number;  // ! 虽然重复了，但是类型都是 `number`，所以不会报错
     weight: number;
 }
 interface Alarm {
@@ -32,7 +32,7 @@ interface Alarm {
 
 // index.ts(5,3): error TS2403: Subsequent variable declarations must have the same type.  Variable 'price' 
 
-// 接口中的方法合并
+// ! 接口中的方法合并
 
 interface Alarm {
   price: number;
