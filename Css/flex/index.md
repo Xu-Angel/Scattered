@@ -1,6 +1,15 @@
 
->https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
->http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
+[MDN-flex](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)
+
+[阮老师-flex](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)
+
+[阮老师-flex例子](http://www.ruanyifeng.com/blog/2015/07/flex-examples.html)
+
+<div align=center>
+
+![概念图](1.png)
+</div>
+
 - 理解主轴、交叉轴
   ```js
   // flexbox 的特性是沿着主轴或者交叉轴对齐之中的元素。
@@ -80,6 +89,11 @@
       在计算flex元素收缩的大小时，它的最小尺寸也会被考虑进去，就是说实际上flex-shrink属性可能会和flex-grow属性表现的不一致。因此，我们可以在文章《控制Flex子元素在主轴上的比例》中更详细地看一下这个算法的原理。
 
       **给 flex-grow 和 flex-shrink 赋值要注意比例。如果我们给所有flex元素的flex属性赋值为 1 1 200px ，并且希望其中一个元素可以增加到2倍，我们可以给该元素的flex属性赋值为2 1 200px。然而，你也可以选择赋值为flex: 10 1 200px 和 flex: 20 1 200px 。**
+   
+- align-self
+   
+  align-self  基准是cross axis  而不是main axis。所以在默认的flex-direction:row,的时候 flex-end 在cross axis 的尾巴 也就是底部，flex-start 在cross axis 的头部
+  >The property doesn't apply to block-level boxes, or to table cells.
 
 - 简写
   ```css
