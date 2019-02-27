@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<style>
+    div~p
+    {
+        background-color:yellow;
+    }
+    div+p{                          /*得出相邻兄弟选择器比普通相邻兄弟选择器权重大：
+                                    相令兄弟（同一个父级下的弟弟  +）
+                                    普通相邻兄弟（和该元素相近的兄弟（后面的所有） ~）*/
+        background-color: red;
+    }
+    P:first-letter{              /*第一个字母*/
+        color: green;
+    }
+    input[type=checkbox]:checked{
+        border: 1px solid red;
+    }
+    /*属性选择器*/
+ p[title]{
+      background-colorcolor: black;
+  }
+   div p:nth-of-type(1) {
+        color: blue;
+    }
+    div{
+      /*  cursor: crosshair;*/
+        cursor: wait;
+        border-style:dotted solid double dashed;
+    }
+    div:target p{
+        height: 0;
+    }
+
+</style>
+<body>
+<p>第零个段落</p>
+<div>
+    <p data>段落 1。 在 div 中。</p>
+    <p>段落 2。 在 div 中。</p>
+</div>
+
+<p title="">段落 3。不在 div 中。</p>
+<p>段落 4。不在 div 中。</p>
+
+<input type="checkbox" >
+<div class="line">gggg</div>
+
+
+
+<hr size=100 style="COLOR:#ff9999;border-style:dashed;width:490px">
+<HR align=center width=1 color=red size=100>
+<input type="text">
+<input type="text">
+<input type="text">
+</body>
+</html>

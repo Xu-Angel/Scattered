@@ -1,5 +1,6 @@
 
 >https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox
+>http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 - 理解主轴、交叉轴
   ```js
   // flexbox 的特性是沿着主轴或者交叉轴对齐之中的元素。

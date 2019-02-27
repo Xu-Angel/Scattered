@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        html, body, .container{height: 100%;}
+        .left{
+            width: 100px;
+            background: lightgreen;
+            float: left;
+            height: 100%;
+        }
+        .right{
+            width: 120px;
+            background: lightblue;
+            float: right;
+            height: 100%;
+        }
+        .middle{
+            background: lightcoral;
+            /*float: right;*/
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="left">Left</div>
+    <div class="right">Right</div>
+    <div class="middle">Middle</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        body{
+            line-height: 1.5;
+            /*属性值不加单位表示行距倍数，自动适应font-size的各种单位。*/
+        }
+        p:nth-child(3n+0)         /*p父亲的儿子第几个呢？（3n+0）*/
+        {
+            background:#ff0000;
+        }
+        p:nth-of-type(3n+0){     /*p父亲的儿子为P类型的 第几个呢？（3n+0）*/
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+<div class="diva">
+    fdsfds
+    <span></span>
+    <h1>这是标题</h1>
+    <p>第一个段落。</p>
+    <p>第二个段落。</p>
+    <p>第三个段落。</p>
+    <p>第四个段落。</p>
+    <p>第五个段落。</p>
+    <p>第六个段落。</p>
+    <p>第七个段落。</p>
+    <p>第八个段落。</p>
+    <p>第九个段落。</p>
+
+</div>
+<script>
+    var divs=doucment.getElementsByTagName('div')[0];
+
+</script>
+</body>
+</html>

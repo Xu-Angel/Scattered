@@ -1,0 +1,103 @@
+
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8">
+<title>垂直手风琴</title>
+<style type="text/css">
+.accordionMenu {
+background: #fff;
+color:#424242;
+font: 12px Arial, Verdana, sans-serif;
+margin:0 auto;
+padding: 10px;
+width: 500px;
+}
+.accordionMenu h2 {
+margin:5px 0;
+padding:0;
+position: relative;
+}
+.menuSection h2:before {
+border: 5px solid #fff;
+border-color: #fff transparent transparent;
+content:"";
+height: 0;
+position:absolute;
+right: 10px;
+top: 15px;
+width: 0;
+}
+.accordionMenu h2 a {
+background: #8f8f8f;
+border-radius: 5px;
+color:#424242;
+display: block;
+font-size: 13px;
+font-weight: normal;
+margin:0;
+padding:10px 10px;
+text-decoration:none;
+}
+.accordionMenu :hover h2 a,
+.accordionMenu h2 a:focus,
+.accordionMenu h2 a:hover,
+.accordionMenu h2 a:active
+{
+background: #2288dd;
+color:#FFF;
+}
+.accordionMenu p {
+margin:0;
+height: 0;
+overflow: hidden;
+padding:0 10px;
+transition: height 0.5s ease-in;
+}
+.accordionMenu :hover p {
+height:100px;
+overflow: hidden;
+}
+.menuSection:hover h2:before {
+border-color: transparent transparent transparent #fff;
+}
+</style>
+</head>
+<body>
+<div class="accordionMenu">
+<div class="menuSection" id="brand">
+<h2><a href="#brand">Brand</a></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing
+elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<div class="menuSection" id="promotion">
+<h2><a href="#promotion">Promotion</a></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing
+elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+<div class="menuSection" id="event">
+<h2><a href="#event">Event</a></h2>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing
+elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+</div>
+</body>
+</html>
