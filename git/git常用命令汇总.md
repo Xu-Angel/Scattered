@@ -18,6 +18,8 @@
 - git config --global color.branch auto
 - git config --global color.interactive auto
 - git config --global --unset http.proxy  remove  proxy configuration on git
+- git config core.ignorecase false Git默认是大小写不敏感的，也就是说，将一个文件名某个字母做了大小写转换的修改Git是忽略这个改动的，导致在同步代码时候会出现错误，所以建议大小把Git设置成大小写敏感。
+
   
 #### 1.git status
 
