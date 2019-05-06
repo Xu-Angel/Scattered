@@ -28,5 +28,19 @@
 </head>
 <body>
   <p class="custom-variables">CSS is awesome!</p>
+  <p>IE全线不支持 https://www.caniuse.com/#search=Variables</p>
+  <script>
+  /* 
+  // get variable from inline style
+  element.style.getPropertyValue("--my-var");
+  // get variable from wherever
+  getComputedStyle(element).getPropertyValue("--my-var");
+  // set variable on inline style
+  element.style.setProperty("--my-var", jsVar + 4);
+  */
+  const $ = el => document.querySelector(el)
+  console.log($('.custom-variables'));
+  console.log(getComputedStyle($('.custom-variables')).getPropertyValue('--some-keyword'));
+  </script>
 </body>
 </html>

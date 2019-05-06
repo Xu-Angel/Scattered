@@ -10,11 +10,17 @@
 ![概念图](1.png)
 </div>
 
+- 一维布局
+flexbox 是一种一维的布局，是因为一个 flexbox 一次只能处理一个维度上的元素布局，一行或者一列。作为对比的是另外一个二维布局 CSS Grid Layout，可以同时处理行和列上的布局。
+
 - 理解主轴、交叉轴
   ```js
   // flexbox 的特性是沿着主轴或者交叉轴对齐之中的元素。
+  
+      // inline 方向
       flex-direction: row <-a-b-c->
 
+      // block 方向
       flex-direction: column
       ↑
       a

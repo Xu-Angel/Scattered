@@ -37,4 +37,8 @@ div::after {
 
 ## inline-block元素设置overflow:hidden属性导致相邻行内元素向下偏移
 
-> 常用的解决方法是为上述inline-block元素添加vertical-align: bottom. [#](https://blog.csdn.net/iefreer/article/details/50421025)
+常用的解决方法是
+
+- [#](https://blog.csdn.net/iefreer/article/details/50421025)
+
+- [##](https://blog.csdn.net/w390058785/article/details/80567583#)
