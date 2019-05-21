@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+   "target": "es5",
+   "noImplicitAny": false,
+   "module": "amd",
+   "removeComments": false,
+   "sourceMap": false,
+   "outDir": "js"//你要生成js的目录
+  }
+}
