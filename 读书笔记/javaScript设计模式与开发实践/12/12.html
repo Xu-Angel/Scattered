@@ -251,7 +251,7 @@
 
 
 <script type="text/javascript">
-	
+// 对象池工厂函数
 	var objectPoolFactory = function( createObjFn ){
 		var objectPool = [];
 		return {
@@ -266,7 +266,7 @@
 			}
 		}
 	};
-
+ // 利用objectPoolFactory来创建一个装载一些iframe的对象池
 	var iframeFactory = objectPoolFactory( function(){
 		var iframe = document.createElement( 'iframe' );
 		document.body.appendChild( iframe );
@@ -285,5 +285,6 @@
 		var iframe3 = iframeFactory.create();
 		iframe3.src = 'http:// 163.com';
 	}, 3000 );
+	// 对象池是另外一种性能优化方案，它跟享元模式有一些相似之处，但没有分离内部状态和外部状态这个过程
 
 </script>
