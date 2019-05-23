@@ -89,18 +89,6 @@ Function.prototype.after = function( afterfn ){
 
 	console.log( button );
 
-	window.onload = function(){
-		alert (1);
-	}
-	window.onload = ( window.onload || function(){} ).after(function(){
-		alert (2);
-	}).after(function(){
-		alert (3);
-	}).after(function(){
-		alert (4);
-	});
-
-
 	var before = function( fn, beforefn ){
 		return function(){
 			beforefn.apply( this, arguments );
@@ -116,6 +104,44 @@ Function.prototype.after = function( afterfn ){
 </script>
 </html>
 
+<script>
+/* 
+很多时候我们不想去碰原函数，也许原函数是由其他同事编写的，里面的实现非常杂乱。甚至在一个古老的项目中，这个函数的源代码被隐藏在一个我们不愿碰触的阴暗角落里。现在需要一个办法，在不改变函数源代码的情况下，能给函数增加功能，这正是开放-封闭原则给我们指出的光明道路。
+ */
+ // 同事写的函数
+  var a = function () {
+		console.log('同事写的函数');
+ }
+ var _a = a //  指出来
+
+ a = function () {  // 安全改写
+	 _a()
+	 console.log('我增加的东西');
+ }
+ /* 
+ 这是实际开发中很常见的一种做法，比如我们想给window绑定onload事件，但是又不确定这个事件是不是已经被其他人绑定过，为了避免覆盖掉之前的window.onload函数中的行为，我们一般都会先保存好原先的window.onload，把它放入新的window.onload里执行：
+  */
+  window.onload = function () {
+		alert('1');
+	}
+var _onload = window.onload() || function() {}
+
+window.onload = function () {
+	_onload()
+	alert('2');
+}
+	/* ---- */
+	window.onload = function(){
+		alert (1);
+	}
+	window.onload = ( window.onload || function(){} ).after(function(){
+		alert (2);
+	}).after(function(){
+		alert (3);
+	}).after(function(){
+		alert (4);
+	});
+</script>
 
 <html>
 <button tag="login" id="button">点击打开登录浮层</button>
