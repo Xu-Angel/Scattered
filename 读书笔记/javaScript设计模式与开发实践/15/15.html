@@ -49,7 +49,7 @@
 	plane.fire();
 	// 分别输出： 发射普通子弹、发射导弹、发射原子弹
 
-
+//AOP装饰函数 before  after
 	Function.prototype.before = function( beforefn ){
 		var __self = this; // 保存原函数的引用
 		return function(){ // 返回包含了原函数和新函数的"代理"函数
@@ -59,7 +59,10 @@
 		// 并且保证this 不被劫持
 	}
 }
-
+/* 
+Function.prototype.before接受一个函数当作参数，这个函数即为新添加的函数，它装载了新添加的功能代码。
+接下来把当前的this保存起来，这个this指向原函数，然后返回一个“代理”函数，这个“代理”函数只是结构上像代理而已，并不承担代理的职责（比如控制对象的访问等）。它的工作是把请求分别转发给新添加的函数和原函数，且负责保证它们的执行顺序，让新添加的函数在原函数之前执行（前置装饰），这样就实现了动态装饰的效果。
+ */
 Function.prototype.after = function( afterfn ){
 	var __self = this;
 	return function(){
