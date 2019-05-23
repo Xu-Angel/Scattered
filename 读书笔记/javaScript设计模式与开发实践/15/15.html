@@ -91,7 +91,7 @@ Function.prototype.after = function( afterfn ){
 	var button = document.getElementById( 'button' );
 
 	console.log( button );
-
+/* 	上面的AOP实现是在Function.prototype上添加before和after方法，但许多人不喜欢这种污染原型的方式，那么我们可以做一些变通，把原函数和新函数都作为参数传入before或者after方法： */
 	var before = function( fn, beforefn ){
 		return function(){
 			beforefn.apply( this, arguments );
