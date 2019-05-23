@@ -1,5 +1,12 @@
 ﻿<script type="text/javascript">
-	
+// 提炼函数
+	/* 
+	如果在函数中有一段代码可以被独立出来，那我们最好把这些代码放进另外一个独立的函数中。这是一种很常见的优化工作，这样做的好处主要有以下几点。
+避免出现超大函数。
+独立出来的函数有助于代码复用。
+独立出来的函数更容易被覆写。
+独立出来的函数如果拥有一个良好的命名，它本身就起到了注释的作用。
+	 */
 	var getUserInfo = function(){
 		ajax( 'http:// xxx.com/userInfo', function( data ){
 			console.log( 'userId: ' + data.userId );
@@ -24,6 +31,7 @@ var printDetails = function( data ){
 
 
 <script type="text/javascript">
+// 合并重复的条件片段
 	var paging = function( currPage ){
 		if ( currPage <= 0 ){
 			currPage = 0;
@@ -47,7 +55,7 @@ var printDetails = function( data ){
 </script>
 
 <script type="text/javascript">
-	
+	// 把条件分支语句提炼成函数
 	var getPrice = function( price ){
 		var date = new Date();
 		if ( date.getMonth() >= 6 && date.getMonth() <= 9 ){ // 夏天
@@ -70,6 +78,7 @@ var printDetails = function( data ){
 </script>
 
 <script type="text/javascript">
+// 合理使用循环
 	var createXHR = function(){
 		var xhr;
 		try{
@@ -100,6 +109,7 @@ var printDetails = function( data ){
 
 
 <script type="text/javascript">
+// 提前让函数退出代替嵌套条件分支
 	var del = function( obj ){
 		var ret;
 		if ( !obj.isReadOnly ){ // 不为只读的才能被删除

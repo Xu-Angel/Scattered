@@ -447,7 +447,7 @@ setTimeout(function(){
 
 </script>
 
-
+// 更轻巧的方式
 <script type="text/javascript">
 	var Light = function(){
 		this.currState = FSM.off; // 设置当前状态
@@ -485,6 +485,9 @@ setTimeout(function(){
 </script>
 
 <script type="text/javascript">
+/* 
+利用下面的delegate函数来完成这个状态机编写。这是面向对象设计和闭包互换的一个例子，前者把变量保存为对象的属性，而后者把变量封闭在闭包形成的环境中
+ */
 	var delegate = function( client, delegation ){
 		return {
 			buttonWasPressed: function(){ // 将客户的操作委托给delegation 对象
