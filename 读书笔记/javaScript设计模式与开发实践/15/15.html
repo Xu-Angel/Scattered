@@ -160,7 +160,64 @@ window.onload = function () {
 document.getElementById( 'button' ).onclick = showLogin;
 </script>
 </html>
+<script>
+// 用AOP动态改变函数的参数
 
+// 通过Function.prototype.before方法给函数func的参数param动态地添加属性b：
+var func = function( param ){
+    console.log( param );    // 输出： {a: "a", b: "b"}
+}
+
+func = func.before( function( param ){
+    param.b = 'b';
+});
+
+func( {a: 'a'} );
+// 现在有一个用于发起ajax请求的函数，这个函数负责项目中所有的ajax异步请求：
+var ajax = function( type, url, param ){
+    console.dir(param);
+    // 发送ajax请求的代码略
+};
+
+ajax( 'get', 'http:// xxx.com/userinfo', { name: 'sven' } );
+
+// 上面的伪代码表示向后台cgi发起一个请求来获取用户信息，传递给cgi的参数是{ name: 'sven' }。
+// ajax函数在项目中一直运转良好，跟cgi的合作也很愉快。直到有一天，我们的网站遭受了CSRF攻击。解决CSRF攻击最简单的一个办法就是在HTTP请求中带上一个Token参数。
+// 假设我们已经有一个用于生成Token的函数：
+var getToken = function(){
+    return 'Token';
+}
+
+// 现在的任务是给每个ajax请求都加上Token参数：
+var ajax = function( type, url, param ){
+    param = param || {};
+    Param.Token = getToken();     // 发送ajax请求的代码略...
+};
+
+// 虽然已经解决了问题，但我们的ajax函数相对变得僵硬了，每个从ajax函数里发出的请求都自动带上了Token参数，虽然在现在的项目中没有
+// 什么问题，但如果将来把这个函数移植到其他项目上，或者把它放到一个开源库中供其他人使用，Token参数都将是多余的。
+// 也许另一个项目不需要验证Token，或者是Token的生成方式不同，无论是哪种情况，都必须重新修改ajax函数。
+// 为了解决这个问题，先把ajax函数还原成一个干净的函数：
+var ajax= function( type, url, param ){
+    console.log(param);     // 发送ajax请求的代码略
+};
+
+// 然后把Token参数通过Function.prototyte.before装饰到ajax函数的参数param对象中：
+var getToken = function(){
+    return 'Token';
+}
+
+ajax = ajax.before(function( type, url, param ){
+    param.Token = getToken();
+});
+
+ajax( 'get', 'http:// xxx.com/userinfo', { name: 'sven' } );
+
+// 从ajax函数打印的log可以看到，Token参数已经被附加到了ajax请求的参数中：
+{name: "sven", Token: "Token"}
+
+// 明显可以看到，用AOP的方式给ajax函数动态装饰上Token参数，保证了ajax函数是一个相对纯净的函数，提高了ajax函数的可复用性，它在被迁往其他项目的时候，不需要做任何修改。
+</script>
 
 <html>
 <button tag="login" id="button">点击打开登录浮层</button>
@@ -279,6 +336,18 @@ document.getElementById( 'button' ).onclick = showLogin;
 	submitBtn.onclick = function(){
 		formSubmit();
 	}
-	
+	// 值得注意的是，因为函数通过Function.prototype.before或者Function.prototype.after被装饰之后，返回的实际上是一个新的函数，如果在原函数上保存了一些属性，那么这些属性会丢失。代码如下：
+var func = function(){
+    alert( 1 );
+}
+func.a = 'a';
+
+func = func.after( function(){
+    alert( 2 );
+});
+
+alert ( func.a );   // 输出：undefined
+
+// 另外，这种装饰方式也叠加了函数的作用域，如果装饰的链条过长，性能上也会受到一些影响。
 </script>
 </html>
