@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>background-blend-mode</title>
+</head>
+<style>
+    body {
+        width: 100%;
+        background-color: #fff;
+        margin: 0 auto;
+    }
+ 
+    .selectBox {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 200px;
+    }
+ 
+    .container {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        margin: 100px auto;
+    }
+ 
+    .container>div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        mix-blend-mode: normal;
+    }
+ 
+    .title {
+        color: #333;
+        font-size: 24px;
+        line-height: 32px;
+        text-align: center;
+    }
+ 
+    .contain {
+        width: 400px;
+        height: 500px;
+        margin: 20px auto;
+        background: url('renwu.jpg'),
+        url('bg.jpg');
+        background-size: cover;
+        background-blend-mode: lighten;
+    }
+</style>
+ 
+<body>
+    <!-- 除了 mix-blend-mode ，CSS 还提供一个 background-blend-mode 。也就是背景的混合模式。
+        可以是背景图片与背景图片的混合，
+        也可以是背景图片和背景色的之间的混合。
+        background-blend-mode 的可用取值与 mix-blend-mode一样，不重复介绍，下面直接进入应用阶段。 -->
+    <!-- 对于 background-blend-mode ，最简单的应用就是将两个或者多个图片利用混合模式叠加在一起。假设我们存在下述两张图片，可以利用背景混合模式 background-blend-mode 叠加在一起 -->
+    <div class="selectBox">
+        <h1 class="title">Background-Blend-Mode:
+            <select id="select">
+                <option value="normal">normal -- 正常</option>
+                <option value="multiply">multiply -- 正片叠底</option>
+                <option value="screen">screen -- 滤色</option>
+                <option value="overlay">overlay -- 叠加</option>
+                <option value="darken">darken -- 变暗</option>
+                <option value="lighten">lighten -- 变亮</option>
+                <option value="color-dodge">color-dodge -- 颜色减淡</option>
+                <option value="color-burn">color-burn -- 颜色加深</option>
+                <option value="hard-light">hard-light -- 强光</option>
+                <option value="soft-light">soft-light -- 柔光</option>
+                <option value="difference">difference -- 差值</option>
+                <option value="exclusion">exclusion -- 排除</option>
+                <option value="hue">hue -- 色相</option>
+                <option value="saturation">saturation -- 饱和度</option>
+                <option value="color">color -- 颜色</option>
+                <option value="luminosity">luminosity -- 亮度</option>
+            </select>
+        </h1>
+ 
+        <h1 class="title">Filter:
+            <select id="select2">
+                <option value="normal">normal -- 正常</option>
+                <option value="blur(5px)">blur -- 高斯模糊</option>
+                <option value="brightness(200%)">brightness -- 变亮</option>
+                <option value="contrast(200%)">contrast -- 对比度</option>
+                <option value="drop-shadow(8px 8px 10px red)">drop-shadow -- 阴影效果</option>
+                <option value="grayscale(50%)">grayscale -- 灰度图像</option>
+                <option value="hue-rotate(90deg)">hue-rotate -- 色转旋转</option>
+                <option value="invert(100%)">invert -- 反转输入图像</option>
+                <option value="opacity(30%)">opacity -- 透明度</option>
+                <option value="saturate(800%)">saturate -- 饱和度</option>
+                <option value="sepia(100%)">sepia -- 深褐色</option>
+                <!-- 可以多个滤镜效果组合 -->
+                <option value="contrast(200%) brightness(150%)">复合函数</option>
+            </select>
+        </h1>
+    </div>
+ 
+    <div class="contain" id="contain">
+ 
+    </div>
+    <script>
+        let select = document.getElementById('select');
+        let select2 = document.getElementById('select2')
+        let contain = document.getElementById("contain");
+        let value, value2;
+        select.addEventListener('click', changeEvent);
+        function changeEvent() {
+            value = select.value;
+            contain.style.backgroundBlendMode = value
+        };
+        select2.addEventListener('click', changeEvent2);
+        function changeEvent2() {
+            value2 = select2.value;
+            contain.style.filter = value2;
+        }
+    </script>
+</body>
+ 
+</html>
