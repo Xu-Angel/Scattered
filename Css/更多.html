@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  .con {
+    display: inline-block;
+    margin: 50px 80px;
+}
+.over {
+  width: 100px;
+  display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+        overflow: hidden;
+  text-overflow: ellipsis;
+}
+.css-tips {
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+[data-title] {
+    position: relative;
+    overflow: visible;
+}
+[data-title]:hover {
+    position: relative;
+    overflow: visible;
+}
+
+/* muti */
+.css-tips[data-title][data-title-muti]:before {
+    width: 150px;
+    white-space: normal;
+}
+
+.css-tips[data-title]:before,
+.css-tips[data-title]:after {
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: 50%;
+    bottom: 100%;
+    transform: translate(-50%, -20px);
+    opacity: 0;
+    transition: .15s .15s;
+    color: #373c42;
+    visibility: hidden;
+}
+
+.css-tips[data-title]:before {
+    content: attr(data-title);
+    border-radius: 3px;
+    padding: 6px 10px;
+    line-height: 18px;
+    text-align: left;
+    background-color: #373c42;
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    white-space: nowrap;
+}
+
+.css-tips[data-title]:after {
+    content: '';
+    width: 0;
+    height: 0;
+    margin-bottom: -12px;
+    overflow: hidden;
+    border: 6px solid transparent;
+    border-top-color: currentColor;
+}
+
+.css-tips[data-title]:hover:before,
+.css-tips[data-title]:hover:after {
+    visibility: visible;
+    transform: translate(-50%, -10px);
+    opacity: 1;
+}
+
+/* bottom */
+.css-tips[data-title][data-title-dir="bottom"]:before,
+.css-tips[data-title][data-title-dir="bottom"]:after{
+    left: 50%;
+    top: 100%;
+    bottom: auto;
+    transform: translate(-50%, 20px);
+}
+.css-tips[data-title][data-title-dir="bottom"]:after {
+    margin: 0;
+    margin-top: -12px;
+    border-color: transparent;
+    border-bottom-color: currentColor;
+}
+.css-tips[data-title][data-title-dir="bottom"]:hover:before,
+.css-tips[data-title][data-title-dir="bottom"]:hover:after {
+    visibility: visible;
+    transform: translate(-50%, 10px);
+    opacity: 1;
+}
+
+  </style>
+</head>
+<body>
+  <div class="con">
+      <div class="css-tips" data-title="提示上删除删除删除删除删除删除删除删除删除删" data-title-muti data-title-dir="bottom"><div class="over">提示上删除删除删除删除删除删除删除删除删除删</div></div>
+  </div>
+  <div class="con">
+      <div id="last" class="css-tips"style="width: 120px;" data-title="提示上删除删除删除删除删除删除删除删除删除删" data-title-muti data-title-dir="bottom"><div class="last-con">提示上删除删除删除删除删除删除删除删除删除删</div></div>
+  </div>
+  <div class="con">
+      <div id="last" class="css-tips"style="width: 120px;" data-title="提示上删除删除删除删除删除删除删除删除删除删" data-title-muti data-title-dir="bottom"><div class="last-con">提示上删除删除删除删除删除删除删除删除删除删</div></div>
+  </div>
+  <div class="con">
+      <div id="last" class="css-tips"style="width: 120px;" data-title="提示上删除删除删除删除删除删除删除删除删除删" data-title-muti data-title-dir="bottom"><div class="last-con">提示上删除删除删除删除删除删除删除删除删除删提示上删除删除删除删除删除删除删除删除删除删提示上删除删除删除删除删除删除删除删除删除删</div></div>
+  </div>
+  <div class="con">
+      <div class="css-tips"style="width: 120px;" data-title="提示上删除删除删除删除删除删除删除删除删除删" data-title-muti data-title-dir="bottom"><div class="over">提示上删除删除删除删除删除删除删除删除删除删提示上删除删除删除删除删除删除删除删除删除删提示上删除删除删除删除删除删除删除删除删除删<span style="color: aqua; float: right;">详情</span></div></div>
+  </div>
+  <style>
+  * {
+  margin: 0;
+  padding: 0;
+}
+.box {
+  float: left;  
+  position: relative;  
+  width: 200px;  
+  min-height: 200px;  
+  line-height: 1.25;  
+  margin: 10px;  
+  border: 1px solid #f00;  
+  background-color: #fff;
+}
+.inner_box {
+  height: 200px;  
+  overflow: hidden;  
+  padding-bottom: 1.25em;
+}
+.line {
+  display: block;  
+  position: relative;  
+  height: 200px;  
+  background-color: #fff;
+}
+input[id^="more"] {
+  display: none;
+}
+.more {
+  position: absolute;  
+  /* left: 0; */
+  right: 0;  
+  bottom: 0;  
+  padding-right: 10px;  
+  text-align: right;  
+  background-color: #f0f;  
+  cursor: pointer;
+}
+input[id^="more"]:checked ~ .inner_box {
+  height: auto;  
+  overflow: visible;
+}
+input[id^="more"]:checked ~ .inner_box .line {
+  display: none;
+}
+input[id^="more"]:checked ~ .more:after {
+  content: "缩回...";  
+  position: absolute;  
+  top: 0;  
+  left: 0;  
+  right: 0;  
+  bottom: 0;  
+  padding-right: 10px;  
+  background-color: #f0f;
+}
+  </style>
+  <div class="box">
+      <input type="checkbox" id="more2"><label for="more2" class="more">更多...</label>
+      <div class="inner_box">
+        <p class="cont">这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分这里就是文字内容部分</p>
+        <div class="line"></div>
+      </div>
+    </div>
+</body>
+<script>
+const $ = e => document.querySelectorAll(e)
+const $last = $('#last')
+const elLast = $('.last-con')
+elLast.forEach(v => {
+  console.log(v.innerText)
+  if (v.innerText.length > 30 ) {
+  v.innerHTML = v.innerText.substr(20) + '...  ' + '<span style="color: aqua">详情</span>'
+}
+})
+console.log(elLast)
+
+</script>
+</html>
