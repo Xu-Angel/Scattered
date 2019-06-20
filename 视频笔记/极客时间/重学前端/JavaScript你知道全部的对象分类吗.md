@@ -192,6 +192,7 @@ URIError、ArrayBuffer、SharedArrayBuffer、DataView、Typed Array、Float32Arr
 不知道老师怎么看？
 
     作者回复: 能继承方法，但是没办法跟原生的一模一样
+    作者回复: 我查了一下，你说的没错，还真是这样，这块我理解错了。
 
 
 这个“原型继承方法”不能正常工作，是什么意思？我放狗搜了一下，发现，Number对象仍然可以用prototype属性来添加方法和属性啊
