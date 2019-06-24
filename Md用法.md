@@ -16,6 +16,11 @@ cd scion && npm install
 npm link
 ```
 
+
+- <kbd>CTRL</kbd>+<kbd>H</kbd> Toggle DevTools Dock
+- <kbd>CTRL</kbd>+<kbd>Q</kbd> Move DevTools Dock Position
+
+
 # Usage
 Open your terminal and type `scion` or `scion -h` , you'll see the help infomation below:
 ```
