@@ -145,8 +145,22 @@ result.delay(5000).then(data => {
 
 至此，ES6 `Promise`的所有内容就已经讲完了。但是异步操作的优化到这里没有结束，更加精彩的内容还在后面 ———— `Generator`
 
-## 求打赏
 
-如果你看完了，感觉还不错，欢迎给我打赏 ———— 以激励我更多输出优质内容
 
-![](http://images2015.cnblogs.com/blog/138012/201702/138012-20170228112237798-1507196643.png)
+## 避免promise穿透问题
+
+什么是promise穿透问题呢？举个例子：
+        Promise.resolve('foo').then(Promise.resolve('bar')).then(function (result) {
+        console.log(result);
+        });
+
+复制代码这个鬼东西会输出啥？？
+斟酌良久，你可能回答bar，那你就错了，实际输出的是foo。
+因为then中希望获得的是一个函数。而当你传入一个promise的时候，相当于then(null)，无论你添加多少个then(null)，promise都会穿透到下一个。
+当然，对于上述例子，你可能希望的是这样做：
+
+        Promise.resolve('foo').then(() => {
+            return Promise.resolve('bar');
+        }).then(function (result) {
+        console.log(result);
+        });

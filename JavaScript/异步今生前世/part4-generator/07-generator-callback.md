@@ -32,8 +32,3 @@ co(function* () {
 
 因此，`Generator`离不开`callback`，`Promise`离不开`callback`，异步也离不开`callback`。
 
-## 求打赏
-
-如果你看完了，感觉还不错，欢迎给我打赏 ———— 以激励我更多输出优质内容
-
-![](http://images2015.cnblogs.com/blog/138012/201702/138012-20170228112237798-1507196643.png)

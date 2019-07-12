@@ -78,8 +78,3 @@ const readFilePromise = function (fileName) {
 
 接下来我们一起看看`Q.js`这个库的使用，学会了它，将极大程度提高你写 Promise 的效率。
 
-## 求打赏
-
-如果你看完了，感觉还不错，欢迎给我打赏 ———— 以激励我更多输出优质内容
-
-![](http://images2015.cnblogs.com/blog/138012/201702/138012-20170228112237798-1507196643.png)
