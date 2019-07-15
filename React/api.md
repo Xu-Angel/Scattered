@@ -2,7 +2,7 @@
 
 ## PureComponent
   
-## momo
+## memo
 
 ```jsx
 const MyComponent = React.memo(function MyComponent(props) {
@@ -31,7 +31,7 @@ export default React.memo(MyComponent, areEqual);
 
 ## React.Fragment
 
-React.Fragment 组件能够在不额外创建 DOM 元素的情况下，让 render() 方法中返回多个元素。你也可以使用其简写语法 <></>
+React.Fragment 组件能够在不额外创建 DOM 元素的情况下，让 **`render()`** 方法中返回多个元素。你也可以使用其简写语法 <></>
 
 ```jsx
 render() {
