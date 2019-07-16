@@ -1,4 +1,10 @@
-## `apply` `bind` `call` `this` 的恩怨情仇 
+## `apply` `bind` `call` `this` 的恩怨情仇
+
+- **https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind**
+
+- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call
+
+- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
 
 ### this的指向
 ___
@@ -49,15 +55,19 @@ ___
 ④ 使用 `new` 实例化一个对象
 
 #### apply与call的区别
+
 apply
 > function.apply(thisArg, [argsArray])
 
 call
 > fun.call(thisArg, arg1, arg2, ...)
+
 * apply和call都是改变对象的this指向，改变方法的调用对象。
+
 * apply传参是以数组形式，call传参是以多个参数逗号分隔依次传参。
 
 #### bind 与  call 的区别
+
 > fun.bind(thisArg[, arg1[, arg2[, ...]]])
 * bind的返回值是`this指向`改造后的函数的拷贝，且不会自动执行，如有需要，请手动执行返回的函数。call返回的是`this`改造后的函数，并且立即执行。
 
