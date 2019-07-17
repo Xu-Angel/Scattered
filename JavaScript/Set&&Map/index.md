@@ -8,19 +8,6 @@ ES6 提供了新的数据结构 Set。它类似于数组，但是成员的值都
 
 Set 本身是一个构造函数，用来生成 Set 数据结构。
 
-```javascript
-const s = new Set();
-
-[2, 3, 5, 4, 5, 2, 2].forEach(x => s.add(x));
-
-for (let i of s) {
-  console.log(i);
-}
-// 2 3 5 4
-```
-
-上面代码通过`add`方法向 Set 结构加入成员，结果表明 Set 结构不会添加重复的值。
-
 Set 函数可以接受一个数组（或者具有 iterable 接口的其他数据结构）作为参数，用来初始化。
 
 ```javascript
@@ -47,12 +34,6 @@ set.size // 56
 
 上面代码中，例一和例二都是`Set`函数接受数组作为参数，例三是接受类似数组的对象作为参数。
 
-上面代码也展示了一种去除数组重复成员的方法。
-
-```javascript
-// 去除数组的重复成员
-[...new Set(array)]
-```
 
 向 Set 加入值的时候，不会发生类型转换，所以`5`和`"5"`是两个不同的值。Set 内部判断两个值是否不同，使用的算法叫做“Same-value-zero equality”，它类似于精确相等运算符（`===`），主要的区别是`NaN`等于自身，而精确相等运算符认为`NaN`不等于自身。
 
@@ -95,63 +76,6 @@ Set 实例的方法分为两大类：操作方法（用于操作数据）和遍�
 - `has(value)`：返回一个布尔值，表示该值是否为`Set`的成员。
 - `clear()`：清除所有成员，没有返回值。
 
-上面这些属性和方法的实例如下。
-
-```javascript
-s.add(1).add(2).add(2);
-// 注意2被加入了两次
-
-s.size // 2
-
-s.has(1) // true
-s.has(2) // true
-s.has(3) // false
-
-s.delete(2);
-s.has(2) // false
-```
-
-下面是一个对比，看看在判断是否包括一个键上面，`Object`结构和`Set`结构的写法不同。
-
-```javascript
-// 对象的写法
-const properties = {
-  'width': 1,
-  'height': 1
-};
-
-if (properties[someName]) {
-  // do something
-}
-
-// Set的写法
-const properties = new Set();
-
-properties.add('width');
-properties.add('height');
-
-if (properties.has(someName)) {
-  // do something
-}
-```
-
-`Array.from`方法可以将 Set 结构转为数组。
-
-```javascript
-const items = new Set([1, 2, 3, 4, 5]);
-const array = Array.from(items);
-```
-
-这就提供了去除数组重复成员的另一种方法。
-
-```javascript
-function dedupe(array) {
-  return Array.from(new Set(array));
-}
-
-dedupe([1, 1, 2, 3]) // [1, 2, 3]
-```
-
 ### 遍历操作
 
 Set 结构的实例有四个遍历方法，可以用于遍历成员。
@@ -163,104 +87,7 @@ Set 结构的实例有四个遍历方法，可以用于遍历成员。
 
 需要特别指出的是，`Set`的遍历顺序就是插入顺序。这个特性有时非常有用，比如使用 Set 保存一个回调函数列表，调用时就能保证按照添加顺序调用。
 
-**（1）`keys()`，`values()`，`entries()`**
-
-`keys`方法、`values`方法、`entries`方法返回的都是遍历器对象（详见《Iterator 对象》一章）。由于 Set 结构没有键名，只有键值（或者说键名和键值是同一个值），所以`keys`方法和`values`方法的行为完全一致。
-
-```javascript
-let set = new Set(['red', 'green', 'blue']);
-
-for (let item of set.keys()) {
-  console.log(item);
-}
-// red
-// green
-// blue
-
-for (let item of set.values()) {
-  console.log(item);
-}
-// red
-// green
-// blue
-
-for (let item of set.entries()) {
-  console.log(item);
-}
-// ["red", "red"]
-// ["green", "green"]
-// ["blue", "blue"]
-```
-
-上面代码中，`entries`方法返回的遍历器，同时包括键名和键值，所以每次输出一个数组，它的两个成员完全相等。
-
-Set 结构的实例默认可遍历，它的默认遍历器生成函数就是它的`values`方法。
-
-```javascript
-Set.prototype[Symbol.iterator] === Set.prototype.values
-// true
-```
-
-这意味着，可以省略`values`方法，直接用`for...of`循环遍历 Set。
-
-```javascript
-let set = new Set(['red', 'green', 'blue']);
-
-for (let x of set) {
-  console.log(x);
-}
-// red
-// green
-// blue
-```
-
-**（2）`forEach()`**
-
-Set 结构的实例与数组一样，也拥有`forEach`方法，用于对每个成员执行某种操作，没有返回值。
-
-```javascript
-set = new Set([1, 4, 9]);
-set.forEach((value, key) => console.log(key + ' : ' + value))
-// 1 : 1
-// 4 : 4
-// 9 : 9
-```
-
-上面代码说明，`forEach`方法的参数就是一个处理函数。该函数的参数与数组的`forEach`一致，依次为键值、键名、集合本身（上例省略了该参数）。这里需要注意，Set 结构的键名就是键值（两者是同一个值），因此第一个参数与第二个参数的值永远都是一样的。
-
-另外，`forEach`方法还可以有第二个参数，表示绑定处理函数内部的`this`对象。
-
-**（3）遍历的应用**
-
-扩展运算符（`...`）内部使用`for...of`循环，所以也可以用于 Set 结构。
-
-```javascript
-let set = new Set(['red', 'green', 'blue']);
-let arr = [...set];
-// ['red', 'green', 'blue']
-```
-
-扩展运算符和 Set 结构相结合，就可以去除数组的重复成员。
-
-```javascript
-let arr = [3, 5, 2, 2, 5, 5];
-let unique = [...new Set(arr)];
-// [3, 5, 2]
-```
-
-而且，数组的`map`和`filter`方法也可以间接用于 Set 了。
-
-```javascript
-let set = new Set([1, 2, 3]);
-set = new Set([...set].map(x => x * 2));
-// 返回Set结构：{2, 4, 6}
-
-let set = new Set([1, 2, 3, 4, 5]);
-set = new Set([...set].filter(x => (x % 2) == 0));
-// 返回Set结构：{2, 4}
-```
-
-因此使用 Set 可以很容易地实现并集（Union）、交集（Intersect）和差集（Difference）。
+Set 可以很容易地实现并集（Union）、交集（Intersect）和差集（Difference）。
 
 ```javascript
 let a = new Set([1, 2, 3]);
@@ -279,7 +106,7 @@ let difference = new Set([...a].filter(x => !b.has(x)));
 // Set {1}
 ```
 
-如果想在遍历操作中，同步改变原来的 Set 结构，目前没有直接的方法，但有两种变通方法。一种是利用原 Set 结构映射出一个新的结构，然后赋值给原来的 Set 结构；另一种是利用`Array.from`方法。
+**如果想在遍历操作中，同步改变原来的 Set 结构，目前没有直接的方法，但有两种变通方法。一种是利用原 Set 结构映射出一个新的结构，然后赋值给原来的 Set 结构；另一种是利用`Array.from`方法。**
 
 ```javascript
 // 方法一
@@ -317,7 +144,7 @@ ws.add(Symbol())
 
 这是因为垃圾回收机制依赖引用计数，如果一个值的引用次数不为`0`，垃圾回收机制就不会释放这块内存。结束使用该值之后，有时会忘记取消引用，导致内存无法释放，进而可能会引发内存泄漏。WeakSet 里面的引用，都不计入垃圾回收机制，所以就不存在这个问题。因此，WeakSet 适合临时存放一组对象，以及存放跟对象绑定的信息。只要这些对象在外部消失，它在 WeakSet 里面的引用就会自动消失。
 
-由于上面这个特点，WeakSet 的成员是不适合引用的，因为它会随时消失。另外，由于 WeakSet 内部有多少个成员，取决于垃圾回收机制有没有运行，运行前后很可能成员个数是不一样的，而垃圾回收机制何时运行是不可预测的，因此 ES6 规定 WeakSet 不可遍历。
+**由于上面这个特点，WeakSet 的成员是不适合引用的，因为它会随时消失。**另外，由于 WeakSet 内部有多少个成员，取决于垃圾回收机制有没有运行，运行前后很可能成员个数是不一样的，而垃圾回收机制何时运行是不可预测的，因此 ES6 规定 WeakSet 不可遍历。
 
 这些特点同样适用于本章后面要介绍的 WeakMap 结构。
 
@@ -355,24 +182,7 @@ WeakSet 结构有以下三个方法。
 - **WeakSet.prototype.delete(value)**：清除 WeakSet 实例的指定成员。
 - **WeakSet.prototype.has(value)**：返回一个布尔值，表示某个值是否在 WeakSet 实例之中。
 
-下面是一个例子。
-
-```javascript
-const ws = new WeakSet();
-const obj = {};
-const foo = {};
-
-ws.add(window);
-ws.add(obj);
-
-ws.has(window); // true
-ws.has(foo);    // false
-
-ws.delete(window);
-ws.has(window);    // false
-```
-
-WeakSet 没有`size`属性，没有办法遍历它的成员。
+**WeakSet 没有`size`属性，没有办法遍历它的成员。**
 
 ```javascript
 ws.size // undefined
@@ -384,7 +194,7 @@ ws.forEach(function(item){ console.log('WeakSet has ' + item)})
 
 上面代码试图获取`size`和`forEach`属性，结果都不能成功。
 
-WeakSet 不能遍历，是因为成员都是弱引用，随时可能消失，遍历机制无法保证成员的存在，很可能刚刚遍历结束，成员就取不到了。WeakSet 的一个用处，是储存 DOM 节点，而不用担心这些节点从文档移除时，会引发内存泄漏。
+WeakSet 不能遍历，是因为成员都是弱引用，随时可能消失，遍历机制无法保证成员的存在，很可能刚刚遍历结束，成员就取不到了。**WeakSet 的一个用处，是储存 DOM 节点，而不用担心这些节点从文档移除时，会引发内存泄漏。**
 
 下面是 WeakSet 的另一个例子。
 
@@ -408,7 +218,7 @@ class Foo {
 
 ### 含义和基本用法
 
-JavaScript 的对象（Object），本质上是键值对的集合（Hash 结构），但是传统上只能用字符串当作键。这给它的使用带来了很大的限制。
+**JavaScript 的对象（Object），本质上是键值对的集合（Hash 结构），但是传统上只能用字符串当作键。这给它的使用带来了很大的限制。**
 
 ```javascript
 const data = {};
@@ -420,7 +230,7 @@ data['[object HTMLDivElement]'] // "metadata"
 
 上面代码原意是将一个 DOM 节点作为对象`data`的键，但是由于对象只接受字符串作为键名，所以`element`被自动转为字符串`[object HTMLDivElement]`。
 
-为了解决这个问题，ES6 提供了 Map 数据结构。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。也就是说，Object 结构提供了“字符串—值”的对应，Map 结构提供了“值—值”的对应，是一种更完善的 Hash 结构实现。如果你需要“键值对”的数据结构，Map 比 Object 更合适。
+为了解决这个问题，ES6 提供了 Map 数据结构。**它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。也就是说，Object 结构提供了“字符串—值”的对应，Map 结构提供了“值—值”的对应，是一种更完善的 Hash 结构实现。如果你需要“键值对”的数据结构，Map 比 Object 更合适。**
 
 ```javascript
 const m = new Map();
@@ -436,7 +246,7 @@ m.has(o) // false
 
 上面代码使用 Map 结构的`set`方法，将对象`o`当作`m`的一个键，然后又使用`get`方法读取这个键，接着使用`delete`方法删除了这个键。
 
-上面的例子展示了如何向 Map 添加成员。作为构造函数，Map 也可以接受一个数组作为参数。该数组的成员是一个个表示键值对的数组。
+**上面的例子展示了如何向 Map 添加成员。作为构造函数，Map 也可以接受一个数组作为参数。该数组的成员是一个个表示键值对的数组。**
 
 ```javascript
 const map = new Map([
@@ -453,7 +263,7 @@ map.get('title') // "Author"
 
 上面代码在新建 Map 实例时，就指定了两个键`name`和`title`。
 
-`Map`构造函数接受数组作为参数，实际上执行的是下面的算法。
+**`Map`构造函数接受数组作为参数，实际上执行的是下面的算法。**
 
 ```javascript
 const items = [
@@ -468,7 +278,7 @@ items.forEach(
 );
 ```
 
-事实上，不仅仅是数组，任何具有 Iterator 接口、且每个成员都是一个双元素的数组的数据结构（详见《Iterator》一章）都可以当作`Map`构造函数的参数。这就是说，`Set`和`Map`都可以用来生成新的 Map。
+**事实上，不仅仅是数组，任何具有 Iterator 接口、且每个成员都是一个双元素的数组的数据结构（详见《Iterator》一章）都可以当作`Map`构造函数的参数。**这就是说，`Set`和`Map`都可以用来生成新的 Map。
 
 ```javascript
 const set = new Set([
@@ -483,30 +293,9 @@ const m3 = new Map(m2);
 m3.get('baz') // 3
 ```
 
-上面代码中，我们分别使用 Set 对象和 Map 对象，当作`Map`构造函数的参数，结果都生成了新的 Map 对象。
+**如果对同一个键多次赋值，后面的值将覆盖前面的值。**
 
-如果对同一个键多次赋值，后面的值将覆盖前面的值。
-
-```javascript
-const map = new Map();
-
-map
-.set(1, 'aaa')
-.set(1, 'bbb');
-
-map.get(1) // "bbb"
-```
-
-上面代码对键`1`连续赋值两次，后一次的值覆盖前一次的值。
-
-如果读取一个未知的键，则返回`undefined`。
-
-```javascript
-new Map().get('asfddfsasadf')
-// undefined
-```
-
-注意，只有对同一个对象的引用，Map 结构才将其视为同一个键。这一点要非常小心。
+**注意，只有对同一个对象的引用，Map 结构才将其视为同一个键。这一点要非常小心。**
 
 ```javascript
 const map = new Map();
@@ -535,7 +324,7 @@ map.get(k2) // 222
 
 上面代码中，变量`k1`和`k2`的值是一样的，但是它们在 Map 结构中被视为两个键。
 
-由上可知，Map 的键实际上是跟内存地址绑定的，只要**内存地址**不一样，就视为两个键。这就解决了同名属性碰撞（clash）的问题，我们扩展别人的库的时候，如果使用对象作为键名，就不用担心自己的属性与原作者的属性同名。
+*由上可知，Map 的键实际上是跟内存地址绑定的，只要**内存地址**不一样，就视为两个键。这就解决了同名属性碰撞（clash）的问题，我们扩展别人的库的时候，如果使用对象作为键名，就不用担心自己的属性与原作者的属性同名。*
 
 **如果 Map 的键是一个简单类型的值**（数字、字符串、布尔值），则只要两个值严格相等，Map 将其视为一个键，比如`0`和`-0`就是一个键，布尔值`true`和字符串`true`则是两个不同的键。另外，`undefined`和`null`也是两个不同的键。虽然`NaN`不严格相等于自身，但 Map 将其视为同一个键。
 
@@ -564,14 +353,6 @@ Map 结构的实例有以下属性和操作方法。
 **（1）size 属性**
 
 `size`属性返回 Map 结构的成员总数。
-
-```javascript
-const map = new Map();
-map.set('foo', true);
-map.set('bar', false);
-
-map.size // 2
-```
 
 **（2）set(key, value)**
 
@@ -611,45 +392,13 @@ m.get(hello)  // Hello ES6!
 
 `has`方法返回一个布尔值，表示某个键是否在当前 Map 对象之中。
 
-```javascript
-const m = new Map();
-
-m.set('edition', 6);
-m.set(262, 'standard');
-m.set(undefined, 'nah');
-
-m.has('edition')     // true
-m.has('years')       // false
-m.has(262)           // true
-m.has(undefined)     // true
-```
-
 **（5）delete(key)**
 
 `delete`方法删除某个键，返回`true`。如果删除失败，返回`false`。
 
-```javascript
-const m = new Map();
-m.set(undefined, 'nah');
-m.has(undefined)     // true
-
-m.delete(undefined)
-m.has(undefined)       // false
-```
-
 **（6）clear()**
 
 `clear`方法清除所有成员，没有返回值。
-
-```javascript
-let map = new Map();
-map.set('foo', true);
-map.set('bar', false);
-
-map.size // 2
-map.clear()
-map.size // 0
-```
 
 ### 遍历方法
 
@@ -701,7 +450,7 @@ for (let [key, value] of map) {
 // "T" "yes"
 ```
 
-上面代码最后的那个例子，表示 Map 结构的默认遍历器接口（`Symbol.iterator`属性），就是`entries`方法。
+**上面代码最后的那个例子，表示 Map 结构的默认遍历器接口（`Symbol.iterator`属性），就是`entries`方法。**
 
 ```javascript
 map[Symbol.iterator] === map.entries
@@ -730,7 +479,7 @@ const map = new Map([
 // [[1,'one'], [2, 'two'], [3, 'three']]
 ```
 
-结合数组的`map`方法、`filter`方法，可以实现 Map 的遍历和过滤（Map 本身没有`map`和`filter`方法）。
+**结合数组的`map`方法、`filter`方法，可以实现 Map 的遍历和过滤（Map 本身没有`map`和`filter`方法）。**
 
 ```javascript
 const map0 = new Map()
@@ -895,21 +644,6 @@ jsonToMap('[[true,7],[{"foo":3},["abc"]]]')
 
 `WeakMap`结构与`Map`结构类似，也是用于生成键值对的集合。
 
-```javascript
-// WeakMap 可以使用 set 方法添加成员
-const wm1 = new WeakMap();
-const key = {foo: 1};
-wm1.set(key, 2);
-wm1.get(key) // 2
-
-// WeakMap 也可以接受一个数组，
-// 作为构造函数的参数
-const k1 = [1, 2, 3];
-const k2 = [4, 5, 6];
-const wm2 = new WeakMap([[k1, 'foo'], [k2, 'bar']]);
-wm2.get(k2) // "bar"
-```
-
 `WeakMap`与`Map`的区别有两点。
 
 首先，`WeakMap`只接受对象作为键名（`null`除外），不接受其他类型的值作为键名。
@@ -952,9 +686,9 @@ arr [1] = null;
 
 上面这样的写法显然很不方便。一旦忘了写，就会造成内存泄露。
 
-WeakMap 就是为了解决这个问题而诞生的，它的键名所引用的对象都是弱引用，即垃圾回收机制不将该引用考虑在内。因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存。也就是说，一旦不再需要，WeakMap 里面的键名对象和所对应的键值对会自动消失，不用手动删除引用。
+**WeakMap 就是为了解决这个问题而诞生的，它的键名所引用的对象都是弱引用，即垃圾回收机制不将该引用考虑在内。因此，只要所引用的对象的其他引用都被清除，垃圾回收机制就会释放该对象所占用的内存。也就是说，一旦不再需要，WeakMap 里面的键名对象和所对应的键值对会自动消失，不用手动删除引用。**
 
-基本上，如果你要往对象上添加数据，又不想干扰垃圾回收机制，就可以使用 WeakMap。一个典型应用场景是，在网页的 DOM 元素上添加数据，就可以使用`WeakMap`结构。当该 DOM 元素被清除，其所对应的`WeakMap`记录就会自动被移除。
+**基本上，如果你要往对象上添加数据，又不想干扰垃圾回收机制，就可以使用 WeakMap。一个典型应用场景是，在网页的 DOM 元素上添加数据，就可以使用`WeakMap`结构。当该 DOM 元素被清除，其所对应的`WeakMap`记录就会自动被移除。**
 
 ```javascript
 const wm = new WeakMap();
