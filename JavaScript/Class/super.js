@@ -89,7 +89,7 @@ class B extends A {
 let b = new B();
 // 上面代码中，属性 x是定义在 A.prototype上面的，所以super.x可以取到它的值。
 
-// ES6 规定，在子类普通方法中通过super调用父类的方法时，方法内部的this指向当前的子类实例。
+//! ES6 规定，在子类普通方法中通过super调用父类的方法时，方法内部的this指向当前的子类实例。
 
 class A {
   constructor() {
@@ -112,9 +112,10 @@ class B extends A {
 
 let b = new B();
 b.m() // 2
-// 上面代码中，super.print()虽然调用的是A.prototype.print()，但是A.prototype.print()内部的 this指向子类 B的实例，导致输出的是2，而不是1。也就是说，实际上执行的是super.print.call(this)。
 
-// 由于this指向子类实例，所以如果通过super对某个属性赋值，这时 super就是 this，赋值的属性会变成子类实例的属性。
+// !上面代码中，super.print()虽然调用的是A.prototype.print()，但是A.prototype.print()内部的 this指向子类 B的实例，导致输出的是2，而不是1。也就是说，实际上执行的是super.print.call(this)。
+
+// !由于this指向子类实例，所以如果通过super对某个属性赋值，这时 super就是 this，赋值的属性会变成子类实例的属性。
 
 class A {
   constructor() {

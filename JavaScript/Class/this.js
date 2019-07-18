@@ -1,4 +1,4 @@
-// 类中的方法如果含有this，它默认指向类的实例，但是，必须非常小心，一旦单独使用该方法，很可能报错。
+//! 类中的方法如果含有this，它默认指向类的实例，但是，必须非常小心，一旦单独使用该方法，很可能报错。
 
 class Logger {
   printName(name = 'angel') {
@@ -34,7 +34,7 @@ logger.printName() // hello angel
 const {printName} = logger
 printName() // hello angel
 
-// 2.使用箭头函数
+//! 2.使用箭头函数
 
 class Logger {
   constructor() {
@@ -51,7 +51,7 @@ logger.printName() // hello angel
 const {printName} = logger
 printName() // hello angel
 
-// 3.Proxy 获取方法的时候，自动绑定this。
+//! 3.Proxy 获取方法的时候，自动绑定this。
 function selfish (target) {
   const cache = new WeakMap();
   const handler = {

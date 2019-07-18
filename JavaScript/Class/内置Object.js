@@ -1,5 +1,5 @@
 // 原生构造函数是指语言内置的构造函数，通常用来生成数据结构。ECMAScript 的原生构造函数大致有下面这些。
-
+// https://leanpub.com/understandinges6/read#leanpub-auto-class-declarations
 Boolean()
 Number()
 String()
@@ -69,9 +69,9 @@ arr.length // 1
 arr.length = 0;
 arr[0] // undefined
 
-// 上面代码定义了一个MyArray类，继承了Array构造函数，因此就可以从MyArray生成数组的实例。这意味着，ES6 可以自定义原生数据结构（比如Array、String等）的子类，这是 ES5 无法做到的。
+// !上面代码定义了一个MyArray类，继承了Array构造函数，因此就可以从MyArray生成数组的实例。这意味着，ES6 可以自定义原生数据结构（比如Array、String等）的子类，这是 ES5 无法做到的。
 
-// 上面这个例子也说明，extends关键字不仅可以用来继承类，还可以用来继承原生的构造函数。因此可以在原生数据结构的基础上，定义自己的数据结构。下面就是定义了一个带版本功能的数组。
+// !上面这个例子也说明，extends关键字不仅可以用来继承类，还可以用来继承原生的构造函数。因此可以在原生数据结构的基础上，定义自己的数据结构。下面就是定义了一个带版本功能的数组。
 
 //TODO
 class VersionedArray extends Array {
@@ -103,9 +103,11 @@ x.history // [[], [1, 2]]
 
 x.revert();
 x // [1, 2]
-上面代码中，VersionedArray会通过commit方法，将自己的当前状态生成一个版本快照，存入history属性。revert方法用来将数组重置为最新一次保存的版本。除此之外，VersionedArray依然是一个普通数组，所有原生的数组方法都可以在它上面调用。
 
-下面是一个自定义Error子类的例子，可以用来定制报错时的行为。
+
+// 上面代码中，VersionedArray会通过commit方法，将自己的当前状态生成一个版本快照，存入history属性。revert方法用来将数组重置为最新一次保存的版本。除此之外，VersionedArray依然是一个普通数组，所有原生的数组方法都可以在它上面调用。
+
+// 下面是一个自定义Error子类的例子，可以用来定制报错时的行为。
 
 class ExtendableError extends Error {
   constructor(message) {
@@ -130,7 +132,8 @@ myerror.stack
 // Error
 //     at MyError.ExtendableError
 //     ...
-注意，继承Object的子类，有一个行为差异。
+
+// !注意，继承Object的子类，有一个行为差异。
 
 class NewObj extends Object{
   constructor(){
@@ -139,4 +142,5 @@ class NewObj extends Object{
 }
 var o = new NewObj({attr: true});
 o.attr === true  // false
-上面代码中，NewObj继承了Object，但是无法通过super方法向父类Object传参。这是因为 ES6 改变了Object构造函数的行为，一旦发现Object方法不是通过new Object()这种形式调用，ES6 规定Object构造函数会忽略参数。
+
+// !上面代码中，NewObj继承了Object，但是无法通过super方法向父类Object传参。这是因为 ES6 改变了Object构造函数的行为，一旦发现Object方法不是通过new Object()这种形式调用，ES6 规定Object构造函数会忽略参数。
