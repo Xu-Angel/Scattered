@@ -56,7 +56,7 @@ readFilePromise('some1.json').then(data => {
 
 ## Promise 中不能缺少 callback
 
-上文已经基本给出了上一节提问的答案，但是这里还需要再加一个补充：`Promise`不仅仅是没有取代`callback`或者弃而不用，反而`Promise`中要使用到`callback`。因为，JS 异步执行的本质，必须有`callback`存在，否则无法实现。
+上文已经基本给出了上一节提问的答案，但是这里还需要再加一个补充：**`Promise`不仅仅是没有取代`callback`或者弃而不用，反而`Promise`中要使用到`callback`**。因为，JS 异步执行的本质，必须有`callback`存在，否则无法实现。
 
 再次粘贴处之前章节的封装好的一个`Promise`函数（进行了一点点简化）
 

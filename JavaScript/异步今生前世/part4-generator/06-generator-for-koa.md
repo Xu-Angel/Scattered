@@ -4,10 +4,6 @@
 
 我们此前说过，既然是处理 http 请求，是一种网络操作，肯定就会用到异步操作。express 使用的异步操作是传统的`callbck`，而 koa 用的是我们刚刚讲的`Generator`（koa `v1.x`用的是`Generator`，已经被广泛使用，而 koa `v2.x`用到了 ES7 中的`async-await`，不过因为 ES7 没有正式发布，所以 koa `v2.x`也没有正式发布，不过可以试用）
 
-koa 是由 express 的原班开发人员开发的，比 express 更加简洁易用，**因此 koa 是目前最为推荐的 nodejs web 框架**。阿里前不久就依赖于 koa 开发了自己的 nodejs web 框架 [egg](https://github.com/eggjs/egg)
-
-国内可以通过[koa.bootcss.com](http://koa.bootcss.com/)查阅文档，*不过这网站依赖了 Google 的服务，因此如果不科学上网，估计会访问会很慢*。
-
 **提醒：如果你是初学`Generator`而且从来没有用过 koa ，那么这一节你如果看不懂，没有问题。看不懂就不要强求，可以忽略，继续往下看！**
 
 本节演示的代码可参考[这里](./test.js)
@@ -80,7 +76,6 @@ app.use(function *(next){
 class MyKoa extends Object {
     constructor(props) {
         super(props);
-        
         // 存储所有的中间件
         this.middlewares = []
     }
@@ -140,4 +135,3 @@ app.listen();
 `Generator`的应用基本讲完，从一开始的基础到后面应用到异步操作，再到本节的高级应用 koa ，算是比较全面了。接下来，我们要再回到最初的起点，探讨`Generator`的本质，以及它和`callback`的关系。
 
 还是那句话，搞明白原理，才能用的更加出色！
-

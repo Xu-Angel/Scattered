@@ -74,7 +74,7 @@ result.then(data => {
 
 我们知道`then`会接收两个参数（函数），第一个参数会在执行`resolve`之后触发（还能传递参数），第二个参数会在执行`reject`之后触发（其实也可以传递参数，和`resolve`传递参数一样），但是上面的例子中，**我们没有用到`then`的第二个参数。这是为何呢 ———— 因为不建议这么用**。
 
-对于`Promise`中的异常处理，我们建议用`catch`方法，而不是`then`的第二个参数。请看下面的代码，以及注释。
+**对于`Promise`中的异常处理，我们建议用`catch`方法，而不是`then`的第二个参数。**请看下面的代码，以及注释。
 
 ```javascript
 const fullFileName = path.resolve(__dirname, '../data/data2.json')
@@ -89,7 +89,7 @@ result.then(data => {
 })
 ```
 
-在若干个`then`串联之后，我们一般会在最后跟一个`.catch`来捕获异常，而且执行`reject`时传递的参数也会在`catch`中获取到。这样做的好处是：
+**在若干个`then`串联之后，我们一般会在最后跟一个`.catch`来捕获异常，而且执行`reject`时传递的参数也会在`catch`中获取到。这样做的好处是：**
 
 - 让程序看起来更加简洁，是一个串联的关系，没有分支（如果用`then`的两个参数，就会出现分支，影响阅读）
 - 看起来更像是`try - catch`的样子，更易理解
@@ -157,6 +157,8 @@ jsPromise.then(data => {
 ```
 
 **注意：这里的`Promise.resolve`和文章最初`readFilePromise`函数内部的`resolve`函数可千万不要混了，完全是两码事儿**。JS 基础好的同学一看就明白，而这里看不明白的同学，要特别注意。
+
+### thenable
 
 实际上，并不是`Promise.resolve`对 jquery 的`deferred`对象做了特殊处理，**而是`Promise.resolve`能够将`thenable`对象转换为`Promise`对象**。什么是`thenable`对象？———— 看个例子
 

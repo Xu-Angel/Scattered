@@ -8,3 +8,5 @@ null是一个对象，表示一个空对象指针，typeof(null)返回object，n
 null == undefined //true
 
 null === undefined //false 
+
+console.log(typeof null); //object

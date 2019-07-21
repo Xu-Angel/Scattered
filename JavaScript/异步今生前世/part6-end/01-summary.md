@@ -66,9 +66,3 @@ const readFileAsync = async function () {
     const f4 = await readFilePromise('data4.json')
 }
 ```
-
-## 写在最后
-
-写到这里，也没啥可写的了，这里希望大家多多按照自己的思路来思考问题吧。最后，欢迎扫码转账给我打赏，哈哈！
-
-
