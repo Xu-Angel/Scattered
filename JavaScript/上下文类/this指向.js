@@ -1,5 +1,5 @@
-﻿<script type="text/javascript">
-	
+<script type="text/javascript">
+	// this 指向
 	//当函数作为对象的方法被调用时，this 指向该对象：
 
 	var obj = {

@@ -36,7 +36,7 @@
 	renderMap( 'google' ); // 输出：开始渲染谷歌地图
 	renderMap( 'baidu' ); // 输出：开始渲染百度地图
 
-	var renderMap = function( map ){
+	var renderMap = function( map ){ // 入口方法
 		if ( map.show instanceof Function ){
 			map.show();
 		}
