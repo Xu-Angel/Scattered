@@ -62,11 +62,12 @@ componentDidUpdate() 会在更新后会被立即调用。首次渲染不会执�
 ## 实例属性
 
 props
+
 state
 
 ## 注意xxx__~~
 
-避免将 props 的值复制给 state！这是一个常见的错误：
+**避免将 props 的值复制给 state！**这是一个常见的错误：
 
 ```js
 constructor(props) {

@@ -1,11 +1,10 @@
 # ~
 
-忘记正确地处理 componentDidUpdate 是 React 应用中常见的 bug 来源。
+**忘记正确地处理 componentDidUpdate 是 React 应用中常见的 bug 来源**。
 
 什么时候我会用 Hook？ 如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以在现有的函数组件中使用 Hook。
 
 ## State Hook
-
 
 ## Effect Hook
 
@@ -77,7 +76,6 @@ useEffect(() => {
 未来版本，可能会在构建时自动添加第二个参数。
 
 如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。这并不属于特殊情况 —— 它依然遵循依赖数组的工作方式。
-
 
 ## Hook 使用规则
 

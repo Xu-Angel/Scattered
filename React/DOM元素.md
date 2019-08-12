@@ -12,7 +12,7 @@ React 实现了一套独立于浏览器的 DOM 系统，兼顾了性能和跨浏
 
 checked
 
-defaultChecked ->受控组件的属性
+**defaultChecked ->受控组件的属性**
 
 className
 
@@ -30,7 +30,7 @@ suppressHydrationWarning
 
 value
 
-defaultValue ->非受控组件的属性
+**defaultValue ->非受控组件的属性**
 
 style :
 
@@ -62,7 +62,7 @@ function ComponentWithTransition() {
 
 Style 中的 key 采用小驼峰命名是为了与 JS 访问 DOM 节点的属性保持一致（例如：node.style.backgroundImage ）。浏览器引擎前缀都应以大写字母开头，除了 ms。因此，WebkitTransition 首字母为 ”W”。
 
-React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如需使用 ”px” 以外的单位，请将此值设为数字与所需单位组成的字符串。例如：
+**React 会自动添加 ”px” 后缀到内联样式为数字的属性后。如需使用 ”px” 以外的单位，请将此值设为数字与所需单位组成的字符串**。例如：
 
 ```jsx
 // Result style: '10px'
@@ -93,5 +93,5 @@ role rowSpan rows sandbox scope scoped scrolling seamless selected shape size
 sizes span spellCheck src srcDoc srcLang srcSet start step style summary
 tabIndex target title type useMap value width wmode wrap
 ```
-同样，所有的 SVG 属性也完全得到了支持
 
+同样，所有的 SVG 属性也完全得到了支持
