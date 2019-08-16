@@ -1,15 +1,27 @@
 ## `apply` `bind` `call` `this` 的恩怨情仇
 
-- **https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind**
+**https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind**
 
-- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/call
 
-- https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
+
+### 性能对比，用哪个
+
+https://github.com/noneven/__/issues/6
+
+https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/84
+
+- Function.prototype.apply和Function.prototype.call 的作用是一样的，区别在于传入参数的不同；
+- 第一个参数都是，指定函数体内this的指向；
+- 第二个参数开始不同，apply是传入带下标的集合，数组或者类数组，apply把它传给函数作为参数，call从第二个开始传入的参数是不固定的，都会传给函数作为参数。
+- call比apply的性能要好，平常可以多用call, call传入参数的格式正是内部所需要的格式，参考call和apply的性能对比
 
 ### this的指向
-___
-> this永远指向最后调用它的那个对象。
-### 几个栗子   :nose:
+
+this永远指向最后调用它的那个对象。
+
+### 几个栗子
 ##### eg1
 ```js
 var name = "global";
