@@ -6,6 +6,8 @@ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects
 
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply
 
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this
+
 ### 性能对比，用哪个
 
 https://github.com/noneven/__/issues/6
