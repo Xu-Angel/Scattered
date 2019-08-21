@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <a href="https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/129"></a>
+    <input id='myinput'>
+    <script>
+    function jeiliu(timeout){
+        var timer;
+        function input(e){
+        if(e.target.composing){
+            return ;
+        }
+        if(timer){
+           clearTimeout(timer);
+        }
+        timer = setTimeout(() => {
+               console.log(e.target.value);
+               timer = null;
+           }, timeout); 
+        }
+        return input;
+    }
+
+    function onCompositionStart(e){
+        e.target.composing = true;
+    }
+    function onCompositionEnd(e){
+        //console.log(e.target)
+        e.target.composing = false;
+        var event = document.createEvent('HTMLEvents');
+        event.initEvent('input');
+        e.target.dispatchEvent(event);
+    }
+    var input_dom = document.getElementById('myinput');
+    input_dom.addEventListener('input',jeiliu(2000));
+    input_dom.addEventListener('compositionstart',onCompositionStart);
+    input_dom.addEventListener('compositionend',onCompositionEnd);
+  </script>
+</body>
+</html>
