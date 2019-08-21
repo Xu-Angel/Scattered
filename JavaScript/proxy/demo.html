@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <b id="count"></b>
+<button onclick="increase()">+</button>
+<button onclick="decrease()">-</button>
+<script>
+const data = { count: 0 };
+const proxy = new Proxy(data, {
+  get(target, property) {
+    return target[property];
+  },
+  set(target, property, value) {
+    target[property] = value;
+    render(value);
+    return true // set方法应该返回一个布尔值，返回true代表此次设置属性成功了，如果返回false且设置属性操作发生在严格模式下，那么会抛出一个TypeError。
+  }
+});
+
+render(proxy.count);
+
+function render(value) {
+  document.getElementById('count').innerHTML = value;
+}
+
+function increase() {
+  proxy.count += 1;
+}
+
+function decrease() {
+  proxy.count -= 1; 
+}
+</script>
+</body>
+</html>
