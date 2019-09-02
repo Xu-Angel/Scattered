@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - 【iCSS：组件】混沌加载圈</title>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/reset.css'>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/main.css'>
+<style>
+    .chaos-loading {
+  overflow: hidden;
+  position: relative;
+  border-radius: 100%;
+  width: 200px;
+  height: 200px;
+}
+.chaos-loading::after {
+  display: block;
+  -webkit-filter: drop-shadow(2px 4px 6px #000);
+          filter: drop-shadow(2px 4px 6px #000);
+  line-height: 200px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  color: #fff;
+  content: "Loading...";
+}
+.chaos-loading li {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  -webkit-filter: blur(25px);
+          filter: blur(25px);
+  -webkit-animation: move 2s linear infinite;
+          animation: move 2s linear infinite;
+}
+.chaos-loading li:nth-child(1) {
+  background-color: #f66;
+}
+.chaos-loading li:nth-child(2) {
+  background-color: #66f;
+  -webkit-animation-delay: -500ms;
+          animation-delay: -500ms;
+}
+.chaos-loading li:nth-child(3) {
+  background-color: #f90;
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s;
+}
+.chaos-loading li:nth-child(4) {
+  background-color: #09f;
+  -webkit-animation-delay: -1.5s;
+          animation-delay: -1.5s;
+}
+
+@-webkit-keyframes move {
+  0%,
+	100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  25% {
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+  }
+  50% {
+    -webkit-transform: translate3d(100%, 100%, 0);
+            transform: translate3d(100%, 100%, 0);
+  }
+  75% {
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes move {
+  0%,
+	100% {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+  25% {
+    -webkit-transform: translate3d(100%, 0, 0);
+            transform: translate3d(100%, 0, 0);
+  }
+  50% {
+    -webkit-transform: translate3d(100%, 100%, 0);
+            transform: translate3d(100%, 100%, 0);
+  }
+  75% {
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+  }
+}
+
+  </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div class="bruce flex-ct-x">
+<ul class="chaos-loading">
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+</div>
+</body>
+</html>

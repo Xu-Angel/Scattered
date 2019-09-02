@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - 【iCSS：图形】使用linear-gradient描绘彩带</title>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/reset.css'>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/main.css'>
+<style>
+    .colour-bar {
+  width: 500px;
+  height: 50px;
+  background-image: repeating-linear-gradient(90deg, #f66, #f66 50px, #66f 50px, #66f 100px);
+}
+
+  </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div class="bruce flex-ct-x">
+<div class="colour-bar"></div>
+</div>
+</body>
+</html>

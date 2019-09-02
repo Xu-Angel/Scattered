@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CodePen - 【iCSS：图形】使用linear-gradient描绘波浪线</title>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/reset.css'>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/main.css'>
+<style>
+    .waveline-text {
+  height: 20px;
+  line-height: 20px;
+  letter-spacing: 10px;
+  position: relative;
+}
+.waveline-text::after {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(135deg, transparent, transparent 45%, #f66, transparent 55%, transparent 100%), linear-gradient(45deg, transparent, transparent 45%, #f66, transparent 55%, transparent 100%);
+  background-size: 20px 20px;
+  content: "";
+}
+
+  </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div class="bruce flex-ct-x">
+<p class="waveline-text">波浪线文字</p>
+</div>
+</body>
+</html>

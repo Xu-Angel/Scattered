@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - 【iCSS：组件】加载指示器</title>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/reset.css'>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/main.css'>
+<style>
+    .load-indicator {
+  font-size: 16px;
+  color: #09f;
+}
+.load-indicator dot {
+  display: inline-block;
+  overflow: hidden;
+  height: 1em;
+  line-height: 1;
+  vertical-align: -.25em;
+}
+.load-indicator dot::after {
+  display: block;
+  white-space: pre-wrap;
+  content: "...\A..\A.";
+  -webkit-animation: loading 3s infinite step-start both;
+          animation: loading 3s infinite step-start both;
+}
+
+@-webkit-keyframes loading {
+  33% {
+    -webkit-transform: translate3d(0, -2em, 0);
+            transform: translate3d(0, -2em, 0);
+  }
+  66% {
+    -webkit-transform: translate3d(0, -1em, 0);
+            transform: translate3d(0, -1em, 0);
+  }
+}
+
+@keyframes loading {
+  33% {
+    -webkit-transform: translate3d(0, -2em, 0);
+            transform: translate3d(0, -2em, 0);
+  }
+  66% {
+    -webkit-transform: translate3d(0, -1em, 0);
+            transform: translate3d(0, -1em, 0);
+  }
+}
+
+  </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div class="bruce flex-ct-x">
+<div class="load-indicator">加载中<dot></dot></div>
+</div>
+</body>
+</html>

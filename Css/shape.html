@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+    padding: 40px;
+}
+  div {
+   margin: 50px;
+  }
+  </style>
+</head>
+<body>
+  <style>
+    
+    #curvedarrow {
+      position: relative;
+      width: 0;
+      height: 0;
+      border-top: 9px solid transparent;
+      border-right: 9px solid red;
+      transform: rotate(10deg);
+    }
+    #curvedarrow:after {
+      content: "";
+      position: absolute;
+      border: 0 solid transparent;
+      border-top: 3px solid red;
+      border-radius: 20px 0 0 0;
+      top: -12px;
+      left: -9px;
+      width: 12px;
+      height: 12px;
+      transform: rotate(45deg);
+    }
+    </style>
+  <div id="curvedarrow"></div><br></br>
+  <style>
+  
+  #heart {
+      position: relative;
+      width: 100px;
+      height: 90px;
+    }
+    #heart:before,
+    #heart:after {
+      position: absolute;
+      content: "";
+      left: 50px;
+      top: 0;
+      width: 50px;
+      height: 80px;
+      background: red;
+      border-radius: 50px 50px 0 0;
+      transform: rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+    #heart:after {
+      left: 0;
+      transform: rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+  </style>
+  <div id="heart"></div><br></br>
+  <style>
+      #infinity {
+      position: relative;
+      width: 212px;
+      height: 100px;
+      box-sizing: content-box;
+    }
+    #infinity:before,
+    #infinity:after {
+      content: "";
+      box-sizing: content-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 60px;
+      height: 60px;
+      border: 20px solid red;
+      border-radius: 50px 50px 0 50px;
+      transform: rotate(-45deg);
+    }
+    #infinity:after {
+      left: auto;
+      right: 0;
+      border-radius: 50px 50px 50px 0;
+      transform: rotate(45deg);
+    }
+  </style>
+  <div id="infinity"></div><br></br>
+  <style>
+  
+  #diamond {
+      width: 0;
+      height: 0;
+      border: 50px solid transparent;
+      border-bottom-color: red;
+      position: relative;
+      top: -50px;
+    }
+    #diamond:after {
+      content: '';
+      position: absolute;
+      left: -50px;
+      top: 50px;
+      width: 0;
+      height: 0;
+      border: 50px solid transparent;
+      border-top-color: red;
+    }
+  </style>
+  <div id="diamond"></div><br></br>
+  <style>
+      #diamond-narrow {
+      width: 0;
+      height: 0;
+      border: 50px solid transparent;
+      border-bottom: 70px solid red;
+      position: relative;
+      top: -50px;
+    }
+    #diamond-narrow:after {
+      content: '';
+      position: absolute;
+      left: -50px;
+      top: 70px;
+      width: 0;
+      height: 0;
+      border: 50px solid transparent;
+      border-top: 70px solid red;
+    }
+  </style>
+  <div id="diamond-narrow"></div><br></br>
+  <style>
+      #talkbubble {
+      width: 120px;
+      height: 80px;
+      background: red;
+      position: relative;
+      -moz-border-radius: 10px;
+      -webkit-border-radius: 10px;
+      border-radius: 10px;
+    }
+    #talkbubble:before {
+      content: "";
+      position: absolute;
+      right: 100%;
+      top: 26px;
+      width: 0;
+      height: 0;
+      border-top: 13px solid transparent;
+      border-right: 26px solid red;
+      border-bottom: 13px solid transparent;
+    }
+  </style>
+  <div id="talkbubble"></div><br></br>
+  <style>
+  
+  #magnifying-glass {
+      font-size: 10em;
+      display: inline-block;
+      width: 0.4em;
+      box-sizing: content-box;
+      height: 0.4em;
+      border: 0.1em solid red;
+      position: relative;
+      border-radius: 0.35em;
+    }
+    #magnifying-glass:before {
+      content: "";
+      display: inline-block;
+      position: absolute;
+      right: -0.25em;
+      bottom: -0.1em;
+      border-width: 0;
+      background: red;
+      width: 0.35em;
+      height: 0.08em;
+      transform: rotate(45deg);
+    }
+  </style>
+  <div id="magnifying-glass"></div><br></br>
+  <style>
+      #moon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      box-shadow: 15px 15px 0 0 red;
+    }
+  </style>
+  <div id="moon"></div><br></br>
+  <style>
+  
+  #cone {
+      width: 0;
+      height: 0;
+      border-left: 70px solid transparent;
+      border-right: 70px solid transparent;
+      border-top: 100px solid red;
+      border-radius: 50%;
+    }
+  </style>
+  <div id="cone"></div><br></br>
+  <style>
+   #cross {
+      background: red;
+      height: 100px;
+      position: relative;
+      width: 20px;
+    }
+    #cross:after {
+      background: red;
+      content: "";
+      height: 20px;
+      left: -40px;
+      position: absolute;
+      top: 40px;
+      width: 100px;
+    }
+  </style>
+  <div id="cross"></div><br></br>
+  <style>
+  
+  #pointer {
+      width: 200px;
+      height: 40px;
+      position: relative;
+      background: red;
+    }
+    #pointer:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-left: 20px solid white;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+    }
+    #pointer:before {
+      content: "";
+      position: absolute;
+      right: -20px;
+      bottom: 0;
+      width: 0;
+      height: 0;
+      border-left: 20px solid red;
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+    }
+  </style>
+  <div id="pointer"></div><br></br>
+  <style>
+  #lock {
+  font-size: 8px;
+  position: relative;
+  width: 18em;
+  height: 13em;
+  border-radius: 2em;
+  top: 10em;
+  box-sizing: border-box;
+  border: 3.5em solid red;
+  border-right-width: 7.5em;
+  border-left-width: 7.5em;
+  margin: 0 0 6rem 0;
+}
+#lock:before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  border: 2.5em solid red;
+  width: 14em;
+  height: 12em;
+  left: 50%;
+  margin-left: -7em;
+  top: -12em;
+  border-top-left-radius: 7em;
+  border-top-right-radius: 7em;
+}
+#lock:after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  border: 1em solid red;
+  width: 5em;
+  height: 8em;
+  border-radius: 2.5em;
+  left: 50%;
+  top: -1em;
+  margin-left: -2.5em;
+}
+  </style>
+  <div id="lock"></div><br></br>
+  <style>
+     #tv {
+      position: relative;
+      width: 200px;
+      height: 150px;
+      margin: 20px 0;
+      background: red;
+      border-radius: 50% / 10%;
+      color: white;
+      text-align: center;
+      text-indent: .1em;
+    }
+    #tv:before {
+      content: '';
+      position: absolute;
+      top: 10%;
+      bottom: 10%;
+      right: -5%;
+      left: -5%;
+      background: inherit;
+      border-radius: 5% / 50%;
+    }
+  </style>
+  <div id="tv"></div><br></br>
+  <style>
+      #badge-ribbon {
+        position: relative;
+        background: red;
+        height: 100px;
+        width: 100px;
+        border-radius: 50px;
+      }
+      #badge-ribbon:before,
+      #badge-ribbon:after {
+        content: '';
+        position: absolute;
+        border-bottom: 70px solid red;
+        border-left: 40px solid transparent;
+        border-right: 40px solid transparent;
+        top: 70px;
+        left: -10px;
+        transform: rotate(-140deg);
+      }
+      #badge-ribbon:after {
+        left: auto;
+        right: -10px;
+        transform: rotate(140deg);
+      }
+  </style>
+  <div id="badge-ribbon"></div><br></br>
+  <style>
+    #egg {
+      display: block;
+      width: 126px;
+      height: 180px;
+      background-color: red;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    }
+  </style>
+  <div id="egg"></div><br></br>
+  <style>
+      #cut-diamond {
+      border-style: solid;
+      border-color: transparent transparent red transparent;
+      border-width: 0 25px 25px 25px;
+      height: 0;
+      width: 50px;
+      box-sizing: content-box;
+      position: relative;
+      margin: 20px 0 50px 0;
+    }
+    #cut-diamond:after {
+      content: "";
+      position: absolute;
+      top: 25px;
+      left: -25px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-color: red transparent transparent transparent;
+      border-width: 70px 50px 0 50px;
+    }
+  </style>
+  <div id="cut-diamond"></div><br></br>
+</body>
+</html>

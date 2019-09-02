@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - 【iCSS：组件】状态悬浮球</title>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/reset.css'>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/main.css'>
+<style>
+    .state-ball {
+  overflow: hidden;
+  position: relative;
+  padding: 5px;
+  border: 3px solid #3c9;
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+  background-color: #fff;
+}
+.state-ball::before, .state-ball::after {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 20;
+  margin-left: -100px;
+  width: 200px;
+  height: 200px;
+  content: "";
+}
+.state-ball::before {
+  margin-top: -150px;
+  border-radius: 45%;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-animation: rotate 10s linear -5s infinite;
+          animation: rotate 10s linear -5s infinite;
+}
+.state-ball::after {
+  margin-top: -160px;
+  border-radius: 40%;
+  background-color: rgba(255, 255, 255, 0.8);
+  -webkit-animation: rotate 15s infinite;
+          animation: rotate 15s infinite;
+}
+.state-ball.warning {
+  border-color: #f90;
+}
+.state-ball.warning .wave {
+  background-image: linear-gradient(-180deg, #f0c78a 13%, #f90 91%);
+}
+.state-ball.danger {
+  border-color: #f66;
+}
+.state-ball.danger .wave {
+  background-image: linear-gradient(-180deg, #f78989 13%, #f66 91%);
+}
+
+.wave {
+  position: relative;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(-180deg, #af8 13%, #3c9 91%);
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
+}
+
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  to {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
+}
+
+  </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div class="bruce flex-ct-x">
+<div class="state-ball warning">
+<div class="wave"></div>
+</div>
+</div>
+</body>
+</html>

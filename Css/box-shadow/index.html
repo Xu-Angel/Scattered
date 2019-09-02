@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - 【iCSS：图形】使用box-shadow裁剪图像</title>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/reset.css'>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/main.css'>
+<style>
+    .img-cliper {
+  overflow: hidden;
+  position: relative;
+}
+.img-cliper img {
+  width: 400px;
+}
+.img-cliper i {
+  position: absolute;
+  left: 50px;
+  top: 30px;
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+}
+.img-cliper .mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+  </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+  <p>要点：通过box-shadow模拟蒙层实现中间镂空
+      场景：图片裁剪、新手引导、背景镂空、投射定位</p>
+<div class="bruce flex-ct-x">
+<div class="img-cliper">
+<img src="https://yangzw.vip/static/codepen/gz.jpg">
+<div class="mask">
+<i></i>
+</div>
+</div>
+</div>
+</body>
+</html>

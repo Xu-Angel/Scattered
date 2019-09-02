@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - 【iCSS：组件】三维立方体</title>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/reset.css'>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/main.css'>
+<style>
+    .td-cube {
+  width: 150px;
+  height: 150px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+}
+.td-cube ul {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: rotateX(-15deg) rotateY(15deg);
+          transform: rotateX(-15deg) rotateY(15deg);
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-animation: rotate 5s infinite linear;
+          animation: rotate 5s infinite linear;
+}
+.td-cube li {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  opacity: .8;
+  font-size: 50px;
+  color: #fff;
+}
+
+.front {
+  background-color: #f66;
+  -webkit-transform: translateZ(75px);
+          transform: translateZ(75px);
+}
+
+.back {
+  background-color: #66f;
+  -webkit-transform: rotateY(180deg) translateZ(75px);
+          transform: rotateY(180deg) translateZ(75px);
+}
+
+.top {
+  background-color: #f90;
+  -webkit-transform: rotateX(90deg) translateZ(75px);
+          transform: rotateX(90deg) translateZ(75px);
+}
+
+.bottom {
+  background-color: #09f;
+  -webkit-transform: rotateX(-90deg) translateZ(75px);
+          transform: rotateX(-90deg) translateZ(75px);
+}
+
+.left {
+  background-color: #9c3;
+  -webkit-transform: rotateY(-90deg) translateZ(75px);
+          transform: rotateY(-90deg) translateZ(75px);
+}
+
+.right {
+  background-color: #3c9;
+  -webkit-transform: rotateY(90deg) translateZ(75px);
+          transform: rotateY(90deg) translateZ(75px);
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotateY(0) rotateX(0);
+            transform: rotateY(0) rotateX(0);
+  }
+  to {
+    -webkit-transform: rotateY(-1turn) rotateX(-1turn);
+            transform: rotateY(-1turn) rotateX(-1turn);
+  }
+}
+
+@keyframes rotate {
+  from {
+    -webkit-transform: rotateY(0) rotateX(0);
+            transform: rotateY(0) rotateX(0);
+  }
+  to {
+    -webkit-transform: rotateY(-1turn) rotateX(-1turn);
+            transform: rotateY(-1turn) rotateX(-1turn);
+  }
+}
+
+  </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div class="bruce flex-ct-x">
+<div class="td-cube">
+<ul>
+<li class="front">1</li>
+<li class="back">2</li>
+<li class="top">3</li>
+<li class="bottom">4</li>
+<li class="left">5</li>
+<li class="right">6</li>
+</ul>
+</div>
+</div>
+</body>
+</html>

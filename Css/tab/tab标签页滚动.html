@@ -1,0 +1,87 @@
+<!DOCTYPE html><html lang='en' class=''>
+<head><script src='https://static.codepen.io/assets/editor/live/console_runner-1df7d3399bdc1f40995a35209755dcfd8c7547da127f6469fd81e5fba982f6af.js'></script><script src='https://static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" /><link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" /><link rel="canonical" href="https://codepen.io/JowayYoung/pen/JjPRjMd" />
+<link rel='stylesheet' href='https://yangzw.vip/static/css/reset.css'><link rel='stylesheet' href='https://yangzw.vip/static/css/main.css'>
+<style class="cp-pen-styles">.tab-page {
+  width: 300px;
+}
+.tab-page nav {
+  display: flex;
+  border: 1px solid #3c9;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.tab-page nav h3 {
+  position: relative;
+  flex: 1;
+  background-color: #3c9;
+  color: #fff;
+}
+.tab-page nav h3 + h3 {
+  border-left: 1px solid #fff;
+}
+.tab-page nav input {
+  display: none;
+}
+.tab-page nav label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.tab-page ul {
+  overflow: hidden;
+  scroll-behavior: smooth;
+  border: 1px solid #3c9;
+  border-top: none;
+  height: 100px;
+}
+.tab-page ul li {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 20px;
+  color: #09f;
+}
+.tab-page ul input {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+</style></head><body>
+<div class="bruce flex-ct-x">
+<div class="tab-page">
+<nav>
+<h3>
+<input type="radio" name="tab">
+<label for="tab1">标题1</label>
+</h3>
+<h3>
+<input type="radio" name="tab">
+<label for="tab2">标题2</label>
+</h3>
+<h3>
+<input type="radio" name="tab">
+<label for="tab3">标题3</label>
+</h3>
+</nav>
+<ul>
+<li>
+<input id="tab1">
+<p>内容1</p>
+</li>
+<li>
+<input id="tab2">
+<p>内容2</p>
+</li>
+<li>
+<input id="tab3">
+<p>内容3</p>
+</li>
+</ul>
+</div>
+</div>
+</body></html>

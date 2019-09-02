@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - 【iCSS：组件】商城票券</title>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/reset.css'>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/main.css'>
+<style>
+    .mall-ticket {
+  display: flex;
+  position: relative;
+  width: 300px;
+  height: 100px;
+  background: radial-gradient(circle at right top, transparent 10px, #f66 0) top left/100px 51% no-repeat, radial-gradient(circle at right bottom, transparent 10px, #f66 0) bottom left/100px 51% no-repeat, radial-gradient(circle at left top, transparent 10px, #ccc 0) top right/200px 51% no-repeat, radial-gradient(circle at left bottom, transparent 10px, #ccc 0) bottom right/200px 51% no-repeat;
+  -webkit-filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.2));
+          filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.2));
+  line-height: 100px;
+  text-align: center;
+  color: #fff;
+}
+.mall-ticket::before {
+  position: absolute;
+  left: 100px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 1px dashed #66f;
+  height: 80px;
+  content: "";
+}
+.mall-ticket::after {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background-image: linear-gradient(180deg, #ccc 5px, transparent 5px, transparent), radial-gradient(10px circle at 5px 10px, transparent 5px, #ccc 5px);
+  background-size: 5px 15px;
+  content: "";
+}
+.mall-ticket h3 {
+  width: 100px;
+  font-size: 30px;
+}
+.mall-ticket p {
+  flex: 1;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+  </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div class="bruce flex-ct-x">
+<div class="mall-ticket">
+<h3>100元</h3>
+<p>网易考拉代金券</p>
+</div>
+</div>
+</body>
+</html>

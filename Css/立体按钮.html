@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - 【iCSS：组件】立体按钮</title>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/reset.css'>
+<link rel='stylesheet' href='https://yangzw.vip/static/css/main.css'>
+<style>
+    .stereo-btn {
+  padding: 10px 20px;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  background-image: linear-gradient(#09f, #3c9);
+  box-shadow: 0 10px 0 #09f;
+  cursor: pointer;
+  text-shadow: 0 5px 5px #ccc;
+  font-size: 50px;
+  color: #fff;
+  transition: all 300ms;
+}
+.stereo-btn:active {
+  box-shadow: 0 5px 0 #09f;
+  -webkit-transform: translate3d(0, 5px, 0);
+          transform: translate3d(0, 5px, 0);
+}
+
+  </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div class="bruce flex-ct-x">
+<button class="stereo-btn">iCSS</button>
+</div>
+</body>
+</html>

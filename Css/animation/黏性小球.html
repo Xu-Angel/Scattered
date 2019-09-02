@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - filter mix between blur and contrast</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<style>
+    .filter-mix {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  -webkit-filter: contrast(20);
+          filter: contrast(20);
+  background: #fff;
+}
+
+.filter-mix::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: #333;
+  top: 40px;
+  left: 40px;
+  z-index: 2;
+  -webkit-filter: blur(6px);
+          filter: blur(6px);
+  box-sizing: border-box;
+  -webkit-animation: filterBallMove 4s ease-out infinite;
+          animation: filterBallMove 4s ease-out infinite;
+}
+
+.filter-mix::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #3F51B5;
+  top: 60px;
+  right: 40px;
+  z-index: 2;
+  -webkit-filter: blur(6px);
+          filter: blur(6px);
+  -webkit-animation: filterBallMove2 4s ease-out infinite;
+          animation: filterBallMove2 4s ease-out infinite;
+}
+
+@-webkit-keyframes filterBallMove {
+  50% {
+    left: 140px;
+  }
+}
+
+@keyframes filterBallMove {
+  50% {
+    left: 140px;
+  }
+}
+@-webkit-keyframes filterBallMove2 {
+  50% {
+    right: 140px;
+  }
+}
+@keyframes filterBallMove2 {
+  50% {
+    right: 140px;
+  }
+}
+
+  </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
+</head>
+<body translate="no">
+<div class="container">
+<div class="filter-mix"></div>
+</div>
+</body>
+</html>

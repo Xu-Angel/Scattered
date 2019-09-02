@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <style>
+        .left-list {
+          display: flex;
+          align-items: center;
+          padding: 0 10px;
+          width: 600px;
+          height: 60px;
+          background-color:green;
+        }
+        li {
+            padding: 0 10px;
+            height: 40px;
+            background-color: orange;
+            line-height: 40px;
+            font-size: 16px;
+            color: #fff;
+        
+          }
+        li + li {
+              margin-left: 10px;
+            }
+            
+            li:last-child {
+              margin-left: auto;
+            }
+        </style>
+        <p>使用flexbox横向布局时，最后一个元素通过margin-left:auto实现向右对齐。场景：右侧带图标的导航栏</p>
+        <div class="bruce flex-ct-x">
+            <ul class="left-list">
+              <li>Alibaba</li>
+              <li>Tencent</li>
+              <li>Baidu</li>
+              <li>Jingdong</li>
+              <li>Ant</li>
+              <li>Netease</li>
+            </ul>
+          </div>
+</body>
+</html>

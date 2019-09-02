@@ -35,6 +35,14 @@ div::after {
 }
 ```
 
+```
+//- 2019-09-02 有个属性可以来 未知字数中文对齐 （当作最后一行来对齐，所以借此解决未满行问题）
+//- The text-align-last CSS property sets how the last line of a block or a line, right before a forced line break, is aligned.
+//- https://developer.mozilla.org/en-US/docs/Web/CSS/text-align-last
+
+`text-align-last:justify`
+```
+
 ## inline-block元素设置overflow:hidden属性导致相邻行内元素向下偏移
 
 常用的解决方法是
@@ -42,3 +50,7 @@ div::after {
 - [#](https://blog.csdn.net/iefreer/article/details/50421025)
 
 - [##](https://blog.csdn.net/w390058785/article/details/80567583#)
+
+## css resize 通过resize设置横向自由拉伸来调整目标元素的宽度
+
+https://codepen.io/JowayYoung/pen/JjPEdWO
