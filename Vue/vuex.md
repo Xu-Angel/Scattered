@@ -2,17 +2,6 @@
 
 > vue的全局状态管理，核心概念: State、Getter、Mutation、Action、Module
 
-#### 安装和使用
-
-```javascript
-npm install vuex -S
-
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-```
-
 #### State
 
 > 相当于定义在全局的computed，每当store. state.count变化的时候，都会重新九三属性，并且触发相关联的DOM
@@ -51,11 +40,11 @@ computed: {
   }
 ```
 
-
-
 #### Getter
 
 当我们需要根据某个state计算得出一个属性，或者依赖多个state计算一个属性，又有多个组件需要用到该属性，这时候使用getter，和state对比起来，getter更接近于组件的computed，state更像data。
+
+Vuex 允许我们在 store 中定义“getter”（可以认为是 store 的计算属性）。就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
 
 getter接收state作为第一个参数
 
@@ -95,12 +84,13 @@ computed: {
       'anotherGetter',
       // ...
     ])
-  	...mapGetters({
+   ...mapGetters({
       // 把 `this.doneCount` 映射为 `this.$store.getters.doneTodosCount`
       doneCount: 'doneTodosCount'
     })
   }
 ```
+
 #### Mutation
 
 更改 Vuex 的 store 中的状态的唯一方法是提交 `mutation`。Vuex 中的` mutation` 非常类似于事件：每个 `mutation` 都有一个字符串的 **事件类型 (type)** 和 一个 **回调函数 (handler)**。这个回调函数就是我们实际进行状态更改的地方，并且它会接受 `state` 作为第一个参数：
@@ -133,11 +123,12 @@ store.commit({
   amount: 10
 })
 ```
+
 mutation 的回调可以接受第二个参数payload,如果需要传递多个值，可以传递一个对象。
 
 使用常量替代 Mutation 事件类型，用不用常量取决于你——在需要多人协作的大型项目中，这会很有帮助。但如果你不喜欢，你完全可以不这样做
 
-```java
+```js
 // mutation-types.js
 export const SOME_MUTATION = 'SOME_MUTATION'
   
@@ -178,8 +169,6 @@ export default {
   }
 }
 ```
-
-
 
 #### Action
 
@@ -227,7 +216,6 @@ store.dispatch({
   amount: 10
 }
 
-               
  actions: {
   checkout ({ commit, state }, products) {
     // 把当前购物车的物品备份起来
@@ -243,8 +231,9 @@ store.dispatch({
       () => commit(types.CHECKOUT_FAILURE, savedCartItems)
     )
   }
-}            
+}
 ```
+
 在组件中分发 Action
 
 你在组件中使用 `this.$store.dispatch('xxx')` 分发 action，或者使用 `mapActions` 辅助函数将组件的 methods 映射为 `store.dispatch` 调用（需要先在根节点注入 `store`)
@@ -293,10 +282,6 @@ store.dispatch('actionA').then(() => {
 })
 
 ```
-
-
-
-
 
 #### Module
 
@@ -381,5 +366,3 @@ const moduleA = {
 }
 
 ```
-
-### 
