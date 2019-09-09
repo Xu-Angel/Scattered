@@ -2,7 +2,7 @@
 
 > vue的全局状态管理，核心概念: State、Getter、Mutation、Action、Module
 
-#### State
+### State
 
 > 相当于定义在全局的computed，每当store. state.count变化的时候，都会重新九三属性，并且触发相关联的DOM
 
@@ -40,7 +40,7 @@ computed: {
   }
 ```
 
-#### Getter
+### Getter
 
 当我们需要根据某个state计算得出一个属性，或者依赖多个state计算一个属性，又有多个组件需要用到该属性，这时候使用getter，和state对比起来，getter更接近于组件的computed，state更像data。
 
@@ -91,7 +91,7 @@ computed: {
   }
 ```
 
-#### Mutation
+### Mutation
 
 更改 Vuex 的 store 中的状态的唯一方法是提交 `mutation`。Vuex 中的` mutation` 非常类似于事件：每个 `mutation` 都有一个字符串的 **事件类型 (type)** 和 一个 **回调函数 (handler)**。这个回调函数就是我们实际进行状态更改的地方，并且它会接受 `state` 作为第一个参数：
 
@@ -147,7 +147,7 @@ const store = new Vuex.Store({
 })  
 ```
 
-### Mutation 必须是同步函数
+#### Mutation 必须是同步函数
 
 在组件中提交 Mutation
 
@@ -170,7 +170,7 @@ export default {
 }
 ```
 
-#### Action
+### Action
 
 Action 类似于 mutation，不同在于：
 
@@ -283,7 +283,7 @@ store.dispatch('actionA').then(() => {
 
 ```
 
-#### Module
+### Module
 
 由于使用单一状态树，应用的所有状态会集中到一个比较大的对象。当应用变得非常复杂时，store 对象就有可能变得相当臃肿。
 
@@ -366,3 +366,51 @@ const moduleA = {
 }
 
 ```
+
+### Plugin
+
+Vuex 的 store 接受 plugins 选项，这个选项暴露出每次 mutation 的钩子。Vuex 插件就是一个函数，它接收 store 作为唯一参数
+
+```js
+const myPlugin = store => {
+  store.subscribe((mutation, state) => {
+    // mutation {type, playoad}
+  })
+}
+
+const store = new Vuex.Store({
+  //...
+  plugins: [myPlugin]
+})
+```
+
+在插件中不允许直接修改状态——类似于组件，只能通过提交 mutation 来触发变化。
+
+eg: 通过提交 mutation，插件可以用来同步数据源到 store。
+
+```js
+export default function createWebSocketPulgin (socket) {
+  return store => {
+    socket.on('data', data => {
+      store.commit('receiveData', data)
+    })
+    store.subscribe( mutation => {
+      if (mutation.type === 'UPDATE_DATA') {
+        socket.emit('update', mutation.payload)
+      }
+    })
+  }
+}
+
+const plugin = createWebSocketPlugin(socket)
+
+const store = new Vuex.Store({
+  state,
+  mutations,
+  plugins: [plugin]
+})
+```
+
+### 表单处理
+
+https://vuex.vuejs.org/zh/guide/forms.html
