@@ -180,3 +180,27 @@ router.beforeEach((to, from, next) => {
 ### 路由懒加载
 
 `component: () => import('@/views/404')`
+
+### path Reg
+
+
+https://github.com/vuejs/vue-router/blob/dev/examples/route-matching/app.js
+
+https://github.com/pillarjs/path-to-regexp
+
+```
+ routes: [
+    { path: '/' },
+    // params are denoted with a colon ":"
+    { path: '/params/:foo/:bar' },
+    // a param can be made optional by adding "?"
+    { path: '/optional-params/:foo?' },
+    // a param can be followed by a regex pattern in parens
+    // this route will only be matched if :id is all numbers
+    { path: '/params-with-regex/:id(\\d+)' },
+    // asterisk can match anything
+    { path: '/asterisk/*' },
+    // make part of the path optional by wrapping with parens and add "?"
+    { path: '/optional-group/(foo/)?bar' }
+  ]
+  ```
