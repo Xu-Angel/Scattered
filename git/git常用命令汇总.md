@@ -89,8 +89,33 @@ git clone [url] newname 克隆项目可以指定项目名称
 
 - git reset --hard HEAD 将当前版本重置为HEAD（通常用于merge失败回退）
 
-可以参考git小结，有比较详细的说明
+```
+git fetch --all
+git reset --hard origin/master
+```
 
+#### 9.1 本地 “回滚” —— 它将你本地环境返回到之前的提交。这里的 “本地环境” 一词，我们指的是你的本地仓库、暂存区以及工作目录
+
+```
+$ git log --oneline
+b764644 File with three lines
+7c709f0 File with two lines
+9ef9173 File with one line
+```
+
+然后
+
+```
+$ git reset 9ef9173 //使用一个绝对的提交 SHA1 值 9ef9173）
+```
+
+或
+
+```
+$ git reset current~2 //在 “current” 标签之前，使用一个相对值 -2
+```
+
+先看一下图 1。在这里我们有一个在 Git 
 #### 10.git revert
 
 git revert commit 会根据提供的commit然后在当前commit上添加一个commit，commit的内容这是与指定的commit的内容相反，相对于中合作用。
