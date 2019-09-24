@@ -1,13 +1,3 @@
-
-> ... 展开，收起
-```js
-function foo(x,y,z) {
-	console.log( x, y, z );
-}
-
-foo( ...[1,2,3] );  // 1 2 3 
-```
-
 ```js
 function foo(x,y,...z) {
 	console.log( x, y, z );
