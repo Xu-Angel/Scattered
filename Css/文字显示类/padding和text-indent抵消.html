@@ -1,0 +1,90 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>padding和text-indent抵消</title>
+  <style id="jsbin-css">
+    .panel {
+      width: 350px;
+      border-radius: 4px;
+      border: 1px solid #ece8d8;
+      box-shadow: 0 0 4px #ece8d8;
+      font-size: 14px;
+    }
+
+    .panel-title {
+      padding: 10px 20px;
+      background: #f7f1d5;
+      font-weight: bold;
+      color: #7d7b6a;
+    }
+
+    .panel-content {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-left: 0;
+      background: #fff8dc;
+      color: #248ccf;
+    }
+
+    .panel-item {
+      list-style: none;
+      padding: 10px 20px;
+    }
+
+    .panel-item:not(:last-child) {
+      border-bottom: 1px solid #ece8d8;
+    }
+
+    .panel-item-text {
+      padding-left: 24px;
+      text-indent: -24px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    .font-icon {
+      font-size: 16px;
+      margin-right: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <article class="panel">
+    <header class="panel-title">
+      标题
+    </header>
+    <ul class="panel-content">
+      <li class="panel-item">
+        <div class="panel-item-text">
+          <span class="font-icon">☺</span>
+          恭喜我们29个最老得测试版网站-他们现在不再是测试版了！
+        </div>
+      </li>
+      <li class="panel-item">
+        <div class="panel-item-text">
+          <span class="font-icon">☺</span>
+          《独角兽动物园》 35;7:Nicolas访谈
+        </div>
+      </li>
+      <li class="panel-item">
+        <div class="panel-item-text">
+          <span class="font-icon">☺</span>
+          减少需要重新审查的封闭问题数量的建议
+        </div>
+      </li>
+      <li class="panel-item">
+        <div class="panel-item-text">
+          <span class="font-icon">☺</span>
+          实验：在接下来的30天内（直到2019-09-07），以3票为基准关闭和重新打开提出的问题
+        </div>
+      </li>
+    </ul>
+  </article>
+</body>
+
+</html>
