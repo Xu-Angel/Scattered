@@ -10,3 +10,7 @@ delta	number		是	返回的页面数，如果 delta 大于现有页面数，则�
 
 - wx.redirectTo(Object object)
 关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。
+
+- switchTo  不允许带参数
+
+- 小程序referrer  固定
