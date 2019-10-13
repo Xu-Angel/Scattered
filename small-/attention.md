@@ -22,3 +22,5 @@ delta	number		是	返回的页面数，如果 delta 大于现有页面数，则�
 - wx.redirectTo(Object object) 关闭当前页面，跳转到应用内的某个页面。但是不允许跳转到 tabbar 页面。
 
 - wx.navigateBack(Object object) 关闭当前页面，返回上一页面或多级页面。可通过 getCurrentPages 获取当前的页面栈，决定需要返回几层。
+
+- iamge show-menu-by-longpress	boolean	false	否	开启长按图片显示识别小程序码菜单 onError
