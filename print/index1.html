@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> <title>JavaScript Window Close Example </title>
+  <script type="text/javascript">
+    function popuponclick() {
+      my_window = window.open('', 'mywindow', 'status=1,width=350,height=150');
+      my_window.document.write('<html><head><title>Print Me</title></head>');
+      my_window.document.write('<body onafterprint="self.close()">');
+      my_window.document.write('<p>When you print this window, it will close afterward.</p>');
+      my_window.document.write('</body></html>');  
+  }
+  </script>
+</head>
+<body>
+  <p>To try out the <code>afterprint</code> event, click the link below to open
+  the window to print. You can also try changing the code to use <code>beforeprint</code>
+  to see the difference.</p>
+  <p><a href="javascript: popuponclick()">Open Popup Window</a></p>
+</body>
+</html>
