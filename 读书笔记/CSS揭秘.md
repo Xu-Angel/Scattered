@@ -6,7 +6,7 @@
 
 - 回退机制
 
-优雅降级的一种，使用浏览器支持的样式，确保网站不会在低版本浏览器中挂掉，只是看起来没有那么炫。 
+优雅降级的一种，使用浏览器支持的样式，确保网站不会在低版本浏览器中挂掉，只是看起来没有那么炫。
 比如渐变(`gradient`) 需要 `IE 10` 及以上版本的支持，那么在编写渐变效果的时候， 
 可能就需要用到。
 
@@ -20,7 +20,7 @@ background:-webkit-linear-gradient(0deg, yellow, red);
 background:linear-gradient(0deg, yellow, red);
 ```
 
--  `@supports`
+- `@supports`
 
 可以使用 `@supports` 检测浏览器的支持情况，不过这同时要求浏览器也支持 `@supports` 属性才行：
 
@@ -45,17 +45,16 @@ function testProperty(property) {
   if(property in root.style) {
     root.classList.add(property.toLowerCase());
     return true;
-  } 
+  }
   
   root.classList.add('no-'+property.toLowerCase());
   return false;
 }
 // 用法示例，比如检测浏览器对 text-shadow 的支持
 testProperty('text-shadow');
-
 ```
-以上，如果浏览器支持 `text-shadow` 这个属性，则将会在文档根元素上添加 `text-shadow` 这个类名， 
-否则就添加 `no-text-shadow`，然后在编写 `CSS` 代码的时候就可以对这两种情况分别定义样式了。
+
+以上，如果浏览器支持 `text-shadow` 这个属性，则将会在文档根元素上添加 `text-shadow` 这个类名，否则就添加 `no-text-shadow`，然后在编写 `CSS` 代码的时候就可以对这两种情况分别定义样式了。
 
 比如对上面的 `text-shadow` 定义样式：
 
@@ -73,7 +72,7 @@ testProperty('text-shadow');
 ## 检测对某个具体的属性值的支持
 
 如果我们想要检测某个具体的属性值是否支持，那就需要把它赋给对应的属性，
-然后再检查浏览器是不是还保存着这个值。很显然，这个过程会改变元素的样式，因此我们需要一个隐藏元素 
+然后再检查浏览器是不是还保存着这个值。很显然，这个过程会改变元素的样式，因此我们需要一个隐藏元素
 
 ```js
 function testValue(classname, value, property, element){
@@ -109,9 +108,8 @@ button {
   line-height: 30px;
 }
 ```
-上述代码中，几乎全都用到了绝对值(指得是各自定死了的值)，这导致如果修改一处， 
-可能导致其他地方也都要被修改，以使用被修改的那一个样式，牵一发而动全身。
-最好修改成以下 `相对` 确定值的情况：
+
+上述代码中，几乎全都用到了绝对值(指得是各自定死了的值)，这导致如果修改一处，可能导致其他地方也都要被修改，以使用被修改的那一个样式，牵一发而动全身。最好修改成以下 `相对` 确定值的情况：
 
 ```css
 button {
@@ -131,7 +129,7 @@ button {
 
 ```
 
-- `currentColor` 
+- `currentColor`
 
 `CSS` 中有史以来的第一个变量 ，用于自动获取当前文本的颜色
 
@@ -141,6 +139,7 @@ button {
   <hr>
 </div>
 ```
+
 ```css
 .box1{
   color:skyblue;
@@ -153,7 +152,8 @@ hr{
 }
 ```
 
-- 继承属性 `inherit` 
+- 继承属性 `inherit`
+
 ```css
 a {
   font-size: inherit;
@@ -163,13 +163,15 @@ a {
 
 - 避免不必要的媒体查询
 
-(1) 使用百分比长度来取代固定长度，或者尝试使用于视口相关的单位(vw,vh,vmin,vmax) 
-(2) 当你需要在较大分辨率下得到固定宽度时，使用 `max-width` 而不是 `width` ，因为它可以适应 
-  较小的分辨率而无需进行媒体查询。 
-(3) 不要忘记为替换元素(例如 `img  object video iframe` 等)设置一个 `max-width: 100%`。 
-(4) 使用弹性盒布局(`display:flex;`) 
-(5) 使用多行文本时，指定 `column-width` 而不是 `column-count` 
+(1) 使用百分比长度来取代固定长度，或者尝试使用于视口相关的单位(vw,vh,vmin,vmax)
 
+(2) 当你需要在较大分辨率下得到固定宽度时，使用 `max-width` 而不是 `width` ，因为它可以适应 较小的分辨率而无需进行媒体查询。
+
+(3) 不要忘记为替换元素(例如 `img  object video iframe` 等)设置一个 `max-width: 100%`。
+
+(4) 使用弹性盒布局(`display:flex;`)
+
+(5) 使用多行文本时，指定 `column-width` 而不是 `column-count`
 
 ## 元素背景
 
@@ -177,13 +179,13 @@ a {
 
 指定一个背景图片，并且为了兼容不支持 `background-position` 的浏览器，
 加上了` bottom right `属性
+
 ```css
 background: url(bg.png) no-repeat bottom right #58a;
 background-position: right 20px bottom 10px;
 ```
 
-**默认情况下，`background-position` 是以 `padding-box` 进行定位，** 
-**如果想改变默认值，可以使用 `background-clip`**
+**默认情况下，`background-position` 是以 `padding-box` 进行定位，****如果想改变默认值，可以使用 `background-clip`**
 
 - `calc()` 计算值
 
@@ -195,7 +197,7 @@ background-position: calc(100% - 20px) calc(100% - 10px)
 
 - `linear-gradient`
 
-如果多个色标具有相同的位置，它们会产生一个无限小的过渡区域，过渡的起止色分别是第一个和最后一个指定值。 
+如果多个色标具有相同的位置，它们会产生一个无限小的过渡区域，过渡的起止色分别是第一个和最后一个指定值。
 从效果上看，颜色会在那个位置突然变化，而不是一个平滑的渐变过程。
 
 ```css
@@ -255,9 +257,11 @@ background: linear-gradient(-45deg, transparent 15px,#58a 0);
 实现一个饼图从 `0` 变化到 `100%` 的动画
 
 伪元素版本
+
 ```html
   <div class="pie"></div>
 ```
+
 ```css
   @keyframes spin{
   to{transform:rotate(0.5turn);}
@@ -295,6 +299,7 @@ background: linear-gradient(-45deg, transparent 15px,#58a 0);
     <circle r='16' cx='16' cy='16'></circle>
   </svg>
 ```
+
 ```css
   @keyframes fillup{
     to{stroke-dasharray:100 100;}
@@ -408,6 +413,7 @@ p{
 ```
 
 - 文字空心
+
 ```css
 /* text-shadow 描边 */
 p {
@@ -420,6 +426,7 @@ p {
 ```
 
 - 文字外发光
+
 ```css
 p {
   font-size: 30px;
@@ -510,6 +517,7 @@ video {
   <input type="checkbox" id='awesome'>
   <label for="awesome">Awesome!</label>
 ```
+
 ```css
   input[type='checkbox']+label::before{
     /* 不换行的空格 */
@@ -694,6 +702,7 @@ div {
       <p>Center me,please!</p>
     </main>
 ```
+
 ```css
   main{
     position: absolute;
@@ -730,7 +739,7 @@ div {
     /* 四个值全是 0 */
     left: 0; top: 0; right: 0; bottom: 0;
     /* 有了这个就自动居中了 */
-    margin: auto;    
+    margin: auto;
 }
 ```
 
@@ -745,6 +754,7 @@ main{
 ```
 
 ### 基于`Flexbox` 的解决方案
+
 ```css
 body{
   display: flex;
@@ -756,7 +766,6 @@ main{
   margin:auto;
 }
 ```
-
 
 ## `sticky footer`
 
@@ -821,6 +830,7 @@ main{
 ### 文字闪烁
 
 - 平滑闪烁
+
 ```css
 /* 第一种方法 */
 @keyframes blink-smooth{
@@ -857,6 +867,7 @@ main{
 ```html
   <h1 class="highlight">CSS is awesome!</h1>
 ```
+
 ```css
   @keyframes typing{
     from{width:0}

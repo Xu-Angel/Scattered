@@ -3,7 +3,7 @@
 
 ## 类型和语法
 
-### 函数不仅是对象,还可以拥有属性。
+### 函数不仅是对象,还可以拥有属性
 
 ```js
 function a(b, c){}
@@ -11,7 +11,7 @@ a.length    // 2
 ```
 以上代码中，因为函数`a()`具有两个参数，所以其属性`length` 的值为`2`。
 
-### 使用 `arguments` 对象(类数组)将函数的参数当做列表访问，即转换为数组(注意，这种方法从ES6开始已废止)。
+### 使用 `arguments` 对象(类数组)将函数的参数当做列表访问，即转换为数组(注意，这种方法从ES6开始已废止)
 
 ```js
 function foo() {
@@ -24,6 +24,7 @@ foo('bar', 'baz');      // ["bar","baz","bam"]
 ```
 
 在 `ES6` 中，可以使用 `ES6` 的内置工具函数 `Array.from()`来实现同样的功能：
+
 ```js
 let arrLike={
   '0':'a',
@@ -36,10 +37,11 @@ arr     // ["a", "b", "c"]
 arr.length    // 3
 ```
 
-不过，`Array.from()` 只能将部署了 `Iterator` 接口的数据结构转为数组，
+不过，`Array.from()` 只能将部署了 **`Iterator` 接口的数据结构转为数组**，
 例如字符串(`string` )类型、带有 `length` 属性的类数组等，对于其他的数据结构则不起作用。
 
 另外，`ES6` 的扩展运算符 `...` 同样具备将某些数据结构转为数组的功能：
+
 ```js
 function foo() {
   var arr = [...arguments];
@@ -54,6 +56,7 @@ foo('a','b','c');     // ["a", "b", "c"];
 例如函数的参数(`arguments`)对象，如果一个对象没有部署这个接口，就无法转换。
 
 还有一种在 `ES6` 中将数值转换为数组的方法，就是 `Array.of()`:
+
 ```js
 Array.of()    // []
 Array.of(undefined)     // [undefined]
@@ -64,12 +67,14 @@ Array.of(1,2)     // [1,2]
 
 `JavaScript` 支持二进制、八进制和十六进制的写法：
 以 `0x` 或 `0X` 开头的十六进制：
+
 ```js
 0xf3    // 243的十六进制
 0Xf3    // 243的十六进制
 ```
 
 以 数字`0`开头八进制：
+
 ```js
 0363    // 243的八进制
 ```
@@ -79,35 +84,43 @@ Array.of(1,2)     // [1,2]
 
 `ES6` 支持以下新格式：
 以 `0o` 或者 `0O` 开头的八进制：
+
 ```js
 0o363     // 243的八进制
 0O363     // 243的八进制
 ```
 
 以 `0b` 或者 `0B` 开头的二进制：
+
 ```js
 0b11110011     // 243的二进制
 0B11110011     // 243的二进制
 ```
 
-### `0.1 + 0.2` 的精度问题。
+### `0.1 + 0.2` 的精度问题
 
 由于 `JavaScript` 遵循 `IEEE 754` 规范，所以一些数字运算，会出现无法做到完全精确的情况：
+
 ```js
 0.1 + 0.2 === 0.3     // false
 ```
+
 这是因为在JS中二者相加的结果其实等于 `0.30000000000000004`。
 
 解决方案：
+
 - 先将浮点数放大为整数，计算完成后再缩小为浮点数：
+
 ```js
 0.1 * 10 + 0.2 * 10 === 0.3 * 10    // true
 ```
+
 - 机器精度
 
 设置一个误差范围值，称为及其精度
 在`JavaScript`中，此时通常是`2^-52`，
 在`ES6`中，该值定义在`Number.EPSTLON`, 也可以为`ES6`之前的版本写`polifill`。
+
 ```js
 if(!Number.EPSTLON) {
   Number.EPSTLON = Math.pow(2, -52);
@@ -115,6 +128,7 @@ if(!Number.EPSTLON) {
 ```
 
 然后就可以使用`Number.EPSTLON` 来比较两个数字是否相等(在指定的误差范围内)：
+
 ```js
 function numbersCloseEnoughToEqual(n1,n2) {
   return Math.abs( n1 - n2 ) < Number.EPSILON;
@@ -147,7 +161,7 @@ console.log(a);     // 是[1,2,3,4]， 不是[4,5,6,7]
 将 `a`作为参数传给 `foo`，实际上是将 `a`的一个引用传了进去，所以对这个引用的操作，同时也会作用给 `a`，
 当修改参数的引用时，这个参数与 `a`不再指向同一个引用，所以不再有关联
 
-### `JSON.stringify()` 不太为人所知但却非常有用的功能/参数。
+### `JSON.stringify()` 不太为人所知但却非常有用的功能/参数
 
 可选参数`replacer`：可以是数组或者函数，用来指定对象序列化过程中哪些属性应该被处理，哪些应该被派出，和`toJSON()` 类似。
 
@@ -172,6 +186,7 @@ JSON.stringify(a, function(k, v){
 ### 判断 `document.all` 的真假
 
 在现在标准浏览器上， `document.all` 的值为`false`，而在包括`IE10`及以下版本则为`true`。
+
 ```js
 if(document.all) {
   console.log('IE10及以下的IE浏览器');
@@ -182,11 +197,11 @@ if(document.all) {
 
 ```js
 if(window.addEventListener){ 
-  console.log("IE9及以上或标准浏览器"); 
+  console.log("IE9及以上或标准浏览器");
 } else if (window.attachEvent){ 
-  console.log("IE10及以上的IE浏览器"); 
-} else { 
-  console.log("这种情况发生在不支持DHTML的老版本浏览器（现在一般都支持）") 
+  console.log("IE10及以上的IE浏览器");
+} else {
+  console.log("这种情况发生在不支持DHTML的老版本浏览器（现在一般都支持）")
 }
 ```
 
@@ -194,9 +209,7 @@ if(window.addEventListener){
 
 ### 字符串和数字之间的隐式强制类型转换
 
-如果操作符为 `+` ，其中一个操作数是字符串(或者能够转换为字符串，例如数组和对象)的，
-则进行字符串拼接；如果操作符为 `-` ，表明是减法运算，首先将两边操作数全都转换为字符串，
-然后再转换为数字进行减法操作。
+如果操作符为 `+` ，其中一个操作数是字符串(或者能够转换为字符串，例如数组和对象)的，则进行字符串拼接；如果操作符为 `-` ，表明是减法运算，首先将两边操作数全都转换为字符串，然后再转换为数字进行减法操作。
   
 ```js
 var a = '42';
@@ -259,22 +272,10 @@ x == y;     // false
 
 ## 函数参数
 
-### 默认值
-
-对 `ES6` 中的参数默认值而言，除了在极少数情况下意外，参数被省略或被赋值为 `undefined` 效果都一样，都是取该参数的默认值。
-
-```js
-function foo(a=42, b=a+1) {
-  console.log(a, b);
-}
-
-foo(10)     // 10, 11
-foo(10, undefined)    // 10, 11
-```
-
 ### 命名参数关联
 
 函数参数默认值会导致 `arguments` 数组和相对应的命名参数之间出现偏差：
+
 ```js
 function foo(a) {
   a = 42;
@@ -318,6 +319,7 @@ console.log(foo());
 // Hello
 // 42
 ```
+
 上述代码中，`return 42` 先执行，并将 `foo()` 函数的返回值设置为 `42` ，
 然后 `try` 执行完毕，接着执行`finally`，最后`foo()` 函数执行完毕，
 `foo()` 函数中最后一句`console.log('never runs');`因为前面已经存在`return 42`返回值，所以没有机会执行。
@@ -326,6 +328,7 @@ console.log(foo());
 ### `finally` 抛出异常终止
 
 如果在 `finally` 中抛出异常，则函数就会在此终止，并且如果此前`try`中已经有`return`，设置了返回值，则该值也会被丢弃。
+
 ```js
 function foo() {
   try {
@@ -385,6 +388,7 @@ baz();    // Hello
 ## `switch` 语句
 
 ### 严格 `true`
+
 `switch` 语句块(即双大括号)中，`case` 表达式的结果必须为严格意义上的`true`，条件才能成立， 
 即，类似于 `case 'abc'  ， case {}` 都是不成立的条件。
 
@@ -400,6 +404,7 @@ switch (true) {
     console.log('Oops');
 }
 ```
+
 因为 `(a || b===10)` 的结果是 `Hello world` ，尽管隐式强制类型转换为布尔值后也是 `true`，
 但并非严格意义上的 `true`，所以条件不成立。
 如果想让条件成立，则可以使用显式强制表达式的方法，即 `case !!((a || b===10)`。
@@ -431,6 +436,7 @@ switch (a) {
 ## 全局`DOM`变量
 
 由于浏览器演进的历史遗留问题，在创建带有`id` 属性的`DOM` 元素时，也会创建同名的全局变量。
+
 ```html
 <div id="foo"></div>
 ```
@@ -464,6 +470,7 @@ console.log(foo);     // HTML对象
   var code = "<script>alert('hello world')</sc" + "ript>";
 </script>
 ```
+
 ---
 
 ## 异步和性能
@@ -548,12 +555,12 @@ it.next().value;    // undefined
 #### 停止生成器
 
 - 自动终止
- 
+
 通常由 `break 、 return` 或者未捕获的异常，会向生成器发送一个异常结束信号 使其终止，
 一般情况下，`for...of` 循环能够自动发送这个信号。
 
 - 使用 `return(...)` 手动终止
- 
+
 ```js
 var it = something();
 for(var v of it) {
@@ -604,7 +611,7 @@ var it = main();
 it.next();
 ```
 
-#### 生成器中的 `Promise` 并发。
+#### 生成器中的 `Promise` 并发
 
 ```js
 function *foo() {
