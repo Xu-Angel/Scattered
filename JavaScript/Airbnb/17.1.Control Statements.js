@@ -43,6 +43,7 @@ if (
   thing1();
 }
 
+
 // good
 if (
   (foo === 123 || bar === 'abc')

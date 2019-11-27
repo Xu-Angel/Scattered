@@ -3,6 +3,7 @@ console.log([1, 2, 3].map((x) => {
   const y = x + 1;
   return x * y;
 }));
+
 /* 
 TODO:箭头函数如果去掉花括号 则 体结果 直接作为返回值return出去 */
 /* console.log([1,2,3].map( x => x+8

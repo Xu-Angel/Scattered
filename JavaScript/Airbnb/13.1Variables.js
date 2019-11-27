@@ -20,6 +20,7 @@ const goSportsTeam = true;
 const dragonball = 'z';
 */
 /* 
+
 TODO:有序分组
 // bad
 let i, len, dragonball,
@@ -67,19 +68,20 @@ function checkName(hasName) {
   return name;
 }
 */
+
 /* 
 TODO:连等 造成全局变量  Don’t chain variable assignments. Chaining variable assignments creates implicit global variables. 
 // bad
 (function example() {
   // JavaScript interprets this as
-  // let a = ( b = ( c = 1 ) );
+  let a = ( b = ( c = 1 ) ); // throws ReferenceError a undefined
   // The let keyword only applies to variable a; variables b and c become
   // global variables.
-  let a = b = c = 1;
+  let a = b = c = 1; 
 }());
-console.log(a); // throws ReferenceError
-console.log(b); // 1
-console.log(c); // 1
+console.log(a);
+console.log(b);
+console.log(c);
 // good
 (function example() {
   let a = 1;

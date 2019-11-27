@@ -104,7 +104,7 @@ function f2(obj) {
   const key = Object.prototype.hasOwnProperty.call(obj, 'key') ? obj.key : 1;
 } */
 /* 
-TODO:不要重新操作参数，除非知道边界情况 */
+TODO:不要使用同名命名参数，除非知道边界情况 */
 /* 
 // bad
 function f1(a) {

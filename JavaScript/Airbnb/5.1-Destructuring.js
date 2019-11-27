@@ -27,9 +27,10 @@ const second = arr[1];
 // good
 const [first, second] = arr; */
 /* 
-TODO: 函数返回值 使用对象而不是数组，属性更改性好 
+TODO: 函数返回值 使用对象而不是数组，不用考虑顺序 
 Why? You can add new properties over time or change the order of things without breaking call sites.
 */
+
 /* // bad
 function processInput(input) {
   // then a miracle occurs

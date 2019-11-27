@@ -70,9 +70,11 @@ function debounce(func, delay, immediate) {
         return result;
     };
 
-    // 取消 debounce 函数
-    debounced.cancel = function() {
+    // 开后门 立刻可以再来一次
+    debounced.cancel = function () {
+        console.log(timer,75)
         clearTimeout(timer);
+        console.log(timer,77)
         timer = null;
     };
 

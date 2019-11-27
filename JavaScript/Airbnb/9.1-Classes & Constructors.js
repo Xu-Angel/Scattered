@@ -62,6 +62,7 @@ console.log({...[`${num}`]});
 /*
  TODO:类继承中 构造器 的继承 */
 /* 
+
 // bad
 class Jedi {
   constructor() {}

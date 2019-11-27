@@ -24,7 +24,7 @@ const firstNames = new WeakMap();
 firstNames.set(this, 'Panda');
 */
 /* 
-TODO:Don’t save references to this 不要引用this Use arrow functions or Function#bind.
+TODO:使用箭头函数代替 this的引用 Don’t save references to this 不要引用this Use arrow functions or Function#bind.
  */
 /* 
 // bad
@@ -51,9 +51,11 @@ function foo() {
   
 }
 */
+
 /* 
 TODO: A base filename should exactly match the name of its default export.
 */
+
 /* 
 // file 1 contents
 class CheckBox {
@@ -85,6 +87,7 @@ import CheckBox from './CheckBox'; // PascalCase export/import/filename
 import fortyTwo from './fortyTwo'; // camelCase export/import/filename
 import insideDirectory from './insideDirectory'; // camelCase export/import/directory name/implicit "index"
 // ^ supports both insideDirectory.js and insideDirectory/index.js */
+
 /* 
 TODO:常量命名  You may optionally uppercase a constant only if it (1) is exported, (2) is a const (it can not be reassigned), and (3) the programmer can trust it (and its nested properties) to never change.
 
@@ -93,6 +96,7 @@ Why? This is an additional tool to assist in situations where the programmer wou
 What about all const variables? - This is unnecessary, so uppercasing should not be used for constants within a file. It should be used for exported constants however.
 What about exported objects? - Uppercase at the top level of export (e.g. EXPORTED_OBJECT.key) and maintain that all nested properties do not change.
 */
+
 /* 
 // bad
 const PRIVATE_VARIABLE = 'should not be unnecessarily uppercased within a file';

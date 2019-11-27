@@ -1,6 +1,6 @@
 /* FIXME:Blocks */
 /* 
-TODO:无花括号则在一行
+TODO:无花括号则在一行 花括号要多行
 *Use braces with all multi-line blocks. 
 // bad
 if (test)

@@ -13,9 +13,11 @@ if (!dragon.hasAge()) {
   return false;
 }
 */
+
 /* 
 TODO:It’s okay to create get() and set() functions, but be consistent.
 : */
+
 /* 
 class Jedi {
   constructor(options = {}) {

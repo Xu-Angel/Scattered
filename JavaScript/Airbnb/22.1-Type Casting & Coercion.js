@@ -17,14 +17,15 @@ const totalScore = this.reviewScore.toString(); // !isn’t guaranteed to return
 // !good
 const totalScore = String(this.reviewScore);
  */
+
 /* 
 TODO:number类型的转换  Use Number for type casting and parseInt always with a radix for parsing strings
- */ 
-   /*  使指定值的所有位都右移规定的次数。
-   值除以  2的0 次方   右移运算符 value >> num
-   右移一位相当于除2，右移n位相当于除以2的n次方。
-　　右移的规则只记住一点：符号位不变，左边补上符号位 */
-/* 
+ 使指定值的所有位都右移规定的次数。
+ 值除以  2的0 次方   右移运算符 value >> num
+ 右移一位相当于除2，右移n位相当于除以2的n次方。
+ 右移的规则只记住一点：符号位不变，左边补上符号位
+/*
+
 const inputValue = '4';
 
 // bad
@@ -45,6 +46,7 @@ const val = Number(inputValue);
 // !good
 const val = parseInt(inputValue, 10);
 */
+
 /* 
 TODO: Note: Be careful when using bitshift operations. Numbers are represented as 64-bit values, but bitshift operations always return a 32-bit integer (source). Bitshift can lead to unexpected behavior for integer values larger than 32 bits. Discussion. Largest signed 32-bit Int is 2,147,483,647:
 *js 位运算符的限制：32位
@@ -53,10 +55,12 @@ TODO: Note: Be careful when using bitshift operations. Numbers are represented a
 2147483648 >> 0; // => -2147483648
 2147483649 >> 0; // => -2147483647
  */
+
 /* 
 TODO:布尔值的转换
  */
-/* 
+/*
+
 const age = 0;
 
 // bad

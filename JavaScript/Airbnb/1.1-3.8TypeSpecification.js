@@ -98,29 +98,7 @@ const obj = {
 const obj = {
   lukeSkywalker,
 };  
-TODO:对象中属性分组排序
- const anakinSkywalker = 'Anakin Skywalker';
-const lukeSkywalker = 'Luke Skywalker';
 
-// bad
-const obj = {
-  episodeOne: 1,
-  twoJediWalkIntoACantina: 2,
-  lukeSkywalker,
-  episodeThree: 3,
-  mayTheFourth: 4,
-  anakinSkywalker,
-};
-
-// good
-const obj = {
-  lukeSkywalker,
-  anakinSkywalker,
-  episodeOne: 1,
-  twoJediWalkIntoACantina: 2,
-  episodeThree: 3,
-  mayTheFourth: 4,
-}; 
 TODO: 对象中引用属性 Why? In general we consider it subjectively easier to read. It improves syntax highlighting, and is also more easily optimized by many JS engines.
 
 // bad
@@ -136,6 +114,7 @@ const good = {
   bar: 4,
   'data-blah': 5,
 };  
+
 TODO:对象的属性方法中：Object.prototype,例如：
 hasOwnProperty, propertyIsEnumerable, and isPrototypeOf.
 Why? These methods may be shadowed by properties on the object in question - consider { hasOwnProperty: false } - or, the object may be a null object (Object.create(null)).
@@ -154,17 +133,20 @@ const has = Object.prototype.hasOwnProperty; // cache the lookup once, in module
 import has from 'has'; // https://www.npmjs.com/package/has
 // ...
 console.log(has.call(object, key));
-TODO:对象扩展  不是用Object.assign而是使用...展开运算符，灵活操作
+
+TODO:对象扩展  不是用Object.assign而是使用...展开运算符，浅层复制（会保留引用，且只遍历一层） 深层复制
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Spread_syntax
 Prefer the object spread operator over Object.assign to shallow-copy objects. Use the object rest operator to get a new object with certain properties omitted.
 
 // very bad
 const original = { a: 1, b: 2 };
 const copy = Object.assign(original, { c: 3 }); // this mutates `original` ಠ_ಠ
-delete copy.a; // so does this
+delete copy.a; // so does this 会把原始的a也删掉
 
 // bad
 const original = { a: 1, b: 2 };
-const copy = Object.assign({}, original, { c: 3 }); // copy => { a: 1, b: 2, c: 3 }
+const copy = Object.assign({}, original, { c: 3 }); // copy => { a: 1, b: 2, c: 3 } 
+delete copy.a; // 用多了个{} 所以不会把原始的a删掉
 
 // good
 const original = { a: 1, b: 2 };

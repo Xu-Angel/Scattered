@@ -29,6 +29,7 @@ export { es6 as default } from './AirbnbStyleGuide';
 import { es6 } from './AirbnbStyleGuide';
 export default es6;
  */
+
 /* 
 TODO:不要重复导入 
  *Having multiple lines that import from the same path can make code harder to maintain.
@@ -44,6 +45,7 @@ import foo, {
   named2,
 } from 'foo';
 */
+
 /* 
 TODO:导出的最好是常量而不是变量 
 *Mutation should be avoided in general, but in particular when exporting mutable bindings. While this technique may be needed for some special cases, in general, only constant references should be exported.
@@ -62,6 +64,7 @@ export function foo() {}
 // good
 export default function foo() {}
 */
+
 /* 
 TODO:统一导入
 *Since imports are hoisted, keeping them all at the top prevents surprising behavior.
