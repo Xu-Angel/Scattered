@@ -1,4 +1,23 @@
 /* 
+JavaScript中的循环数组遍历
+在 JavaScript中提供了如下四种循环遍历数组元素的方式：
+
+for 这是循环遍历数组元素最简单的方式
+  for(i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
+  }
+!for-in for-in 语句以任意顺序遍历一个对象的可枚举属性，对于数组即是数组下标，对于对象即是对象的 key 值。注意 for-in 遍历返回的对象属性都是字符串类型，即使是数组下标，也是字符串 “0”, “1”, “2” 等等。[不推荐使用 for-in 语句]
+  for (var index in myArray) {
+    console.log(myArray[index]);
+  }
+
+for-of for-of 语句为各种 collection 集合对象专门定制的，遍历集合对象的属性值，注意和 for-in 的区别
+  for (var value of myArray) {
+    console.log(value);
+  }
+*/
+
+/*
 TODO:splice 方法 
 splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。
 !该方法会改变原始数组。
