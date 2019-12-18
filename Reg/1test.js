@@ -33,8 +33,7 @@ var regex = /^(0?[0-9]|1[0-9]|[2][0-3]):(0?[0-9]|[1-5][0-9])$/; console.log( reg
 年，四位数字即可，可用 [0-9]{4}。
 月，共 12 个月，分两种情况 "01"、"02"、…、"09" 和 "10"、"11"、"12"，可用 (0[1-9]|1[0-2])。
 日，最大 31 天，可用 (0[1-9]|[12][0-9]|3[01])。
-JavaScript 正则表达式迷你书
-1. 第一章 正则表达式字符匹配攻略 | 第 13 页
+
 正则如下： */
 var regex = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/; console.log( regex.test("2017-06-10") ); // => true
 
@@ -48,9 +47,7 @@ F:\study\javascript\regex\regular expression.pdf F:\study\javascript\regex\ F:\s
 文件名或者文件夹名，不能包含一些特殊字符，此时我们需要排除字符组 [^\\:*<>|"?\r\n/] 来表示合法 字符。
 另外它们的名字不能为空名，至少有一个字符，也就是要使用量词 +。因此匹配 文件夹\，可用 [^\\:*<>|"?\r\n/]+\\。
 另外 文件夹\，可以出现任意次。也就是 ([^\\:*<>|"?\r\n/]+\\)*。其中括号表示其内部正则是一个整
-JavaScript 正则表达式迷你书
-1. 第一章 正则表达式字符匹配攻略 | 第 14 页
-体。具体详细请参考第三章。
+体。
 路径的最后一部分可以是 文件夹，没有 \，因此需要添加 ([^\\:*<>|"?\r\n/]+)?。
 最后拼接成了一个看起来比较复杂的正则： */
 var regex = /^[a-zA-Z]:\\([^\\:*<>|"?\r\n/]+\\)*([^\\:*<>|"?\r\n/]+)?$/; console.log( regex.test("F:\\study\\javascript\\regex\\regular expression.pdf") ); console.log( regex.test("F:\\study\\javascript\\regex\\") ); console.log( regex.test("F:\\study\\javascript") ); console.log( regex.test("F:\\") ); // => true // => true // => true // => true
@@ -63,10 +60,9 @@ var regex = /^[a-zA-Z]:\\([^\\:*<>|"?\r\n/]+\\)*([^\\:*<>|"?\r\n/]+)?$/; console
 可能最开始想到的正则是：
 var regex = /id=".*"/ var string = '<div id="container" class="main"></div>'; console.log(string.match(regex)[0]); // => id="container" class="main"
 其可视化形式：
-JavaScript 正则表达式迷你书
-1. 第一章 正则表达式字符匹配攻略 | 第 15 页
+
 因为 . 是通配符，本身就匹配双引号的，而量词 * 又是贪婪的，当遇到 container 后面双引号时，是不会 停下来，会继续匹配，直到遇到最后一个双引号为止。
 解决之道，可以使用惰性匹配：
 var regex = /id=".*?"/ var string = '<div id="container" class="main"></div>'; console.log(string.match(regex)[0]); // => id="container"
 当然，这样也会有个问题。效率比较低，因为其匹配原理会涉及到“回溯”这个概念（这里也只是顺便提一 下，第四章会详细说明）。可以优化如下： */
-var regex = /id="[^"]*"/; var string = '<div id="container" class="main"></div>'; console.log(string.match(regex)[0]); // => id="container
+var regex = /id="[^"]*"/; var string = '<div id="container" class="main"></div>'; console.log(string.match(regex)[0]); // => id="container"
