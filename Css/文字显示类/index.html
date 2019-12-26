@@ -1,22 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <link rel="stylesheet" href="./index.css">
+<meta charset="UTF-8">
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h2 em {
+  position: relative;
+  font-style: normal;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.container {
+  width: 320px;
+  padding: 0 10px;
+  margin: 10px auto;
+  background: #ddd;
+}
+
+.container p {
+  display: inline-block;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  padding: 10px 0;
+}
+</style>
 </head>
-<body>
-  <!-- 只有一行时居中显示文字，多行居左显示，最多两行超过用省略号结尾 -->
-  <!-- 
-    https://codepen.io/JowayYoung/pen/mdbPmyy
-   -->
-<div class="__container">
-    <!-- https://codepen.io/Chokcoco/pen/ALpdLj -->
-	<h2><p><em>我是单行标题居中</em></p></h2>
-	<h2><p><em>我是两行标题两行标题两行标题居左</em></p></h2>
-	<h2><p><em>我是超过两行的标题最后点号省略我是超过两行的标题最后点号省略我是超过两行的标题最后点号省略省略省略</em></p></h2>
+<body translate="no">
+<h1>对于一个元素，如果其display属性值是inline-block，那么其宽度由内部元素决定，但永远小于“包含块”容器的尺寸，也就是“包裹性（shrink-to-fit）”
+  
+  当文本比较少时，.text的宽度跟随文本，然后我们可以使用父级text-align:center来使一个inline-block元素居中，所以可以满足单行文本居中的效果，
+
+
+  当文本比较多时，.text的宽度跟随父级容器，由于text-align:center会继承下去，所以在.text上修复一下即可
+  
+  作者：XboxYan
+  链接：https://juejin.im/post/5e01bf03e51d45581b11f376
+  来源：掘金
+  著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+</h1>
+<div class="container">
+<h2><p><em>我是单行标题居中</em></p></h2>
+<h2><p><em>我是两行标题两行标题两行标题居左</em></p></h2>
+<h2><p><em>我是超过两行的标题最后点号省略我是超过两行的标题最后点号省略我是超过两行的标题最后点号省略省略省略</em></p></h2>
 </div>
 </body>
 </html>
