@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^3.19.0",
+    "eslint": "^6.7.1",
     "jspm": "^0.16.53"
   },
   "dependencies": {
