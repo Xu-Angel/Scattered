@@ -54,7 +54,7 @@ $ scion add
 ┌───────────────────┬────────────────┬────────┐
 │ Template Name     │ Owner/Name     │ Branch │
 ├───────────────────┼────────────────┼────────┤
-│ my-first-template │ jrainlau/scion │ new    │
+│ my-first-template  │ jrainlau/scion │ new    │
 └───────────────────┴────────────────┴────────┘
 ✔ New template has been added successfully!
 ```
