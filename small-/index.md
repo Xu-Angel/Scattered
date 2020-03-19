@@ -303,3 +303,34 @@ iPhone6 Plus	1rpx = 0.552px	1px = 1.81rpx
 
 ## 自定义组件
 
+## 巧用nextTick
+
+小程序和vue写法比较相似，也有nextTick ,在当前同步流程结束后，下一个时间片执行 。 比如有些取视图层的数据，可以等页面上流程结束后再取比较准确
+
+```js
+wx.nextTick(() => {
+      query.select('.percent-line-toast').boundingClientRect() 
+    })
+```
+
+## wx.hide的坑
+
+两个都是基于同一个原生toast实例实现的，wx.showLoading()与wx.showToast(), 同时只能显示一个， wx.hideLoading()也会隐藏Toast ; wx.hideToast()也会隐藏Loading， 失败的提示toast会一闪而过的问题，可能时因为调用了wx.hideLoading()。
+
+## 处理后台运行的js
+
+setTimeout一定伴随着clearTimeout setInterval一定伴随着clearInterval 这些我们经常会滚动算高度，倒计时，动画中用到。当我跳到了另外一个页面还在运行，小心后台页面的js
+
+## setData注意点
+
+1. 频繁的去 setData 存在将未绑定在 WXML 的变量都不需要传入 setData。
+
+2. 每次 setData 都传递大量新数据，可局部更新
+  ```js
+  this.setData({
+      list[index] = newList[index]
+  })
+  ```
+3. 后台态页面进行 setData
+
+当页面进入后台态（用户不可见），不应该继续去进行setData，后台态页面的渲染用户是无法感受的，另外后台态页面去setData也会抢占前台页面的执行。也就是上文提到的不要忘了clearTimeout、clearInterval。
