@@ -3,9 +3,10 @@
 // ! 存取器  getter 和 setter 可以改变属性的赋值和读取行为：
 
 class Ani {
-  constructor(name: string, t) {
+  // t:any
+  constructor(name: string, t: any) {
     this.name = name
-    this.t = t
+    this.t = t // 可以直接声明t  或者用getset 来声明
   }
   get name() { // 对name 属性进行复制和读取设置
     return 'J'

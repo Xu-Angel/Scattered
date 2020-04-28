@@ -10,6 +10,7 @@ function createArray(length: number, value: any): Array<any> {
 }
 //这段代码编译不会报错，但是一个显而易见的缺陷是，它并没有准确的定义返回值的类型：
 // Array<any> 允许数组的每一项都为任意类型。但是我们预期的是，数组中每一项都应该是输入的 value 的类型。
+// !我想你输入的是什么value 生成的就是什么value
 // 这时候，泛型就派上用场了：
 
 function createArrayT<T>(length: number, value: T): Array<T> {
@@ -71,6 +72,13 @@ let mySearch: SearchFunc;
 mySearch = function(source: string, subString: string) {
     return source.search(subString) !== -1;
 }
+
+interface searchFunc {
+  (source: string, subString: string): boolean
+}
+
+const muSearchFunc: searchFunc = (source, subString) => source.search(subString) !== -1
+
 // ! 当然也可以使用含有泛型的接口来定义函数的形状：
 
 interface CreateArrayFun {

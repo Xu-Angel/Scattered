@@ -11,6 +11,7 @@ function sum(x: number, y: number): number {
 let mySum = function (x: number, y: number): number {
   return x + y
 }
+// ! 定义形状 然后使用它
 /* 
 这是可以通过编译的，不过事实上，上面的代码只对等号右侧的匿名函数进行了类型定义，而等号左边的 mySum，是通过赋值操作进行类型推论而推断出来的。如果需要我们手动给 mySum 添加类型，则应该是这样：
 */
@@ -47,7 +48,7 @@ function bu(f: string, s: string = 'hi', l: string): string {
   return f + s + l
 }
 
-// ! 剩余参数 再TS中的类型定义： 数组类型并且只能是函数的最后一个参数：
+// ! 剩余参数 在TS中的类型定义： 数组类型并且只能是函数的最后一个参数：
 
 function push(arr: any[], ...items: any[]): any[] {
   return arr.concat(items)
@@ -58,13 +59,13 @@ function push(arr: any[], ...items: any[]): any[] {
 /* 比如，我们需要实现一个函数 reverse，输入数字 123 的时候，输出反转的数字 321，输入字符串 'hello' 的时候，输出反转的字符串 'olleh'。
 利用联合类型，我们可以这么实现：
 */
-function reverse(x: number | string): number | string {
-    if (typeof x === 'number') {
-        return Number(x.toString().split('').reverse().join(''));
-    } else if (typeof x === 'string') {
-        return x.split('').reverse().join('');
-    }
-}
+// function reverse(x: number | string): number | string {
+//     if (typeof x === 'number') {
+//         return Number(x.toString().split('').reverse().join(''));
+//     } else if (typeof x === 'string') {
+//         return x.split('').reverse().join('');
+//     }
+// }
 
 /* 然而这样有一个缺点，就是不能够精确的表达，输入为数字的时候，输出也应该为数字，输入为字符串的时候，输出也应该为字符串。
 这时，我们可以使用重载定义多个 reverse 的函数类型： */

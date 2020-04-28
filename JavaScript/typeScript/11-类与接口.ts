@@ -81,6 +81,14 @@ const ronly: IReadonly = {
 
 // extends
 
+interface IR {
+  readonly [propName:number]:string
+}
+
+const I : IR = {
+  0: 'P'
+}
+I[0] ='PPP'
 interface IAnimate {
   age: number
 }

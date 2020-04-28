@@ -46,19 +46,3 @@ let om: S = {
   gender: 'male'
 };
 om.id = 9527; //使用 readonly 定义的属性 id 初始化后，又被赋值了，所以报错了。
-
-// 只读的约束存在于第一次给FIXME:对象赋值的时候，而不是第一次给FIXME:只读属性赋值的时候：
-
-interface N {
-    readonly id: number;
-    name: string;
-    age?: number;
-    [propName: string]: any;
-}
-
-let tm: N = { //在对 tm 进行赋值的时候，没有给 id 赋值
-    name: 'Tom',
-    gender: 'male'
-};
-
-tm.id = 89757; //给 tm.id 赋值的时候，由于它是只读属性，所以报错了。
