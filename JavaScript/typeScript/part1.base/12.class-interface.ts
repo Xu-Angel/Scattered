@@ -39,6 +39,8 @@ interface AutoInterface extends Auto {
 }
 class C implements AutoInterface {
     state1 = 1
+    state = 555
+    // private state2 = 1
 }
 class Bus extends Auto implements AutoInterface {
 

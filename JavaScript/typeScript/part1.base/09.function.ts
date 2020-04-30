@@ -18,6 +18,23 @@ function add5(x: number, y?: number) {
 }
 add5(1)
 
+// type add2 =  (x: number, y: number) => number
+// const add: add2 = (x, y) => x + y
+// console.log(add(5, 8))
+
+// const add3 = (x: number, y: number): number => x + y
+// console.log(add3(9, 10))
+
+// let add4: (x: number, y: number) => number
+// add4 = (x, y) => x + y
+// console.log(add4(9, 20))
+
+// interface add5 {
+//   (x:number, y:number): number
+// }
+// const add6: add5 = (x, y) => x + y
+// console.log(add6(4, 4))
+
 function add6(x: number, y = 0, z: number, q = 1) {
     return x + y + z + q
 }

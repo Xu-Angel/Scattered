@@ -38,7 +38,7 @@ num = null
 let noReturn = () => {}
 
 // any
-let x
+let x:any
 x = 1
 x = []
 x = () => {}

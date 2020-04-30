@@ -42,6 +42,7 @@ interface Names {
 type Add = (x: number, y: number) => number
 let add: Add = (a: number, b: number) => a + b
 
+//TODO:()
 interface Lib {
     (): void;
     version: string;
