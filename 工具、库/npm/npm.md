@@ -163,37 +163,6 @@ npm 脚本有一个非常强大的功能，就是可以使用 npm 的内部变�
     console.log(process.env.npm_package_version); // 1.2.5
     
 
-### 常用脚本
-
-    // 删除目录
-    "clean": "rimraf dist/*",
-
-    // 本地搭建一个 HTTP 服务
-    "serve": "http-server -p 9090 dist/",
-
-    // 打开浏览器
-    "open:dev": "opener http://localhost:9090",
-
-    // 实时刷新
-     "livereload": "live-reload --port 9091 dist/",
-
-    // 构建 HTML 文件
-    "build:html": "jade index.jade > dist/index.html",
-
-    // 只要 CSS 文件有变动，就重新执行构建
-    "watch:css": "watch 'npm run build:css' assets/styles/",
-
-    // 只要 HTML 文件有变动，就重新执行构建
-    "watch:html": "watch 'npm run build:html' assets/html",
-
-    // 部署到 Amazon S3
-    "deploy:prod": "s3-cli sync ./dist/ s3://example-com/prod-site/",
-
-    // 构建 favicon
-    "build:favicon": "node scripts/favicon.js",
-
-    
-
 ### 介绍几个在 npm 脚本中好用的模块
 
 #### cpx 全局复制
@@ -243,6 +212,11 @@ cross-env 让这一切变得简单，不同平台使用唯一指令，无需担�
 
 个人觉得比较重要的就是这几个了。还有一些， 像： `author, version, keywords, description`这些就很好理解了。
 
+## ~ ^
+
+- '~'（波浪符号）:他会更新到当前minor version（也就是中间的那位数字）中最新的版本。放到我们的例子中就是："exif-js": "~2.3.0"，这个库会去匹配更新到2.3.x的最新版本，如果出了一个新的版本为2.4.0，则不会自动升级。波浪符号是曾经npm安装时候的默认符号，现在已经变为了插入符号。
+
+- '^'（插入符号）: 这个符号就显得非常的灵活了，他将会把当前库的版本更新到当前major version（也就是第一位数字）中最新的版本。放到我们的例子中就是："vue": "^2.2.2", 这个库会去匹配2.x.x中最新的版本，但是他不会自动更新到3.0.0。
 ## 参考
 
 [npmjs](https://docs.npmjs.com/misc/scripts)
