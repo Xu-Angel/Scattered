@@ -1,5 +1,9 @@
 # ~
 
+[React_Hooks深入系列](https://github.com/MuYunyun/blog/blob/master/React/React_Hooks%E6%B7%B1%E5%85%A5%E7%B3%BB%E5%88%97.md)
+
+[React_Hooks设计模式](https://github.com/MuYunyun/blog/blob/master/React/React_Hooks%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.md)
+
 **忘记正确地处理 componentDidUpdate 是 React 应用中常见的 bug 来源**。
 
 什么时候我会用 Hook？ 如果你在编写函数组件并意识到需要向其添加一些 state，以前的做法是必须将其它转化为 class。现在你可以在现有的函数组件中使用 Hook。
