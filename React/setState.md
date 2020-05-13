@@ -85,3 +85,5 @@ function requestWork(root, expirationTime) {
 ```
 
 依赖上下文中 `isBatchingUpdates` 等相关布尔值, 如果 `isBatchingUpdates` 为 `true` 则进行批量更新, 如果 `isBatchingUpdates` 为 `false` 则进行同步更新
+
+`setTimeout/setinterval` 里面调用 `this.state` ,因为通过这些函数调用的 `React` 没办法去调用 `batchedUpdate` 函数将 `isBatchingUpdates` 设置为 `true`，那么这个时候 `setState` 的时候默认就是 `false`，那么就会同步更新。
