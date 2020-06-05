@@ -2,7 +2,15 @@
 
 var n = 123; // 给数值变量分配内存
 var s = "azerty"; // 给字符串分配内存
+// const o1 = { foo: 9 }
+// const o2 = {}
+// Object.setPrototypeOf(o2, o1)
+// console.log(o2);
 
+const o1 = { x: 10, get foo() { return this.x; } };
+const o2 = { x: 50 };
+Object.setPrototypeOf(o2, o1);
+console.log(o2.foo)
 var o = {
   a: 1,
   b: null
