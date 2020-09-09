@@ -1,5 +1,7 @@
 # es6_类的继承
 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create
+
 ## 子类的构造函数
 
 * 子类必须在`constructor`中使用 `super`关键字调用父类的构造方法，因为子类没有自己的`this`对象，必须调用父类的
