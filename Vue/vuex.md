@@ -4,7 +4,7 @@
 
 ### State
 
-> 相当于定义在全局的computed，每当store. state.count变化的时候，都会重新九三属性，并且触发相关联的DOM
+> 相当于定义在全局的computed，每当store. state.count变化的时候，都会重新计算属性，并且触发相关联的DOM
 
 通过`this.$store.state.count `获取，也可以通过`mapState`辅助函数获取
 
@@ -174,9 +174,9 @@ export default {
 
 Action 类似于 mutation，不同在于：
 
-- Action 提交的是 mutation，而不是直接变更状态。
+- **Action 提交的是 mutation，而不是直接变更状态**。
 
-- Action 可以包含任意异步操作。
+- **Action 可以包含任意异步操作**。
 
 - Action 函数接受一个与 store 实例具有相同方法和属性的 context 对象，因此你可以调用 `context.commit` 提交一个 mutation，或者通过 `context.state` 和 `context.getters` 来获取 state 和 getters。当我们在之后介绍到 [Modules](https://vuex.vuejs.org/zh/guide/modules.html) 时，你就知道 context 对象为什么不是 store 实例本身了。
 

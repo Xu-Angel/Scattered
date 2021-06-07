@@ -155,7 +155,7 @@ function debounce(func, delay) {
 
 `at_begin模式` 还是  `非at_begin模式`
 
-指定是在开始处执行，还是结束是执行, true:start, false:end
+指定是在开始处执行，还是结束时执行, true:start, false:end
 
 ```  
 at_begin模式
@@ -277,3 +277,8 @@ debounced.cancel = function() {
 + 延迟执行不会清空上次未执行的定时器，每个定时器都还是执行，所以会有连续切换的现象，就是闪屏的现象
 + 不想要闪屏的现象，就用要防抖
 + debounce会清空上次未执行的定时器，只执行最后一个定时器，前面的都给清空掉了
+
+
+setInterval(debounce(fn,500),1000) // 第一次在1500ms后触发，之后每1000ms触发一次
+
+setInterval(debounce(fn,2000),1000) // 不会触发一次（我把函数防抖看出技能读条，如果读条没完成就用技能，便会失败而且重新读条）
